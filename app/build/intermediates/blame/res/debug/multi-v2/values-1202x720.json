@@ -1,0 +1,26 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/hebo/Desktop/yssj_project/yifu_yssj/YF/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-1202x720/values-1202x720.xml",
+            "map": [
+                {
+                    "source": "/Users/hebo/Desktop/yssj_project/yifu_yssj/YF/app/src/main/res/values-1202x720/dimens.xml",
+                    "from": {
+                        "startLines": "4,5,6,3",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "106,146,186,56",
+                        "endColumns": "39,39,40,49",
+                        "endOffsets": "141,181,222,101"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,95,135,176",
+                        "endColumns": "39,39,40,49",
+                        "endOffsets": "90,130,171,221"
+                    }
+                }
+            ]
+        }
+    ]
+}
