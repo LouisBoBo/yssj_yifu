@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="/Users/hebo/Desktop/yssj_project/yifu_yssj/YF/TestActivity/src/main/shaders"/></dataSet><dataSet config="debug"><source path="/Users/hebo/Desktop/yssj_project/yifu_yssj/YF/TestActivity/src/debug/shaders"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="/Users/hebo/Desktop/云商项目/yssj_app/TestActivity/src/main/shaders"/></dataSet><dataSet config="debug"><source path="/Users/hebo/Desktop/云商项目/yssj_app/TestActivity/src/debug/shaders"/></dataSet></merger>

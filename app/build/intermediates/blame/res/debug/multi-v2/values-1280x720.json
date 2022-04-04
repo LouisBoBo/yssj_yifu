@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/hebo/Desktop/yssj_project/yifu_yssj/YF/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-1280x720/values-1280x720.xml",
+            "outputFile": "/Users/hebo/Desktop/云商项目/yssj_app/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-1280x720/values-1280x720.xml",
             "map": [
                 {
-                    "source": "/Users/hebo/Desktop/yssj_project/yifu_yssj/YF/app/src/main/res/values-1280x720/dimens.xml",
+                    "source": "/Users/hebo/Desktop/云商项目/yssj_app/app/src/main/res/values-1280x720/dimens.xml",
                     "from": {
                         "startLines": "7,4,5,6,3",
                         "startColumns": "4,4,4,4,4",

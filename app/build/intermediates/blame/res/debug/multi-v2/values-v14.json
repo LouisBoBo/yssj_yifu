@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/hebo/Desktop/yssj_project/yifu_yssj/YF/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v14/values-v14.xml",
+            "outputFile": "/Users/hebo/Desktop/云商项目/yssj_app/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v14/values-v14.xml",
             "map": [
                 {
-                    "source": "/Users/hebo/Desktop/yssj_project/yifu_yssj/YF/app/src/main/res/values-v14/styles.xml",
+                    "source": "/Users/hebo/Desktop/云商项目/yssj_app/app/src/main/res/values-v14/styles.xml",
                     "from": {
                         "startLines": "10",
                         "startColumns": "4",

@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/hebo/Desktop/yssj_project/yifu_yssj/YF/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-zh/values-zh.xml",
+            "outputFile": "/Users/hebo/Desktop/云商项目/yssj_app/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-zh/values-zh.xml",
             "map": [
                 {
                     "source": "/Users/hebo/.gradle/caches/transforms-1/files-1.1/SmartRefreshHeader-1.1.0.aar/f11d6a064880f25ccb7f4808a6c25fe7/res/values-zh/values-zh.xml",

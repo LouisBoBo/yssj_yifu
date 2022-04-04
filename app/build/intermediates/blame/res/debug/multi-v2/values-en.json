@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/hebo/Desktop/yssj_project/yifu_yssj/YF/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-en/values-en.xml",
+            "outputFile": "/Users/hebo/Desktop/云商项目/yssj_app/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-en/values-en.xml",
             "map": [
                 {
                     "source": "/Users/hebo/.gradle/caches/transforms-1/files-1.1/updateapputils-2.3.0.aar/802dd0f567b19fe1abbad98f8bd45b5d/res/values-en/values-en.xml",
