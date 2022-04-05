@@ -95,7 +95,7 @@ public class CommitContributionsActivity extends BasicActivity implements View.O
     private int type_id;//分类id
 
     private SelectPicDialog selectPicDialog;
-    private int select_image_index =0;
+    private int select_image_index =1;
     private int select_image_id=-1;
 
 //    private List<Integer> image_ids = new ArrayList<>();
@@ -395,7 +395,6 @@ public class CommitContributionsActivity extends BasicActivity implements View.O
 
         HashMap<String, String> pairsMap = new HashMap<>();
         //appVersion=V3.8.6 &channel=18&version=V1.32&app_id=wx8c5fe3e40669c535&authKey=E8B4CCB44B0A0E45BD988 F7A9BF4F8EB&I10o=HJrGDODNMtM0MtLLXOU0DUTOEJq4HtdLEUTQDOY4HUS=&token=EWHH10 9ELNAXIYKQ7HQ0&supplyMaterialImages=1,2,3&shop_specification=裙子-半身裙
-        pairsMap.put("appVersion","V3.8.6");
         pairsMap.put("supplyMaterialImages",imgaeids);
         pairsMap.put("shop_specification",type_content.getText().toString());
         pairsMap.put("shop_size",size_content.getText().toString());

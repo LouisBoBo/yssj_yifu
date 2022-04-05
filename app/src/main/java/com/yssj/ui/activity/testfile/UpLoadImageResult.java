@@ -1,8 +1,6 @@
 package com.yssj.ui.activity.testfile;
 
 public class UpLoadImageResult {
-    private int code;
-    private int data;
     private String message;
     private String filePath;
     private int fileId;
@@ -30,22 +28,6 @@ public class UpLoadImageResult {
 
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    public int getCode() {
-        return code;
-    }
-
-    public void setCode(int code) {
-        this.code = code;
-    }
-
-    public int getData() {
-        return data;
-    }
-
-    public void setData(int data) {
-        this.data = data;
     }
 
     public String getMessage() {

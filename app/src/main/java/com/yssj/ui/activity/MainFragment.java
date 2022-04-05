@@ -442,6 +442,8 @@ public class MainFragment extends Fragment implements OnClickListener, OnChecked
             DialogUtils.getDiKouDialogNewTuanFail(mContext,"MainFragment显示");
             tabSignClick = false;
 
+        initContributionStatusData();//获取供款状态
+        
         if (YJApplication.instance.isLoginSucess() == false && YJApplication.isLogined == false) {
             if (checkID == 3) {
                 checkID = 1;
@@ -489,7 +491,7 @@ public class MainFragment extends Fragment implements OnClickListener, OnChecked
                 SharedPreferencesUtil.saveStringData(getActivity(), "id", result.getData().getId()+"");
 
                 contirbution_status = result.getData().getStatus();
-                contirbution_status = 5;//测试用
+//                contirbution_status = 5;//测试用
             }
 
             @Override

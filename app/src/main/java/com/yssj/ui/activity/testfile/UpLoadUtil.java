@@ -1,11 +1,15 @@
 package com.yssj.ui.activity.testfile;
 
 import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.util.Log;
 
 import com.yssj.YUrl;
+import com.yssj.model.ComModel2;
 import com.yssj.network.YConn;
 import com.yssj.utils.AuthKeyTools;
+import com.yssj.utils.DeviceUtils;
 import com.yssj.utils.YCache;
 
 import org.jetbrains.annotations.NotNull;
@@ -46,11 +50,21 @@ public class UpLoadUtil {
         Request.Builder builder = new Request.Builder();
         builder.addHeader("token", YCache.getCacheToken(context));
 
+        PackageManager pm = null;
+        String appVersion = "0";
+        try {
+            pm = context.getPackageManager();
+            PackageInfo pi = pm.getPackageInfo(context.getPackageName(), 0);
+            appVersion = "V" + pi.versionName;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         String url = YUrl.CLOUD_API_WAR_SUPPLYMATERIAL_ADDMULTIPLE + "?";
-        url += "version" + "=" + "V1.32";
-        url += "&" + "channel" + "=" + "18";
+        url += "version" + "=" + ComModel2.versionCode;
+        url += "&" + "channel" + "=" + DeviceUtils.getChannelCode(context);
         url += "&" + "app_id" + "=" + YUrl.APP_ID;
-        url += "&" + "appVersion" + "=" + "V3.8.6";
+        url += "&" + "appVersion" + "=" + appVersion;
         url += "&" + "device" + "=" + "1";
         url += "&" + "material_type" + "=" + material_type;
         url += "&" + "token" + "=" + YCache.getCacheToken(context);
