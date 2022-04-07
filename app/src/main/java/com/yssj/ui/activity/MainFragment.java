@@ -443,7 +443,7 @@ public class MainFragment extends Fragment implements OnClickListener, OnChecked
             tabSignClick = false;
 
         initContributionStatusData();//获取供款状态
-        
+
         if (YJApplication.instance.isLoginSucess() == false && YJApplication.isLogined == false) {
             if (checkID == 3) {
                 checkID = 1;
@@ -1501,6 +1501,29 @@ public class MainFragment extends Fragment implements OnClickListener, OnChecked
 
                 break;
             case R.id.tab_three: // 密友圈
+
+                 if (flag == true) {
+                     doSmallAnima();
+                    tab_three.setVisibility(View.VISIBLE);
+                    // tab_three2.setVisibility(View.GONE);
+                     doBigAnimaTabThree();
+                    flag = false;
+
+                    }
+
+                if (YJApplication.instance.isLoginSucess() == false) {
+
+                    if (LoginActivity.instances != null) {
+                        LoginActivity.instances.finish();
+                    }
+
+                    Intent intent = new Intent(getActivity(), LoginActivity.class);
+                    intent.putExtra("login_register", "login");
+                    getActivity().startActivityForResult(intent, 238);
+                    ((FragmentActivity) mContext).overridePendingTransition(R.anim.slide_left_in, R.anim.slide_match);
+                    setIndex(checkID);
+                    return;
+                }
 
                 if(contirbution_status != -1){
                     //申请供款状态
