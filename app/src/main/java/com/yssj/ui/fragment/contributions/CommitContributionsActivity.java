@@ -162,9 +162,6 @@ public class CommitContributionsActivity extends BasicActivity implements View.O
         instance = this;
         EventBus.getDefault().register(this);
 
-//        flexboxLayout_type = findViewById(R.id.flexbox_layout1);
-//        flexboxLayout_size = findViewById(R.id.flexbox_layout2);
-
         add_img1 = findViewById(R.id.add_image1);
         add_img2 = findViewById(R.id.add_image2);
         add_img3 = findViewById(R.id.add_image3);
@@ -333,7 +330,6 @@ public class CommitContributionsActivity extends BasicActivity implements View.O
     }
 
     //数据去重
-
     public static List<Uri> removeDuplicate(List<Uri> list)
 
     {

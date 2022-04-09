@@ -130,7 +130,7 @@ public class MainFragment extends Fragment implements OnClickListener, OnChecked
     private int now_type_id_value;
     private int next_type_id;
     private int next_type_id_value;
-    private int contirbution_status =-1;
+    private int contirbution_status =999;
 
     private boolean mFirstFlag = false;
     public  ImageView mIntimateFaBuIcon;
@@ -490,8 +490,10 @@ public class MainFragment extends Fragment implements OnClickListener, OnChecked
             public void onSuccess(ContributionStatusBean result) {
                 SharedPreferencesUtil.saveStringData(getActivity(), "id", result.getData().getId()+"");
 
-                contirbution_status = result.getData().getStatus();
-//                contirbution_status = 5;//测试用
+                if(result.getData() != null){
+                    contirbution_status = result.getData().getStatus();
+                }
+
             }
 
             @Override
@@ -1525,7 +1527,7 @@ public class MainFragment extends Fragment implements OnClickListener, OnChecked
                     return;
                 }
 
-                if(contirbution_status != -1){
+                if(contirbution_status != 999){
                     //申请供款状态
                     SharedPreferencesUtil.saveStringData(getActivity(), "commonactivityfrom", "contributionstatus");
                     SharedPreferencesUtil.saveStringData(getActivity(),"contirbution_status",String.valueOf(contirbution_status));

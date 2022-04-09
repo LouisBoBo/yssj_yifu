@@ -9,6 +9,7 @@ public class ContributionStatusBean implements Serializable {
     private SupplyMaterialExpressDTO SupplyMaterialExpress;
     private String message;
     private String status;
+    private String flow;
 
     public DataDTO getData() {
         return data;
@@ -40,6 +41,14 @@ public class ContributionStatusBean implements Serializable {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getFlow() {
+        return flow;
+    }
+
+    public void setFlow(String flow) {
+        this.flow = flow;
     }
 
     public static class DataDTO implements Serializable {
@@ -230,4 +239,5 @@ public class ContributionStatusBean implements Serializable {
             this.create_date = create_date;
         }
     }
+
 }

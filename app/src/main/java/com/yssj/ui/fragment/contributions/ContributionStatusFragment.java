@@ -87,7 +87,8 @@ public class ContributionStatusFragment extends Fragment implements View.OnClick
     private TextView back_s;
     private TextView end_s;
 
-    private int contribution_status = 0;
+    private int contribution_status = 999;
+    private String getContribution_flow = "";
     private String express_company = "";
     private String express_num = "";
     private int getExpress_id = 0;
@@ -108,8 +109,8 @@ public class ContributionStatusFragment extends Fragment implements View.OnClick
         View headview = v.findViewById(R.id.ll_title);
         headview.setVisibility(View.GONE);
 
-        String status = SharedPreferencesUtil.getStringData(mContext,"contirbution_status","");
-        contribution_status = Integer.parseInt(status);
+//        String status = SharedPreferencesUtil.getStringData(mContext,"contirbution_status","");
+//        contribution_status = Integer.parseInt(status);
 
         head_img = v.findViewById(R.id.head_image);
         head_title = v.findViewById(R.id.head_title);
@@ -194,7 +195,7 @@ public class ContributionStatusFragment extends Fragment implements View.OnClick
         back_s.setOnClickListener(this);
         yongjin_s.setOnClickListener(this);
 
-        initView();
+//        initView();
 
         initContributionStatusData();
 
@@ -209,12 +210,17 @@ public class ContributionStatusFragment extends Fragment implements View.OnClick
         bottom_base.setVisibility(View.GONE);
 
         if(contribution_status == 0){//审核中
-            content_base.setVisibility(View.VISIBLE);
-            bottom_base.setVisibility(View.VISIBLE);
+//            content_base.setVisibility(View.VISIBLE);
+//            bottom_base.setVisibility(View.VISIBLE);
+//
+//            head_title.setText("样衣审核中");
+//            head_img.setImageResource(R.drawable.shenhezhong_status);
+//            head_content1.setText("审核时间一般为一个工作日");
 
-            head_title.setText("样衣审核中");
-            head_img.setImageResource(R.drawable.shenhezhong_status);
-            head_content1.setText("审核时间一般为一个工作日");
+            status_base.setVisibility(View.VISIBLE);
+            jian_img.setImageResource(R.drawable.status_jian_normal);
+            jian_text.setTextColor(Color.parseColor("#ff3f8b"));
+
         }else if(contribution_status == 1){//审核成功
 
             content_base.setVisibility(View.VISIBLE);
@@ -262,296 +268,298 @@ public class ContributionStatusFragment extends Fragment implements View.OnClick
             submit_tv1.setText("查看物流");
             submit_tv2.setText("修改物流");
             head_img.setImageResource(R.drawable.shenhezhong_status);
-        }else if(contribution_status == 5){//全成功
-            status_base.setVisibility(View.VISIBLE);
+        }else {
+            if(getContribution_flow.equals("全成功")){
+                if(contribution_status == 0 || contribution_status == 5 || contribution_status == 9 || contribution_status == 11 || contribution_status == 14 || contribution_status == 98 || contribution_status == 12 || contribution_status == 99 || contribution_status == -1){//全成功
+                    status_base.setVisibility(View.VISIBLE);
 
-            int secondstatus = 2;
-            switch (secondstatus){
-                case 0:
-                    jian_img.setImageResource(R.drawable.status_jian_normal);
+                    switch (contribution_status){
+                        case 0:
+                            jian_img.setImageResource(R.drawable.status_jian_normal);
 
-                    jian_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    break;
-                case 1:
-                    jian_img.setImageResource(R.drawable.status_jian_normal);
-                    photo_img.setImageResource(R.drawable.status_photo_success);
+                            jian_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            break;
+                        case 5:
+                            jian_img.setImageResource(R.drawable.status_jian_normal);
+                            photo_img.setImageResource(R.drawable.status_photo_success);
 
-                    jian_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    photo_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    break;
-                case 2:
-                    jian_img.setImageResource(R.drawable.status_jian_normal);
-                    photo_img.setImageResource(R.drawable.status_photo_success);
-                    update_img.setImageResource(R.drawable.status_update_success);
+                            jian_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            photo_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            break;
+                        case 9:
+                            jian_img.setImageResource(R.drawable.status_jian_normal);
+                            photo_img.setImageResource(R.drawable.status_photo_success);
+                            update_img.setImageResource(R.drawable.status_update_success);
 
-                    jian_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    photo_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    update_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            jian_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            photo_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            update_text.setTextColor(Color.parseColor("#ff3f8b"));
 
-                    update_s.setVisibility(View.VISIBLE);
-                    break;
-                case 3:
-                    jian_img.setImageResource(R.drawable.status_jian_normal);
-                    photo_img.setImageResource(R.drawable.status_photo_success);
-                    update_img.setImageResource(R.drawable.status_update_success);
-                    pingtuan_img.setImageResource(R.drawable.status_pingtuan_success);
+                            update_s.setVisibility(View.VISIBLE);
+                            break;
+                        case 11:
+                            jian_img.setImageResource(R.drawable.status_jian_normal);
+                            photo_img.setImageResource(R.drawable.status_photo_success);
+                            update_img.setImageResource(R.drawable.status_update_success);
+                            pingtuan_img.setImageResource(R.drawable.status_pingtuan_success);
 
-                    jian_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    photo_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    update_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    piantuan_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            jian_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            photo_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            update_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            piantuan_text.setTextColor(Color.parseColor("#ff3f8b"));
 
-                    break;
-                case 4:
-                    jian_img.setImageResource(R.drawable.status_jian_normal);
-                    photo_img.setImageResource(R.drawable.status_photo_success);
-                    update_img.setImageResource(R.drawable.status_update_success);
-                    pingtuan_img.setImageResource(R.drawable.status_pingtuan_success);
-                    success_img.setImageResource(R.drawable.status_success);
+                            break;
+                        case 14:
+                            jian_img.setImageResource(R.drawable.status_jian_normal);
+                            photo_img.setImageResource(R.drawable.status_photo_success);
+                            update_img.setImageResource(R.drawable.status_update_success);
+                            pingtuan_img.setImageResource(R.drawable.status_pingtuan_success);
+                            success_img.setImageResource(R.drawable.status_success);
 
-                    jian_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    photo_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    update_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    piantuan_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    success_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            jian_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            photo_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            update_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            piantuan_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            success_text.setTextColor(Color.parseColor("#ff3f8b"));
 
-                    break;
-                case 5:
-                    jian_img.setImageResource(R.drawable.status_jian_normal);
-                    photo_img.setImageResource(R.drawable.status_photo_success);
-                    update_img.setImageResource(R.drawable.status_update_success);
-                    pingtuan_img.setImageResource(R.drawable.status_pingtuan_success);
-                    success_img.setImageResource(R.drawable.status_success);
-                    daban_img.setImageResource(R.drawable.status_daban_success);
+                            break;
+                        case 98:
+                            jian_img.setImageResource(R.drawable.status_jian_normal);
+                            photo_img.setImageResource(R.drawable.status_photo_success);
+                            update_img.setImageResource(R.drawable.status_update_success);
+                            pingtuan_img.setImageResource(R.drawable.status_pingtuan_success);
+                            success_img.setImageResource(R.drawable.status_success);
+                            daban_img.setImageResource(R.drawable.status_daban_success);
 
-                    jian_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    photo_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    update_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    piantuan_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    success_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    daba_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            jian_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            photo_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            update_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            piantuan_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            success_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            daba_text.setTextColor(Color.parseColor("#ff3f8b"));
 
-                    break;
-                case 6:
-                    jian_img.setImageResource(R.drawable.status_jian_normal);
-                    photo_img.setImageResource(R.drawable.status_photo_success);
-                    update_img.setImageResource(R.drawable.status_update_success);
-                    pingtuan_img.setImageResource(R.drawable.status_pingtuan_success);
-                    success_img.setImageResource(R.drawable.status_success);
-                    daban_img.setImageResource(R.drawable.status_daban_success);
-                    back_img.setImageResource(R.drawable.status_back_success);
+                            break;
+                        case 12:
+                            jian_img.setImageResource(R.drawable.status_jian_normal);
+                            photo_img.setImageResource(R.drawable.status_photo_success);
+                            update_img.setImageResource(R.drawable.status_update_success);
+                            pingtuan_img.setImageResource(R.drawable.status_pingtuan_success);
+                            success_img.setImageResource(R.drawable.status_success);
+                            daban_img.setImageResource(R.drawable.status_daban_success);
+                            back_img.setImageResource(R.drawable.status_back_success);
 
-                    jian_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    photo_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    update_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    piantuan_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    success_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    daba_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    back_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            jian_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            photo_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            update_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            piantuan_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            success_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            daba_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            back_text.setTextColor(Color.parseColor("#ff3f8b"));
 
-                    back_s.setVisibility(View.VISIBLE);
+                            back_s.setVisibility(View.VISIBLE);
 
-                    break;
-                case 7:
-                    jian_img.setImageResource(R.drawable.status_jian_normal);
-                    photo_img.setImageResource(R.drawable.status_photo_success);
-                    update_img.setImageResource(R.drawable.status_update_success);
-                    pingtuan_img.setImageResource(R.drawable.status_pingtuan_success);
-                    success_img.setImageResource(R.drawable.status_success);
-                    daban_img.setImageResource(R.drawable.status_daban_success);
-                    back_img.setImageResource(R.drawable.status_back_success);
-                    yongjin_img.setImageResource(R.drawable.status_yongjin_success);
+                            break;
+                        case 99:
+                            jian_img.setImageResource(R.drawable.status_jian_normal);
+                            photo_img.setImageResource(R.drawable.status_photo_success);
+                            update_img.setImageResource(R.drawable.status_update_success);
+                            pingtuan_img.setImageResource(R.drawable.status_pingtuan_success);
+                            success_img.setImageResource(R.drawable.status_success);
+                            daban_img.setImageResource(R.drawable.status_daban_success);
+                            back_img.setImageResource(R.drawable.status_back_success);
+                            yongjin_img.setImageResource(R.drawable.status_yongjin_success);
 
-                    jian_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    photo_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    update_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    piantuan_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    success_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    daba_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    back_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    yongjin_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            jian_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            photo_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            update_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            piantuan_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            success_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            daba_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            back_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            yongjin_text.setTextColor(Color.parseColor("#ff3f8b"));
 
-                    yongjin_s.setVisibility(View.VISIBLE);
-                    break;
+                            yongjin_s.setVisibility(View.VISIBLE);
+                            break;
 
-                case 8:
-                    jian_img.setImageResource(R.drawable.status_jian_normal);
-                    photo_img.setImageResource(R.drawable.status_photo_success);
-                    update_img.setImageResource(R.drawable.status_update_success);
-                    pingtuan_img.setImageResource(R.drawable.status_pingtuan_success);
-                    success_img.setImageResource(R.drawable.status_success);
-                    daban_img.setImageResource(R.drawable.status_daban_success);
-                    back_img.setImageResource(R.drawable.status_back_success);
-                    yongjin_img.setImageResource(R.drawable.status_yongjin_success);
-                    end_img.setImageResource(R.drawable.status_end_success);
+                        case -1:
+                            jian_img.setImageResource(R.drawable.status_jian_normal);
+                            photo_img.setImageResource(R.drawable.status_photo_success);
+                            update_img.setImageResource(R.drawable.status_update_success);
+                            pingtuan_img.setImageResource(R.drawable.status_pingtuan_success);
+                            success_img.setImageResource(R.drawable.status_success);
+                            daban_img.setImageResource(R.drawable.status_daban_success);
+                            back_img.setImageResource(R.drawable.status_back_success);
+                            yongjin_img.setImageResource(R.drawable.status_yongjin_success);
+                            end_img.setImageResource(R.drawable.status_end_success);
 
-                    jian_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    photo_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    update_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    piantuan_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    success_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    daba_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    back_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    yongjin_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    end_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    break;
+                            jian_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            photo_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            update_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            piantuan_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            success_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            daba_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            back_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            yongjin_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            end_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            break;
+                    }
+                }
+            }else if(getContribution_flow.equals("验衣失败")){
+                if(contribution_status == 0 || contribution_status == 6 || contribution_status == 12 || contribution_status == -1){//验衣失败
+
+                    status_base.setVisibility(View.VISIBLE);
+
+                    status_update.setVisibility(View.GONE);
+                    status_pintuan.setVisibility(View.GONE);
+                    status_photo.setVisibility(View.GONE);
+                    status_daban.setVisibility(View.GONE);
+                    status_yongjin.setVisibility(View.GONE);
+
+                    success_text.setText("验衣失败");
+                    success_img.setImageResource(R.drawable.status_fail_normal);
+
+                    switch (contribution_status){
+                        case 0:
+                            jian_img.setImageResource(R.drawable.status_jian_normal);
+
+                            jian_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            break;
+                        case 6:
+                            jian_img.setImageResource(R.drawable.status_jian_normal);
+                            success_img.setImageResource(R.drawable.status_fail);
+
+                            jian_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            success_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            break;
+                        case 12:
+                            jian_img.setImageResource(R.drawable.status_jian_normal);
+                            success_img.setImageResource(R.drawable.status_fail);
+                            back_img.setImageResource(R.drawable.status_back_success);
+
+                            jian_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            success_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            back_text.setTextColor(Color.parseColor("#ff3f8b"));
+
+                            back_s.setVisibility(View.VISIBLE);
+                            break;
+                        case -1:
+                            jian_img.setImageResource(R.drawable.status_jian_normal);
+                            success_img.setImageResource(R.drawable.status_fail);
+                            back_img.setImageResource(R.drawable.status_back_success);
+                            end_img.setImageResource(R.drawable.status_end_success);
+
+                            jian_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            success_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            back_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            end_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            break;
+
+                    }
+
+                }
+            }else if(getContribution_flow.equals("拼单失败")){
+                if(contribution_status == 0 || contribution_status == 5 || contribution_status == 9 || contribution_status == 11 ||contribution_status == 13 || contribution_status == 12 || contribution_status == -1){//拼团失败
+
+                    status_base.setVisibility(View.VISIBLE);
+
+                    status_daban.setVisibility(View.GONE);
+                    status_yongjin.setVisibility(View.GONE);
+
+                    success_text.setText("拼团失败");
+                    success_img.setImageResource(R.drawable.status_fail_normal);
+
+                    switch (contribution_status){
+                        case 0:
+                            jian_img.setImageResource(R.drawable.status_jian_normal);
+
+                            jian_text.setTextColor(Color.parseColor("#ff3f8b"));
+
+                            break;
+                        case 5:
+                            jian_img.setImageResource(R.drawable.status_jian_normal);
+                            photo_img.setImageResource(R.drawable.status_photo_success);
+
+                            jian_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            photo_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            break;
+                        case 9:
+                            jian_img.setImageResource(R.drawable.status_jian_normal);
+                            photo_img.setImageResource(R.drawable.status_photo_success);
+                            update_img.setImageResource(R.drawable.status_update_success);
+
+                            jian_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            photo_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            update_text.setTextColor(Color.parseColor("#ff3f8b"));
+
+                            update_s.setVisibility(View.VISIBLE);
+                            break;
+                        case 11:
+                            jian_img.setImageResource(R.drawable.status_jian_normal);
+                            photo_img.setImageResource(R.drawable.status_photo_success);
+                            update_img.setImageResource(R.drawable.status_update_success);
+                            pingtuan_img.setImageResource(R.drawable.status_pingtuan_success);
+
+                            jian_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            photo_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            update_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            piantuan_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            break;
+                        case 13:
+                            jian_img.setImageResource(R.drawable.status_jian_normal);
+                            photo_img.setImageResource(R.drawable.status_photo_success);
+                            update_img.setImageResource(R.drawable.status_update_success);
+                            pingtuan_img.setImageResource(R.drawable.status_pingtuan_success);
+                            success_img.setImageResource(R.drawable.status_fail);
+
+                            jian_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            photo_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            update_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            piantuan_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            success_text.setTextColor(Color.parseColor("#ff3f8b"));
+
+                            break;
+
+                        case 12:
+                            jian_img.setImageResource(R.drawable.status_jian_normal);
+                            photo_img.setImageResource(R.drawable.status_photo_success);
+                            update_img.setImageResource(R.drawable.status_update_success);
+                            pingtuan_img.setImageResource(R.drawable.status_pingtuan_success);
+                            success_img.setImageResource(R.drawable.status_fail);
+                            back_img.setImageResource(R.drawable.status_back_success);
+
+                            jian_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            photo_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            update_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            piantuan_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            success_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            back_text.setTextColor(Color.parseColor("#ff3f8b"));
+
+                            back_s.setVisibility(View.VISIBLE);
+
+                            break;
+
+                        case -1:
+                            jian_img.setImageResource(R.drawable.status_jian_normal);
+                            photo_img.setImageResource(R.drawable.status_photo_success);
+                            update_img.setImageResource(R.drawable.status_update_success);
+                            pingtuan_img.setImageResource(R.drawable.status_pingtuan_success);
+                            success_img.setImageResource(R.drawable.status_fail);
+                            back_img.setImageResource(R.drawable.status_back_success);
+                            end_img.setImageResource(R.drawable.status_end_success);
+
+                            jian_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            photo_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            update_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            piantuan_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            success_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            back_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            end_text.setTextColor(Color.parseColor("#ff3f8b"));
+                            break;
+                    }
+                }
             }
 
-
-        }else if(contribution_status == 6){//验衣失败
-
-
-            status_base.setVisibility(View.VISIBLE);
-
-            status_update.setVisibility(View.GONE);
-            status_pintuan.setVisibility(View.GONE);
-            status_photo.setVisibility(View.GONE);
-            status_daban.setVisibility(View.GONE);
-            status_yongjin.setVisibility(View.GONE);
-
-            success_text.setText("验衣失败");
-            success_img.setImageResource(R.drawable.status_fail_normal);
-
-            int secondstatus = 3;
-            switch (secondstatus){
-                case 0:
-                    jian_img.setImageResource(R.drawable.status_jian_normal);
-
-                    jian_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    break;
-                case 1:
-                    jian_img.setImageResource(R.drawable.status_jian_normal);
-                    success_img.setImageResource(R.drawable.status_fail);
-
-                    jian_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    success_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    break;
-                case 2:
-                    jian_img.setImageResource(R.drawable.status_jian_normal);
-                    success_img.setImageResource(R.drawable.status_fail);
-                    back_img.setImageResource(R.drawable.status_back_success);
-
-                    jian_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    success_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    back_text.setTextColor(Color.parseColor("#ff3f8b"));
-
-                    back_s.setVisibility(View.VISIBLE);
-                    break;
-                case 3:
-                    jian_img.setImageResource(R.drawable.status_jian_normal);
-                    success_img.setImageResource(R.drawable.status_fail);
-                    back_img.setImageResource(R.drawable.status_back_success);
-                    end_img.setImageResource(R.drawable.status_end_success);
-
-                    jian_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    success_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    back_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    end_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    break;
-
-            }
-
-        }else if(contribution_status == 7){
-
-            status_base.setVisibility(View.VISIBLE);
-
-            status_daban.setVisibility(View.GONE);
-            status_yongjin.setVisibility(View.GONE);
-
-            success_text.setText("拼团失败");
-            success_img.setImageResource(R.drawable.status_fail_normal);
-
-            int secondstatus = 2;
-            switch (secondstatus){
-                case 0:
-                    jian_img.setImageResource(R.drawable.status_jian_normal);
-
-                    jian_text.setTextColor(Color.parseColor("#ff3f8b"));
-
-                    break;
-                case 1:
-                    jian_img.setImageResource(R.drawable.status_jian_normal);
-                    photo_img.setImageResource(R.drawable.status_photo_success);
-
-                    jian_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    photo_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    break;
-                case 2:
-                    jian_img.setImageResource(R.drawable.status_jian_normal);
-                    photo_img.setImageResource(R.drawable.status_photo_success);
-                    update_img.setImageResource(R.drawable.status_update_success);
-
-                    jian_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    photo_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    update_text.setTextColor(Color.parseColor("#ff3f8b"));
-
-                    update_s.setVisibility(View.VISIBLE);
-                    break;
-                case 3:
-                    jian_img.setImageResource(R.drawable.status_jian_normal);
-                    photo_img.setImageResource(R.drawable.status_photo_success);
-                    update_img.setImageResource(R.drawable.status_update_success);
-                    pingtuan_img.setImageResource(R.drawable.status_pingtuan_success);
-
-                    jian_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    photo_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    update_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    piantuan_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    break;
-                case 4:
-                    jian_img.setImageResource(R.drawable.status_jian_normal);
-                    photo_img.setImageResource(R.drawable.status_photo_success);
-                    update_img.setImageResource(R.drawable.status_update_success);
-                    pingtuan_img.setImageResource(R.drawable.status_pingtuan_success);
-                    success_img.setImageResource(R.drawable.status_fail);
-
-                    jian_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    photo_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    update_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    piantuan_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    success_text.setTextColor(Color.parseColor("#ff3f8b"));
-
-                    break;
-
-                case 5:
-                    jian_img.setImageResource(R.drawable.status_jian_normal);
-                    photo_img.setImageResource(R.drawable.status_photo_success);
-                    update_img.setImageResource(R.drawable.status_update_success);
-                    pingtuan_img.setImageResource(R.drawable.status_pingtuan_success);
-                    success_img.setImageResource(R.drawable.status_fail);
-                    back_img.setImageResource(R.drawable.status_back_success);
-
-                    jian_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    photo_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    update_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    piantuan_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    success_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    back_text.setTextColor(Color.parseColor("#ff3f8b"));
-
-                    back_s.setVisibility(View.VISIBLE);
-
-                    break;
-
-                case 6:
-                    jian_img.setImageResource(R.drawable.status_jian_normal);
-                    photo_img.setImageResource(R.drawable.status_photo_success);
-                    update_img.setImageResource(R.drawable.status_update_success);
-                    pingtuan_img.setImageResource(R.drawable.status_pingtuan_success);
-                    success_img.setImageResource(R.drawable.status_fail);
-                    back_img.setImageResource(R.drawable.status_back_success);
-                    end_img.setImageResource(R.drawable.status_end_success);
-
-                    jian_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    photo_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    update_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    piantuan_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    success_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    back_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    end_text.setTextColor(Color.parseColor("#ff3f8b"));
-                    break;
-            }
         }
-
     }
 
     @Override
@@ -718,10 +726,19 @@ public class ContributionStatusFragment extends Fragment implements View.OnClick
             public void onSuccess(ContributionStatusBean result) {
                 SharedPreferencesUtil.saveStringData(getActivity(), "id", result.getData().getId()+"");
 
-                contribution_status = result.getData().getStatus();
-                express_company = result.getSupplyMaterialExpress().getExpress_company();
-                express_num = result.getSupplyMaterialExpress().getExpress_num();
-                getExpress_id = result.getSupplyMaterialExpress().getId();
+                if(result.getData() != null){
+                    contribution_status = result.getData().getStatus();
+                }
+
+                if(result.getSupplyMaterialExpress() != null){
+                    express_company = result.getSupplyMaterialExpress().getExpress_company();
+                    express_num = result.getSupplyMaterialExpress().getExpress_num();
+                    getExpress_id = result.getSupplyMaterialExpress().getId();
+                }
+
+                getContribution_flow = result.getFlow();
+
+                initView();
             }
 
             @Override
