@@ -56,6 +56,7 @@ public class ContributionStatusBean implements Serializable {
         private int status;
         private String shop_specification;
         private String shop_size;
+        private String shop_num;
         private int creator;
         private long create_date;
         private long update_date;
@@ -91,6 +92,14 @@ public class ContributionStatusBean implements Serializable {
 
         public void setShop_size(String shop_size) {
             this.shop_size = shop_size;
+        }
+
+        public String getShop_num() {
+            return shop_num;
+        }
+
+        public void setShop_num(String shop_num) {
+            this.shop_num = shop_num;
         }
 
         public int getCreator() {

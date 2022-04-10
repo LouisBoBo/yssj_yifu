@@ -8,8 +8,8 @@ import butterknife.ButterKnife.ViewBinder;
 public class SnatchActivity$$ViewBinder<T extends com.yssj.ui.activity.SnatchActivity> implements ViewBinder<T> {
   @Override public void bind(final Finder finder, final T target, Object source) {
     View view;
-    view = finder.findRequiredView(source, 2131233534, "field 'tTile'");
-    target.tTile = finder.castView(view, 2131233534, "field 'tTile'");
+    view = finder.findRequiredView(source, 2131233535, "field 'tTile'");
+    target.tTile = finder.castView(view, 2131233535, "field 'tTile'");
   }
 
   @Override public void unbind(T target) {

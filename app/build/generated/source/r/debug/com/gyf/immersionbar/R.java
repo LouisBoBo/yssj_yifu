@@ -9,8 +9,8 @@ package com.gyf.immersionbar;
 public final class R {
     public static final class id {
         public static final int action_bar_container = 0x7f080029;
-        public static final int immersion_fits_layout_overlap = 0x7f0804a3;
-        public static final int immersion_navigation_bar_view = 0x7f0804a4;
-        public static final int immersion_status_bar_view = 0x7f0804a5;
+        public static final int immersion_fits_layout_overlap = 0x7f0804a4;
+        public static final int immersion_navigation_bar_view = 0x7f0804a5;
+        public static final int immersion_status_bar_view = 0x7f0804a6;
     }
 }

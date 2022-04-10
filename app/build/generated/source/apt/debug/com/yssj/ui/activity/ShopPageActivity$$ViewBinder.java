@@ -8,7 +8,7 @@ import butterknife.ButterKnife.ViewBinder;
 public class ShopPageActivity$$ViewBinder<T extends com.yssj.ui.activity.ShopPageActivity> implements ViewBinder<T> {
   @Override public void bind(final Finder finder, final T target, Object source) {
     View view;
-    view = finder.findRequiredView(source, 2131234859, "field 'vvv'");
+    view = finder.findRequiredView(source, 2131234860, "field 'vvv'");
     target.vvv = view;
   }
 

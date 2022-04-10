@@ -137,6 +137,7 @@ public class ItemClassficationFragment extends Fragment {
 				holder.ivIcon.setVisibility(View.GONE);
 			}
 //			SetImageLoader.initImageLoader(mContext, holder.ivImage, listData.get(position).get("pic"), "!450");
+			//分类图片
 			PicassoUtils.initImage2(mContext, listData.get(position).get("pic")+"!450", holder.ivImage);
 			convertView.setOnClickListener( new OnClickListener() {
 				

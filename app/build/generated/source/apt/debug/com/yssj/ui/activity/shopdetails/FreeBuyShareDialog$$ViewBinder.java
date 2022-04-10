@@ -8,8 +8,8 @@ import butterknife.ButterKnife.ViewBinder;
 public class FreeBuyShareDialog$$ViewBinder<T extends com.yssj.ui.activity.shopdetails.FreeBuyShareDialog> implements ViewBinder<T> {
   @Override public void bind(final Finder finder, final T target, Object source) {
     View view;
-    view = finder.findRequiredView(source, 2131232133, "field 'ivClose' and method 'onViewClicked'");
-    target.ivClose = finder.castView(view, 2131232133, "field 'ivClose'");
+    view = finder.findRequiredView(source, 2131232134, "field 'ivClose' and method 'onViewClicked'");
+    target.ivClose = finder.castView(view, 2131232134, "field 'ivClose'");
     view.setOnClickListener(
       new butterknife.internal.DebouncingOnClickListener() {
         @Override public void doClick(
@@ -18,10 +18,10 @@ public class FreeBuyShareDialog$$ViewBinder<T extends com.yssj.ui.activity.shopd
           target.onViewClicked(p0);
         }
       });
-    view = finder.findRequiredView(source, 2131234494, "field 'tvTitle'");
-    target.tvTitle = finder.castView(view, 2131234494, "field 'tvTitle'");
-    view = finder.findRequiredView(source, 2131232475, "field 'llShare' and method 'onViewClicked'");
-    target.llShare = finder.castView(view, 2131232475, "field 'llShare'");
+    view = finder.findRequiredView(source, 2131234495, "field 'tvTitle'");
+    target.tvTitle = finder.castView(view, 2131234495, "field 'tvTitle'");
+    view = finder.findRequiredView(source, 2131232476, "field 'llShare' and method 'onViewClicked'");
+    target.llShare = finder.castView(view, 2131232476, "field 'llShare'");
     view.setOnClickListener(
       new butterknife.internal.DebouncingOnClickListener() {
         @Override public void doClick(

@@ -8,8 +8,8 @@ import butterknife.ButterKnife.ViewBinder;
 public class SignFinishJXDialog$$ViewBinder<T extends com.yssj.ui.dialog.SignFinishJXDialog> implements ViewBinder<T> {
   @Override public void bind(final Finder finder, final T target, Object source) {
     View view;
-    view = finder.findRequiredView(source, 2131232276, "field 'liebiao' and method 'onViewClicked'");
-    target.liebiao = finder.castView(view, 2131232276, "field 'liebiao'");
+    view = finder.findRequiredView(source, 2131232277, "field 'liebiao' and method 'onViewClicked'");
+    target.liebiao = finder.castView(view, 2131232277, "field 'liebiao'");
     view.setOnClickListener(
       new butterknife.internal.DebouncingOnClickListener() {
         @Override public void doClick(

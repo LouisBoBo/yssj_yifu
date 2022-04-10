@@ -19,6 +19,7 @@ import com.yssj.custom.view.ContributionsDialog;
 import com.yssj.entity.Order;
 import com.yssj.network.HttpListener;
 import com.yssj.network.YConn;
+import com.yssj.ui.activity.CommonActivity;
 import com.yssj.ui.activity.infos.FundDetailsActivity;
 import com.yssj.ui.activity.infos.LogisticsInfoActivity;
 import com.yssj.ui.dialog.ArticlenumberDialog;
@@ -87,8 +88,9 @@ public class ContributionStatusFragment extends Fragment implements View.OnClick
     private TextView back_s;
     private TextView end_s;
 
-    private int contribution_status = 999;
-    private String getContribution_flow = "";
+    private int contribution_status = 999;//供款状态
+    private String getContribution_flow = "";//供款流程
+    private String contribution_shop_num = "";//货号
     private String express_company = "";
     private String express_num = "";
     private int getExpress_id = 0;
@@ -108,9 +110,6 @@ public class ContributionStatusFragment extends Fragment implements View.OnClick
 
         View headview = v.findViewById(R.id.ll_title);
         headview.setVisibility(View.GONE);
-
-//        String status = SharedPreferencesUtil.getStringData(mContext,"contirbution_status","");
-//        contribution_status = Integer.parseInt(status);
 
         head_img = v.findViewById(R.id.head_image);
         head_title = v.findViewById(R.id.head_title);
@@ -195,7 +194,10 @@ public class ContributionStatusFragment extends Fragment implements View.OnClick
         back_s.setOnClickListener(this);
         yongjin_s.setOnClickListener(this);
 
-//        initView();
+        String status = SharedPreferencesUtil.getStringData(mContext,"contribution_status","");
+        contribution_status = Integer.parseInt(status);
+
+        initView();
 
         initContributionStatusData();
 
@@ -210,12 +212,6 @@ public class ContributionStatusFragment extends Fragment implements View.OnClick
         bottom_base.setVisibility(View.GONE);
 
         if(contribution_status == 0){//审核中
-//            content_base.setVisibility(View.VISIBLE);
-//            bottom_base.setVisibility(View.VISIBLE);
-//
-//            head_title.setText("样衣审核中");
-//            head_img.setImageResource(R.drawable.shenhezhong_status);
-//            head_content1.setText("审核时间一般为一个工作日");
 
             status_base.setVisibility(View.VISIBLE);
             jian_img.setImageResource(R.drawable.status_jian_normal);
@@ -572,6 +568,9 @@ public class ContributionStatusFragment extends Fragment implements View.OnClick
     public void onClick(final View view) {
         if(view == submit_tv2 && submit_tv2.getText().toString().contains("修改样衣图")){
             Intent intent = new Intent(mContext, CommitContributionsActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putInt("contribution_status",contribution_status);
+            intent.putExtras(bundle);
             startActivity(intent);
         }else if(view == submit_tv2 && submit_tv2.getText().toString().contains("立即去发样衣")){
             showDeliverDialog();
@@ -579,8 +578,15 @@ public class ContributionStatusFragment extends Fragment implements View.OnClick
             showDeliverDialog();
         }else if(view == submit_tv2 && submit_tv2.getText().toString().contains("我知道了")){
             if(contribution_status == 2){//审核拒绝重新审核
-                Intent intent = new Intent(mContext, CommitContributionsActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(mContext, CommitContributionsActivity.class);
+//                startActivity(intent);
+
+                SharedPreferencesUtil.saveStringData(getActivity(), "commonactivityfrom", "contributions");
+                SharedPreferencesUtil.saveStringData(getActivity(),"contribution_history_status",String.valueOf(-1));
+                Intent intentSign = new Intent(getActivity(), CommonActivity.class);
+                getActivity().startActivity(intentSign);
+                getActivity().overridePendingTransition(R.anim.slide_left_in, R.anim.slide_match);
+
             }else
                 getActivity().finish();
         }else if(view == submit_tv1 && submit_tv1.getText().toString().contains("查看物流")){
@@ -644,7 +650,7 @@ public class ContributionStatusFragment extends Fragment implements View.OnClick
 
     //查看货号
     public void showArticleDialog(){
-        ArticlenumberDialog dialog = new ArticlenumberDialog(mContext,express_num);
+        ArticlenumberDialog dialog = new ArticlenumberDialog(mContext,contribution_shop_num);
         dialog.show();
     }
 
@@ -728,6 +734,8 @@ public class ContributionStatusFragment extends Fragment implements View.OnClick
 
                 if(result.getData() != null){
                     contribution_status = result.getData().getStatus();
+                    contribution_shop_num = result.getData().getShop_num();
+//                    contribution_status = 2;//测试用
                 }
 
                 if(result.getSupplyMaterialExpress() != null){
@@ -737,6 +745,7 @@ public class ContributionStatusFragment extends Fragment implements View.OnClick
                 }
 
                 getContribution_flow = result.getFlow();
+//                getContribution_flow = "拼单失败";//测试用
 
                 initView();
             }

@@ -24,7 +24,7 @@ public final class R {
     }
     public static final class id {
         public static final int clear = 0x7f0801c3;
-        public static final int restore = 0x7f080959;
+        public static final int restore = 0x7f08095a;
     }
     public static final class menu {
         public static final int activity_menu = 0x7f0b0000;

@@ -8,14 +8,14 @@ import butterknife.ButterKnife.ViewBinder;
 public class MyQrCodeActivity$$ViewBinder<T extends com.yssj.ui.activity.infos.MyQrCodeActivity> implements ViewBinder<T> {
   @Override public void bind(final Finder finder, final T target, Object source) {
     View view;
-    view = finder.findRequiredView(source, 2131233718, "field 'tvTitleBase'");
-    target.tvTitleBase = finder.castView(view, 2131233718, "field 'tvTitleBase'");
-    view = finder.findRequiredView(source, 2131232184, "field 'ivQrCode'");
-    target.ivQrCode = finder.castView(view, 2131232184, "field 'ivQrCode'");
-    view = finder.findRequiredView(source, 2131233214, "field 'rlQrcode'");
-    target.rlQrcode = finder.castView(view, 2131233214, "field 'rlQrcode'");
-    view = finder.findRequiredView(source, 2131234367, "field 'tvSave' and method 'onViewClicked'");
-    target.tvSave = finder.castView(view, 2131234367, "field 'tvSave'");
+    view = finder.findRequiredView(source, 2131233719, "field 'tvTitleBase'");
+    target.tvTitleBase = finder.castView(view, 2131233719, "field 'tvTitleBase'");
+    view = finder.findRequiredView(source, 2131232185, "field 'ivQrCode'");
+    target.ivQrCode = finder.castView(view, 2131232185, "field 'ivQrCode'");
+    view = finder.findRequiredView(source, 2131233215, "field 'rlQrcode'");
+    target.rlQrcode = finder.castView(view, 2131233215, "field 'rlQrcode'");
+    view = finder.findRequiredView(source, 2131234368, "field 'tvSave' and method 'onViewClicked'");
+    target.tvSave = finder.castView(view, 2131234368, "field 'tvSave'");
     view.setOnClickListener(
       new butterknife.internal.DebouncingOnClickListener() {
         @Override public void doClick(
@@ -24,7 +24,7 @@ public class MyQrCodeActivity$$ViewBinder<T extends com.yssj.ui.activity.infos.M
           target.onViewClicked(p0);
         }
       });
-    view = finder.findRequiredView(source, 2131231706, "method 'onViewClicked'");
+    view = finder.findRequiredView(source, 2131231707, "method 'onViewClicked'");
     view.setOnClickListener(
       new butterknife.internal.DebouncingOnClickListener() {
         @Override public void doClick(

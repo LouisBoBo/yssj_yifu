@@ -8,8 +8,8 @@ import butterknife.ButterKnife.ViewBinder;
 public class NewShopActivity$$ViewBinder<T extends com.yssj.ui.activity.NewShopActivity> implements ViewBinder<T> {
   @Override public void bind(final Finder finder, final T target, Object source) {
     View view;
-    view = finder.findRequiredView(source, 2131231905, "field 'imgbtnLeftIcon' and method 'onClick'");
-    target.imgbtnLeftIcon = finder.castView(view, 2131231905, "field 'imgbtnLeftIcon'");
+    view = finder.findRequiredView(source, 2131231906, "field 'imgbtnLeftIcon' and method 'onClick'");
+    target.imgbtnLeftIcon = finder.castView(view, 2131231906, "field 'imgbtnLeftIcon'");
     view.setOnClickListener(
       new butterknife.internal.DebouncingOnClickListener() {
         @Override public void doClick(
@@ -18,8 +18,8 @@ public class NewShopActivity$$ViewBinder<T extends com.yssj.ui.activity.NewShopA
           target.onClick(p0);
         }
       });
-    view = finder.findRequiredView(source, 2131233611, "field 'title' and method 'onClick'");
-    target.title = finder.castView(view, 2131233611, "field 'title'");
+    view = finder.findRequiredView(source, 2131233612, "field 'title' and method 'onClick'");
+    target.title = finder.castView(view, 2131233612, "field 'title'");
     view.setOnClickListener(
       new butterknife.internal.DebouncingOnClickListener() {
         @Override public void doClick(
@@ -30,8 +30,8 @@ public class NewShopActivity$$ViewBinder<T extends com.yssj.ui.activity.NewShopA
       });
     view = finder.findRequiredView(source, 2131231211, "field 'mViewPager'");
     target.mViewPager = finder.castView(view, 2131231211, "field 'mViewPager'");
-    view = finder.findRequiredView(source, 2131233718, "field 'tvTitleBase'");
-    target.tvTitleBase = finder.castView(view, 2131233718, "field 'tvTitleBase'");
+    view = finder.findRequiredView(source, 2131233719, "field 'tvTitleBase'");
+    target.tvTitleBase = finder.castView(view, 2131233719, "field 'tvTitleBase'");
   }
 
   @Override public void unbind(T target) {

@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -24,12 +25,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.google.android.flexbox.FlexboxLayout;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.yssj.YUrl;
 import com.yssj.activity.R;
 import com.yssj.app.AppManager;
+import com.yssj.custom.view.FilterTitleView;
 import com.yssj.data.YDBHelper;
 import com.yssj.entity.ShopCart;
 import com.yssj.entity.VipDikouData;
@@ -42,6 +45,8 @@ import com.yssj.ui.activity.testfile.UpLoadUtil;
 import com.yssj.ui.base.BasicActivity;
 import com.yssj.ui.dialog.SelectPicDialog;
 import com.yssj.ui.fragment.ItemClassficationFragment;
+import com.yssj.utils.ImageGetFromHttp;
+import com.yssj.utils.SharedPreferencesUtil;
 import com.yssj.utils.ToastUtil;
 
 import org.greenrobot.eventbus.EventBus;
@@ -49,9 +54,14 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 import org.json.JSONObject;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Array;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
@@ -86,17 +96,27 @@ public class CommitContributionsActivity extends BasicActivity implements View.O
     private FlexboxLayout flexboxLayout_size;
     private List<TextView> type_textViews = new ArrayList<>();
     private List<TextView> size_textViews = new ArrayList<>();
+    private List<ImageView> show_imagViews = new ArrayList<>();
+    private List<ImageView> del_imagViews = new ArrayList<>();
     private ImageView show_image1;
     private ImageView show_image2;
     private ImageView show_image3;
     private ImageView show_image4;
     private ImageView show_image5;
     private ImageView show_image6;
+
+    private ImageView delimg1;
+    private ImageView delimg2;
+    private ImageView delimg3;
+    private ImageView delimg4;
+    private ImageView delimg5;
+    private ImageView delimg6;
     private int type_id;//分类id
 
     private SelectPicDialog selectPicDialog;
     private int select_image_index =1;
     private int select_image_id=-1;
+    private int contribution_status = 999;
 
 //    private List<Integer> image_ids = new ArrayList<>();
     Integer[] image_ids = new Integer[6];
@@ -110,6 +130,8 @@ public class CommitContributionsActivity extends BasicActivity implements View.O
     private static int RESULT_LOAD_IMAGE = 3;
     private static int RESULT_LOAD_PICTURE = 4;
     private static final int RESULT_OK = -1;
+
+    private Uri uriImageData;
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventMainThread(MessageEvent message){
@@ -162,6 +184,11 @@ public class CommitContributionsActivity extends BasicActivity implements View.O
         instance = this;
         EventBus.getDefault().register(this);
 
+        Bundle bundle = this.getIntent().getExtras();
+        if(bundle!=null) {
+            contribution_status = bundle.getInt("contribution_status");
+        }
+
         add_img1 = findViewById(R.id.add_image1);
         add_img2 = findViewById(R.id.add_image2);
         add_img3 = findViewById(R.id.add_image3);
@@ -175,6 +202,15 @@ public class CommitContributionsActivity extends BasicActivity implements View.O
         show_image4 = add_img4.findViewById(R.id.show_img);
         show_image5 = add_img5.findViewById(R.id.show_img);
         show_image6 = add_img6.findViewById(R.id.show_img);
+
+
+
+        show_imagViews.add(show_image1);
+        show_imagViews.add(show_image2);
+        show_imagViews.add(show_image3);
+        show_imagViews.add(show_image4);
+        show_imagViews.add(show_image5);
+        show_imagViews.add(show_image6);
 
         TextView addmark1 = add_img1.findViewById(R.id.add_mark);
         addmark1.setText("正面上传");
@@ -193,6 +229,20 @@ public class CommitContributionsActivity extends BasicActivity implements View.O
 
         TextView addmark6 = add_img6.findViewById(R.id.add_mark);
         addmark6.setText("上传辅料");
+
+        delimg1 = add_img1.findViewById(R.id.del_mark);
+        delimg2 = add_img2.findViewById(R.id.del_mark);
+        delimg3 = add_img3.findViewById(R.id.del_mark);
+        delimg4 = add_img4.findViewById(R.id.del_mark);
+        delimg5 = add_img5.findViewById(R.id.del_mark);
+        delimg6 = add_img6.findViewById(R.id.del_mark);
+
+        del_imagViews.add(delimg1);
+        del_imagViews.add(delimg2);
+        del_imagViews.add(delimg3);
+        del_imagViews.add(delimg4);
+        del_imagViews.add(delimg5);
+        del_imagViews.add(delimg6);
 
         img_back = findViewById(R.id.img_back);
         img_example = findViewById(R.id.explain_limit);
@@ -215,8 +265,56 @@ public class CommitContributionsActivity extends BasicActivity implements View.O
         zhedie_view.setOnClickListener(this);
         type_view.setOnClickListener(this);
         size_view.setOnClickListener(this);
+
+        delimg1.setOnClickListener(this);
+        delimg2.setOnClickListener(this);
+        delimg3.setOnClickListener(this);
+        delimg4.setOnClickListener(this);
+        delimg5.setOnClickListener(this);
+        delimg6.setOnClickListener(this);
+
+        if(contribution_status == 3){//如果是3显示用户已申请的供款信息
+            initContributionStatusData();
+        }
     }
 
+    //获取供款状态-供款信息
+    public void initContributionStatusData(){
+
+        HashMap<String, String> pairsMap = new HashMap<>();
+
+        YConn.httpPost(this, YUrl.CLOUD_API_WAR_SUPPLYMATERIAL_FINDSUPPLY, pairsMap, new HttpListener<ContributionStatusBean>() {
+            @Override
+            public void onSuccess(ContributionStatusBean result) {
+
+                if(result.getData() != null){
+
+                    type_content.setText(result.getData().getShop_specification());
+                    size_content.setText(result.getData().getShop_size());
+
+                    int i =0;
+                    for (ContributionStatusBean.DataDTO.SupplyMaterialImageEntitysDTO supplyMaterialImageEntity : result.getData().getSupplyMaterialImageEntitys()) {
+                        image_ids[i] = supplyMaterialImageEntity.getId();
+                        String imageurl = YUrl.imgurl + supplyMaterialImageEntity.getReal_path();
+
+                        ImageView show_image = show_imagViews.get(i);
+                        Glide.with(context).load(imageurl).into(show_image);
+                        show_image.setVisibility(View.VISIBLE);
+
+                        ImageView del_img = del_imagViews.get(i);
+                        del_img.setVisibility(View.VISIBLE);
+
+                        i++;
+                    }
+                }
+            }
+
+            @Override
+            public void onError() {
+
+            }
+        });
+    }
 
     /**
      * 动态创建TextView
@@ -269,7 +367,32 @@ public class CommitContributionsActivity extends BasicActivity implements View.O
 
     public void onClick(View v) {
         super.onClick(v);
-        switch (v.getId()) {
+        if(v == delimg1){
+            image_ids[0] = 0;
+            delimg1.setVisibility(View.GONE);
+            show_image1.setVisibility(View.GONE);
+        }else if(v == delimg2){
+            image_ids[1] = 0;
+            delimg2.setVisibility(View.GONE);
+            show_image2.setVisibility(View.GONE);
+        }else if(v == delimg3){
+            image_ids[2] = 0;
+            delimg3.setVisibility(View.GONE);
+            show_image3.setVisibility(View.GONE);
+        }else if(v == delimg4){
+            image_ids[3] = 0;
+            delimg4.setVisibility(View.GONE);
+            show_image4.setVisibility(View.GONE);
+        }else if(v == delimg5){
+            image_ids[4] = 0;
+            delimg5.setVisibility(View.GONE);
+            show_image5.setVisibility(View.GONE);
+        }else if(v == delimg6){
+            image_ids[5] = 0;
+            delimg6.setVisibility(View.GONE);
+            show_image6.setVisibility(View.GONE);
+        }else {
+            switch (v.getId()) {
             case R.id.img_back:
                 onBackPressed();
                 break;
@@ -327,6 +450,8 @@ public class CommitContributionsActivity extends BasicActivity implements View.O
             default:
                 break;
         }
+        }
+
     }
 
     //数据去重
@@ -396,13 +521,18 @@ public class CommitContributionsActivity extends BasicActivity implements View.O
         pairsMap.put("shop_size",size_content.getText().toString());
 
 
+        String url = contribution_status==3?YUrl.CLOUD_API_WAR_SUPPLYMATERIAL_UPDATESUPPLY:YUrl.CLOUD_API_WAR_SUPPLYMATERIAL_SUPPLY;
         //提交供款
-        YConn.httpPost(context, YUrl.CLOUD_API_WAR_SUPPLYMATERIAL_SUPPLY, pairsMap, new HttpListener<VipDikouData>() {
+        YConn.httpPost(context, url, pairsMap, new HttpListener<VipDikouData>() {
             @Override
             public void onSuccess(VipDikouData result) {
 
-                Intent intent = new Intent(context, ContributionStatusActivity.class);
-                startActivity(intent);
+                if(contribution_status == 3) {
+                    ToastUtil.showShortText2("修改成功");
+                }else {
+                    Intent intent = new Intent(context, ContributionStatusActivity.class);
+                    startActivity(intent);
+                }
             }
 
             @Override
@@ -487,38 +617,49 @@ public class CommitContributionsActivity extends BasicActivity implements View.O
         if (resultCode == Activity.RESULT_OK) {
             switch (requestCode) {
                 case TAKE_CAMERA_PIC_FILE_REQUEST_CODE:
-                    Uri uriImageData;
+//                    final Uri uriImageData;
                     Bundle bundle = data.getExtras();
                     Bitmap bitmap = (Bitmap) bundle.get("data");
 
 //                    pub_img.setImageBitmap(bitmap);
 
-                    switch (select_image_index){
-                        case 1:
-                            show_image1.setImageBitmap(bitmap);
-                            show_image1.setVisibility(View.VISIBLE);
-                            break;
-                        case 2:
-                            show_image2.setImageBitmap(bitmap);
-                            show_image2.setVisibility(View.VISIBLE);
-                            break;
-                        case 3:
-                            show_image3.setImageBitmap(bitmap);
-                            show_image3.setVisibility(View.VISIBLE);
-                            break;
-                        case 4:
-                            show_image4.setImageBitmap(bitmap);
-                            show_image4.setVisibility(View.VISIBLE);
-                            break;
-                        case 5:
-                            show_image5.setImageBitmap(bitmap);
-                            show_image5.setVisibility(View.VISIBLE);
-                            break;
-                        case 6:
-                            show_image6.setImageBitmap(bitmap);
-                            show_image6.setVisibility(View.VISIBLE);
-                            break;
+                    for(int i=0;i<show_imagViews.size();i++)
+                    {
+                        if(i+1==select_image_index){
+                            ImageView show_image = show_imagViews.get(i);
+                            show_image.setImageBitmap(bitmap);
+                            show_image.setVisibility(View.VISIBLE);
+
+                            ImageView del_image = del_imagViews.get(i);
+                            del_image.setVisibility(View.VISIBLE);
+                        }
                     }
+//                    switch (select_image_index){
+//                        case 1:
+//                            show_image1.setImageBitmap(bitmap);
+//                            show_image1.setVisibility(View.VISIBLE);
+//                            break;
+//                        case 2:
+//                            show_image2.setImageBitmap(bitmap);
+//                            show_image2.setVisibility(View.VISIBLE);
+//                            break;
+//                        case 3:
+//                            show_image3.setImageBitmap(bitmap);
+//                            show_image3.setVisibility(View.VISIBLE);
+//                            break;
+//                        case 4:
+//                            show_image4.setImageBitmap(bitmap);
+//                            show_image4.setVisibility(View.VISIBLE);
+//                            break;
+//                        case 5:
+//                            show_image5.setImageBitmap(bitmap);
+//                            show_image5.setVisibility(View.VISIBLE);
+//                            break;
+//                        case 6:
+//                            show_image6.setImageBitmap(bitmap);
+//                            show_image6.setVisibility(View.VISIBLE);
+//                            break;
+//                    }
                     if (null != data.getData()) {
                         uriImageData = data.getData();
                     } else {
@@ -533,50 +674,77 @@ public class CommitContributionsActivity extends BasicActivity implements View.O
                         );
                     }
 
-                    try {
-                        UpLoadPic(uriImageData);
-                        uriList.add(uriImageData);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                UpLoadPic(uriImageData);
+                                uriList.add(uriImageData);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+
+                        }
+                    }).start();
 
                     break;
                 case TAKE_GALLERY_PIC_FILE_REQUEST_CODE:
-                    Uri gallerySelectUrl = data.getData();
+                    final Uri gallerySelectUrl = data.getData();
 //                    pub_img.setImageURI(gallerySelectUrl);
 
-                    switch (select_image_index){
-                        case 1:
-                            show_image1.setImageURI(gallerySelectUrl);
-                            show_image1.setVisibility(View.VISIBLE);
-                            break;
-                        case 2:
-                            show_image2.setImageURI(gallerySelectUrl);
-                            show_image2.setVisibility(View.VISIBLE);
-                            break;
-                        case 3:
-                            show_image3.setImageURI(gallerySelectUrl);
-                            show_image3.setVisibility(View.VISIBLE);
-                            break;
-                        case 4:
-                            show_image4.setImageURI(gallerySelectUrl);
-                            show_image4.setVisibility(View.VISIBLE);
-                            break;
-                        case 5:
-                            show_image5.setImageURI(gallerySelectUrl);
-                            show_image5.setVisibility(View.VISIBLE);
-                            break;
-                        case 6:
-                            show_image6.setImageURI(gallerySelectUrl);
-                            show_image6.setVisibility(View.VISIBLE);
-                            break;
+                    for(int i=0;i<show_imagViews.size();i++)
+                    {
+                        if(i+1==select_image_index){
+                            ImageView show_image = show_imagViews.get(i);
+                            show_image.setImageURI(gallerySelectUrl);
+                            show_image.setVisibility(View.VISIBLE);
+
+                            ImageView del_image = del_imagViews.get(i);
+                            del_image.setVisibility(View.VISIBLE);
+                        }
                     }
-                    try {
-                        UpLoadPic(gallerySelectUrl);
-                        uriList.add(gallerySelectUrl);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+
+//                    switch (select_image_index){
+//                        case 1:
+//                            show_image1.setImageURI(gallerySelectUrl);
+//                            show_image1.setVisibility(View.VISIBLE);
+//                            break;
+//                        case 2:
+//                            show_image2.setImageURI(gallerySelectUrl);
+//                            show_image2.setVisibility(View.VISIBLE);
+//                            break;
+//                        case 3:
+//                            show_image3.setImageURI(gallerySelectUrl);
+//                            show_image3.setVisibility(View.VISIBLE);
+//                            break;
+//                        case 4:
+//                            show_image4.setImageURI(gallerySelectUrl);
+//                            show_image4.setVisibility(View.VISIBLE);
+//                            break;
+//                        case 5:
+//                            show_image5.setImageURI(gallerySelectUrl);
+//                            show_image5.setVisibility(View.VISIBLE);
+//                            break;
+//                        case 6:
+//                            show_image6.setImageURI(gallerySelectUrl);
+//                            show_image6.setVisibility(View.VISIBLE);
+//                            break;
+//                    }
+
+
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+
+                            try {
+                                UpLoadPic(gallerySelectUrl);
+                                uriList.add(gallerySelectUrl);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+
+                        }
+                    }).start();
                     break;
                 default:
 
@@ -601,16 +769,14 @@ public class CommitContributionsActivity extends BasicActivity implements View.O
             public void upLoadSuccess(int imgId) {
                 select_image_id = imgId;
                 Log.i("sfakfa", "upLoadSuccess: ");
-                ToastUtil.showShortText2("上传成功");
-
-                myHandler.sendEmptyMessage(123);
-
+//                ToastUtil.showShortText2("上传成功");
+                image_ids[select_image_index-1] = select_image_id;
             }
 
             @Override
             public void upLoadFail() {
                 Log.i("fajfaj", "upLoadFail: ");
-                ToastUtil.showShortText2("上传失败");
+//                ToastUtil.showShortText2("上传失败");
             }
         });
     }
@@ -620,7 +786,13 @@ public class CommitContributionsActivity extends BasicActivity implements View.O
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case 123:
-                    image_ids[select_image_index-1] = select_image_id;
+//                    image_ids[select_image_index-1] = select_image_id;
+                    try {
+                        UpLoadPic(uriImageData);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    uriList.add(uriImageData);
                     break;
             }
 

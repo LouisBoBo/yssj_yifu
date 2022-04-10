@@ -42,6 +42,7 @@ public class ContributionsFragment extends Fragment implements View.OnClickListe
     private static String mJumpFrom;
     private TextView apply_contributions_tv;
     private TextView private_contributions_tv;
+    private int contribution_history_status;//历史供款状态
 
 
     public static ContributionsFragment newInstances(Context context, String jumpFrom) {
@@ -63,6 +64,17 @@ public class ContributionsFragment extends Fragment implements View.OnClickListe
         apply_contributions_tv.setOnClickListener(this);
         private_contributions_tv.setOnClickListener(this);
 
+        String status = SharedPreferencesUtil.getStringData(mContext,"contribution_history_status","");
+        contribution_history_status = Integer.parseInt(status);
+
+        if(contribution_history_status == -1){
+            apply_contributions_tv.setText("查看过往供款记录");
+            private_contributions_tv.setText("申请供款");
+        }else {
+            apply_contributions_tv.setText("申请供款");
+            private_contributions_tv.setText("私密供款");
+        }
+
         return v;
 
     }
@@ -77,13 +89,25 @@ public class ContributionsFragment extends Fragment implements View.OnClickListe
     public void onClick(View view) {
         if(view == apply_contributions_tv){
 
-            // 跳至提交供款
-            Intent intent = new Intent(mContext, CommitContributionsActivity.class);
-            startActivity(intent);
+            if(contribution_history_status == -1){
+                ToastUtil.showShortText2("该功能近期上线，敬请期待");
+            }else {
+                // 跳至提交供款
+                Intent intent = new Intent(mContext, CommitContributionsActivity.class);
+                startActivity(intent);
+            }
+
         }else if(view == private_contributions_tv){
 
-            ContributionsDialog dialog = new ContributionsDialog(mContext);
-            dialog.show();
+            if(contribution_history_status == -1){
+                // 跳至提交供款
+                Intent intent = new Intent(mContext, CommitContributionsActivity.class);
+                startActivity(intent);
+            }else {
+                ContributionsDialog dialog = new ContributionsDialog(mContext);
+                dialog.show();
+            }
+
         }
     }
 }

@@ -8,12 +8,12 @@ import butterknife.ButterKnife.ViewBinder;
 public class YiYuanDuoShareDialog$$ViewBinder<T extends com.yssj.ui.dialog.YiYuanDuoShareDialog> implements ViewBinder<T> {
   @Override public void bind(final Finder finder, final T target, Object source) {
     View view;
-    view = finder.findRequiredView(source, 2131234229, "field 'tvNumber'");
-    target.tvNumber = finder.castView(view, 2131234229, "field 'tvNumber'");
-    view = finder.findRequiredView(source, 2131234424, "field 'tvShuomingTop'");
-    target.tvShuomingTop = finder.castView(view, 2131234424, "field 'tvShuomingTop'");
-    view = finder.findRequiredView(source, 2131234423, "field 'tvShuomingBot'");
-    target.tvShuomingBot = finder.castView(view, 2131234423, "field 'tvShuomingBot'");
+    view = finder.findRequiredView(source, 2131234230, "field 'tvNumber'");
+    target.tvNumber = finder.castView(view, 2131234230, "field 'tvNumber'");
+    view = finder.findRequiredView(source, 2131234425, "field 'tvShuomingTop'");
+    target.tvShuomingTop = finder.castView(view, 2131234425, "field 'tvShuomingTop'");
+    view = finder.findRequiredView(source, 2131234424, "field 'tvShuomingBot'");
+    target.tvShuomingBot = finder.castView(view, 2131234424, "field 'tvShuomingBot'");
   }
 
   @Override public void unbind(T target) {

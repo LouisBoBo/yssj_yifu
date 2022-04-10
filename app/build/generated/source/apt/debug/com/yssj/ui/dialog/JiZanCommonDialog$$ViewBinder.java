@@ -8,10 +8,10 @@ import butterknife.ButterKnife.ViewBinder;
 public class JiZanCommonDialog$$ViewBinder<T extends com.yssj.ui.dialog.JiZanCommonDialog> implements ViewBinder<T> {
   @Override public void bind(final Finder finder, final T target, Object source) {
     View view;
-    view = finder.findRequiredView(source, 2131234494, "field 'tvTitle'");
-    target.tvTitle = finder.castView(view, 2131234494, "field 'tvTitle'");
-    view = finder.findRequiredView(source, 2131233869, "field 'tvContent'");
-    target.tvContent = finder.castView(view, 2131233869, "field 'tvContent'");
+    view = finder.findRequiredView(source, 2131234495, "field 'tvTitle'");
+    target.tvTitle = finder.castView(view, 2131234495, "field 'tvTitle'");
+    view = finder.findRequiredView(source, 2131233870, "field 'tvContent'");
+    target.tvContent = finder.castView(view, 2131233870, "field 'tvContent'");
     view = finder.findRequiredView(source, 2131230898, "field 'btLeft' and method 'onClick'");
     target.btLeft = finder.castView(view, 2131230898, "field 'btLeft'");
     view.setOnClickListener(
@@ -32,7 +32,7 @@ public class JiZanCommonDialog$$ViewBinder<T extends com.yssj.ui.dialog.JiZanCom
           target.onClick(p0);
         }
       });
-    view = finder.findRequiredView(source, 2131231644, "method 'onClick'");
+    view = finder.findRequiredView(source, 2131231645, "method 'onClick'");
     view.setOnClickListener(
       new butterknife.internal.DebouncingOnClickListener() {
         @Override public void doClick(

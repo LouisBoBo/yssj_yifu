@@ -2116,6 +2116,10 @@ public class YUrl {
      * 申请供款
      */
     public static String CLOUD_API_WAR_SUPPLYMATERIAL_SUPPLY = YSS_URL_ANDROID + "supplyMaterial/supply";
+    /**
+     * 修改供款
+     */
+    public static String CLOUD_API_WAR_SUPPLYMATERIAL_UPDATESUPPLY = YSS_URL_ANDROID + "supplyMaterial/updateSupply";
 
     /**
      * 上传图片
@@ -2126,6 +2130,11 @@ public class YUrl {
      * 供款状态 status：0已申请供货 1审核通过 2整体拒绝 3图片不合格拒绝 4，样衣发货 5验衣通过 6验衣不通过 7.核验货号通过 8.已确认货号信息（生产工艺）9.上架（生产工艺确认工价单、上传样衣贴货号图 与 上传工艺单完成）10.待上架（上传中）
      */
     public static String CLOUD_API_WAR_SUPPLYMATERIAL_FINDSUPPLY = YSS_URL_ANDROID + "supplyMaterial/findSupply";
+
+    /**
+     * 历史供款记录
+     */
+    public static String SUPPLYMATERIAL_FINDHISTORYSUPPLY = YSS_URL_ANDROID + "supplyMaterial/findHistorySupply";
 
     /**
      * 提交物流

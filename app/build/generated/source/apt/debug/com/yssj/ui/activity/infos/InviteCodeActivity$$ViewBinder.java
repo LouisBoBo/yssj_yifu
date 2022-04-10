@@ -8,12 +8,12 @@ import butterknife.ButterKnife.ViewBinder;
 public class InviteCodeActivity$$ViewBinder<T extends com.yssj.ui.activity.infos.InviteCodeActivity> implements ViewBinder<T> {
   @Override public void bind(final Finder finder, final T target, Object source) {
     View view;
-    view = finder.findRequiredView(source, 2131231306, "field 'edYaoqingma'");
-    target.edYaoqingma = finder.castView(view, 2131231306, "field 'edYaoqingma'");
-    view = finder.findRequiredView(source, 2131234169, "field 'tvMyYaoqingma'");
-    target.tvMyYaoqingma = finder.castView(view, 2131234169, "field 'tvMyYaoqingma'");
-    view = finder.findRequiredView(source, 2131232414, "field 'llFuzhi' and method 'onViewClicked'");
-    target.llFuzhi = finder.castView(view, 2131232414, "field 'llFuzhi'");
+    view = finder.findRequiredView(source, 2131231307, "field 'edYaoqingma'");
+    target.edYaoqingma = finder.castView(view, 2131231307, "field 'edYaoqingma'");
+    view = finder.findRequiredView(source, 2131234170, "field 'tvMyYaoqingma'");
+    target.tvMyYaoqingma = finder.castView(view, 2131234170, "field 'tvMyYaoqingma'");
+    view = finder.findRequiredView(source, 2131232415, "field 'llFuzhi' and method 'onViewClicked'");
+    target.llFuzhi = finder.castView(view, 2131232415, "field 'llFuzhi'");
     view.setOnClickListener(
       new butterknife.internal.DebouncingOnClickListener() {
         @Override public void doClick(
@@ -22,12 +22,12 @@ public class InviteCodeActivity$$ViewBinder<T extends com.yssj.ui.activity.infos
           target.onViewClicked(p0);
         }
       });
-    view = finder.findRequiredView(source, 2131232494, "field 'llTop1'");
-    target.llTop1 = finder.castView(view, 2131232494, "field 'llTop1'");
-    view = finder.findRequiredView(source, 2131234170, "field 'tvMyYaoqingma2'");
-    target.tvMyYaoqingma2 = finder.castView(view, 2131234170, "field 'tvMyYaoqingma2'");
-    view = finder.findRequiredView(source, 2131232495, "field 'llTop2' and method 'onViewClicked'");
-    target.llTop2 = finder.castView(view, 2131232495, "field 'llTop2'");
+    view = finder.findRequiredView(source, 2131232495, "field 'llTop1'");
+    target.llTop1 = finder.castView(view, 2131232495, "field 'llTop1'");
+    view = finder.findRequiredView(source, 2131234171, "field 'tvMyYaoqingma2'");
+    target.tvMyYaoqingma2 = finder.castView(view, 2131234171, "field 'tvMyYaoqingma2'");
+    view = finder.findRequiredView(source, 2131232496, "field 'llTop2' and method 'onViewClicked'");
+    target.llTop2 = finder.castView(view, 2131232496, "field 'llTop2'");
     view.setOnClickListener(
       new butterknife.internal.DebouncingOnClickListener() {
         @Override public void doClick(
@@ -36,9 +36,9 @@ public class InviteCodeActivity$$ViewBinder<T extends com.yssj.ui.activity.infos
           target.onViewClicked(p0);
         }
       });
-    view = finder.findRequiredView(source, 2131233718, "field 'tvTitleBase'");
-    target.tvTitleBase = finder.castView(view, 2131233718, "field 'tvTitleBase'");
-    view = finder.findRequiredView(source, 2131231706, "method 'onViewClicked'");
+    view = finder.findRequiredView(source, 2131233719, "field 'tvTitleBase'");
+    target.tvTitleBase = finder.castView(view, 2131233719, "field 'tvTitleBase'");
+    view = finder.findRequiredView(source, 2131231707, "method 'onViewClicked'");
     view.setOnClickListener(
       new butterknife.internal.DebouncingOnClickListener() {
         @Override public void doClick(
@@ -47,7 +47,7 @@ public class InviteCodeActivity$$ViewBinder<T extends com.yssj.ui.activity.infos
           target.onViewClicked(p0);
         }
       });
-    view = finder.findRequiredView(source, 2131234614, "method 'onViewClicked'");
+    view = finder.findRequiredView(source, 2131234615, "method 'onViewClicked'");
     view.setOnClickListener(
       new butterknife.internal.DebouncingOnClickListener() {
         @Override public void doClick(
@@ -56,7 +56,7 @@ public class InviteCodeActivity$$ViewBinder<T extends com.yssj.ui.activity.infos
           target.onViewClicked(p0);
         }
       });
-    view = finder.findRequiredView(source, 2131234459, "method 'onViewClicked'");
+    view = finder.findRequiredView(source, 2131234460, "method 'onViewClicked'");
     view.setOnClickListener(
       new butterknife.internal.DebouncingOnClickListener() {
         @Override public void doClick(

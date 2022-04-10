@@ -63,6 +63,7 @@ import com.yssj.ui.fragment.FriendsFragment;
 import com.yssj.ui.fragment.HomePageFragment;
 import com.yssj.ui.fragment.MatchFragment;
 import com.yssj.ui.fragment.MineIfoFragment;
+import com.yssj.ui.fragment.contributions.ContributionHistoryBean;
 import com.yssj.ui.fragment.contributions.ContributionStatusBean;
 import com.yssj.utils.DialogUtils;
 import com.yssj.utils.LogYiFu;
@@ -130,7 +131,8 @@ public class MainFragment extends Fragment implements OnClickListener, OnChecked
     private int now_type_id_value;
     private int next_type_id;
     private int next_type_id_value;
-    private int contirbution_status =999;
+    private int contirbution_status =999;//供款状态
+    private int contribution_history_status = 999;//历史供款状态
 
     private boolean mFirstFlag = false;
     public  ImageView mIntimateFaBuIcon;
@@ -163,8 +165,6 @@ public class MainFragment extends Fragment implements OnClickListener, OnChecked
         rg_change.setOnCheckedChangeListener(this);
         getMineInfoData(); // 获取我的足迹总数
         /* checkData(); */
-
-        initContributionStatusData();//获取供款状态
 
         tab_one = (RadioButton) v.findViewById(R.id.tab_one);// 首页
         tab_two = (RadioButton) v.findViewById(R.id.tab_two);// 购物
@@ -443,6 +443,7 @@ public class MainFragment extends Fragment implements OnClickListener, OnChecked
             tabSignClick = false;
 
         initContributionStatusData();//获取供款状态
+        findHistorySupply();//获取历史供款
 
         if (YJApplication.instance.isLoginSucess() == false && YJApplication.isLogined == false) {
             if (checkID == 3) {
@@ -483,7 +484,6 @@ public class MainFragment extends Fragment implements OnClickListener, OnChecked
 
         HashMap<String, String> pairsMap = new HashMap<>();
 
-
         //获取供款状态
         YConn.httpPost(getActivity(), YUrl.CLOUD_API_WAR_SUPPLYMATERIAL_FINDSUPPLY, pairsMap, new HttpListener<ContributionStatusBean>() {
             @Override
@@ -492,8 +492,29 @@ public class MainFragment extends Fragment implements OnClickListener, OnChecked
 
                 if(result.getData() != null){
                     contirbution_status = result.getData().getStatus();
+//                    contirbution_status = 2;//测试用
                 }
 
+            }
+
+            @Override
+            public void onError() {
+
+            }
+        });
+    }
+
+    public void findHistorySupply(){
+        HashMap<String, String> pairsMap = new HashMap<>();
+
+        //获取供款记录
+        YConn.httpPost(getActivity(), YUrl.SUPPLYMATERIAL_FINDHISTORYSUPPLY, pairsMap, new HttpListener<ContributionHistoryBean>() {
+            @Override
+            public void onSuccess(ContributionHistoryBean result) {
+
+                if(result.getData() !=null && result.getData().size() >0){
+                    contribution_history_status = result.getData().get(0).getStatus();
+                }
             }
 
             @Override
@@ -1527,24 +1548,25 @@ public class MainFragment extends Fragment implements OnClickListener, OnChecked
                     return;
                 }
 
-                if(contirbution_status != 999){
+                if(contribution_history_status == 999 || contribution_history_status == -1){
+                    //申请供款
+                    SharedPreferencesUtil.saveStringData(getActivity(), "commonactivityfrom", "contributions");
+                    SharedPreferencesUtil.saveStringData(getActivity(),"contribution_history_status",String.valueOf(contribution_history_status));
+                    Intent intentSign = new Intent(getActivity(), CommonActivity.class);
+                    getActivity().startActivity(intentSign);
+                    getActivity().overridePendingTransition(R.anim.slide_left_in, R.anim.slide_match);
+                    setIndex(checkID);
+
+                }else {
                     //申请供款状态
                     SharedPreferencesUtil.saveStringData(getActivity(), "commonactivityfrom", "contributionstatus");
-                    SharedPreferencesUtil.saveStringData(getActivity(),"contirbution_status",String.valueOf(contirbution_status));
+                    SharedPreferencesUtil.saveStringData(getActivity(),"contribution_status",String.valueOf(contirbution_status));
                     Intent intentSign = new Intent(getActivity(), CommonActivity.class);
                     intentSign.putExtra("contirbution_status",contirbution_status);
                     getActivity().startActivity(intentSign);
                     getActivity().overridePendingTransition(R.anim.slide_left_in, R.anim.slide_match);
                     setIndex(checkID);
-                }else {
-                    //申请供款
-                    SharedPreferencesUtil.saveStringData(getActivity(), "commonactivityfrom", "contributions");
-                    Intent intentSign = new Intent(getActivity(), CommonActivity.class);
-                    getActivity().startActivity(intentSign);
-                    getActivity().overridePendingTransition(R.anim.slide_left_in, R.anim.slide_match);
-                    setIndex(checkID);
                 }
-
 
 
 //                if(!tabSignClick){

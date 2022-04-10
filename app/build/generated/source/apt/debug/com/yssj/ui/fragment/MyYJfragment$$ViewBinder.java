@@ -8,15 +8,15 @@ import butterknife.ButterKnife.ViewBinder;
 public class MyYJfragment$$ViewBinder<T extends com.yssj.ui.fragment.MyYJfragment> implements ViewBinder<T> {
   @Override public void bind(final Finder finder, final T target, Object source) {
     View view;
-    view = finder.findRequiredView(source, 2131233758, "field 'tvAllMoney'");
-    target.tvAllMoney = finder.castView(view, 2131233758, "field 'tvAllMoney'");
-    view = finder.findRequiredView(source, 2131234319, "field 'tvQingling'");
-    target.tvQingling = finder.castView(view, 2131234319, "field 'tvQingling'");
-    view = finder.findRequiredView(source, 2131234001, "field 'tvFriendCount'");
-    target.tvFriendCount = finder.castView(view, 2131234001, "field 'tvFriendCount'");
-    view = finder.findRequiredView(source, 2131234209, "field 'tvNoData'");
-    target.tvNoData = finder.castView(view, 2131234209, "field 'tvNoData'");
-    view = finder.findRequiredView(source, 2131234515, "method 'onViewClicked'");
+    view = finder.findRequiredView(source, 2131233759, "field 'tvAllMoney'");
+    target.tvAllMoney = finder.castView(view, 2131233759, "field 'tvAllMoney'");
+    view = finder.findRequiredView(source, 2131234320, "field 'tvQingling'");
+    target.tvQingling = finder.castView(view, 2131234320, "field 'tvQingling'");
+    view = finder.findRequiredView(source, 2131234002, "field 'tvFriendCount'");
+    target.tvFriendCount = finder.castView(view, 2131234002, "field 'tvFriendCount'");
+    view = finder.findRequiredView(source, 2131234210, "field 'tvNoData'");
+    target.tvNoData = finder.castView(view, 2131234210, "field 'tvNoData'");
+    view = finder.findRequiredView(source, 2131234516, "method 'onViewClicked'");
     view.setOnClickListener(
       new butterknife.internal.DebouncingOnClickListener() {
         @Override public void doClick(
@@ -25,7 +25,7 @@ public class MyYJfragment$$ViewBinder<T extends com.yssj.ui.fragment.MyYJfragmen
           target.onViewClicked(p0);
         }
       });
-    view = finder.findRequiredView(source, 2131232410, "method 'onViewClicked'");
+    view = finder.findRequiredView(source, 2131232411, "method 'onViewClicked'");
     view.setOnClickListener(
       new butterknife.internal.DebouncingOnClickListener() {
         @Override public void doClick(

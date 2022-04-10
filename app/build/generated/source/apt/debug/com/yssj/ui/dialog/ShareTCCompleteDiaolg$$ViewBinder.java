@@ -18,8 +18,8 @@ public class ShareTCCompleteDiaolg$$ViewBinder<T extends com.yssj.ui.dialog.Shar
           target.onClick(p0);
         }
       });
-    view = finder.findRequiredView(source, 2131231644, "field 'iconClose' and method 'onClick'");
-    target.iconClose = finder.castView(view, 2131231644, "field 'iconClose'");
+    view = finder.findRequiredView(source, 2131231645, "field 'iconClose' and method 'onClick'");
+    target.iconClose = finder.castView(view, 2131231645, "field 'iconClose'");
     view.setOnClickListener(
       new butterknife.internal.DebouncingOnClickListener() {
         @Override public void doClick(

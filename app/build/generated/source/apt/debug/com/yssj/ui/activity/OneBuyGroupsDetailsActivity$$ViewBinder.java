@@ -8,8 +8,8 @@ import butterknife.ButterKnife.ViewBinder;
 public class OneBuyGroupsDetailsActivity$$ViewBinder<T extends com.yssj.ui.activity.OneBuyGroupsDetailsActivity> implements ViewBinder<T> {
   @Override public void bind(final Finder finder, final T target, Object source) {
     View view;
-    view = finder.findRequiredView(source, 2131232154, "field 'ivHongbao' and method 'onViewClicked'");
-    target.ivHongbao = finder.castView(view, 2131232154, "field 'ivHongbao'");
+    view = finder.findRequiredView(source, 2131232155, "field 'ivHongbao' and method 'onViewClicked'");
+    target.ivHongbao = finder.castView(view, 2131232155, "field 'ivHongbao'");
     view.setOnClickListener(
       new butterknife.internal.DebouncingOnClickListener() {
         @Override public void doClick(
