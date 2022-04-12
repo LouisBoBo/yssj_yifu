@@ -71,7 +71,8 @@ public class CommonUtils {
 //                        public void onSuccess(VipInfo vipInfo) {
 //                            if (isVip(vipInfo.getIsVip(), vipInfo.getMaxType())) {
 //                                if (!isActivityDestroy(activity)) {
-                                    activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);
+                                    //关闭禁止截屏
+//                                    activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);
 
 //                                    if (YUrl.debug) {
 //                                        ToastUtil.showShortText2("此界面截屏已被禁用");
@@ -118,7 +119,8 @@ public class CommonUtils {
                         public void onSuccess(VipInfo vipInfo) {
                             if (isVip(vipInfo.getIsVip(), vipInfo.getMaxType()) && finalZcTimeOver1hour) {
                                 if (!isActivityDestroy(activity)) {
-                                    activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);
+                                    //关闭禁止截屏
+//                                    activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);
 //                                    if (YUrl.debug) {
 //                                        ToastUtil.showShortText2("此界面截屏已被禁用");
 //                                    }

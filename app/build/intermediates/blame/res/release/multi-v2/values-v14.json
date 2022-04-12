@@ -1,0 +1,28 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/hebo/Desktop/云商项目/yssj_app/app/build/intermediates/incremental/mergeReleaseResources/merged.dir/values-v14/values-v14.xml",
+            "map": [
+                {
+                    "source": "/Users/hebo/Desktop/云商项目/yssj_app/app/src/main/res/values-v14/styles.xml",
+                    "from": {
+                        "startLines": "10",
+                        "startColumns": "4",
+                        "startOffsets": "376",
+                        "endLines": "12",
+                        "endColumns": "12",
+                        "endOffsets": "524"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "4",
+                        "endColumns": "12",
+                        "endOffsets": "201"
+                    }
+                }
+            ]
+        }
+    ]
+}

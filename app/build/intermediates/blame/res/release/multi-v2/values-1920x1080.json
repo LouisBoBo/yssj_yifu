@@ -1,0 +1,26 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/hebo/Desktop/云商项目/yssj_app/app/build/intermediates/incremental/mergeReleaseResources/merged.dir/values-1920x1080/values-1920x1080.xml",
+            "map": [
+                {
+                    "source": "/Users/hebo/Desktop/云商项目/yssj_app/app/src/main/res/values-1920x1080/dimens.xml",
+                    "from": {
+                        "startLines": "4,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "106,56",
+                        "endColumns": "39,49",
+                        "endOffsets": "141,101"
+                    },
+                    "to": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,95",
+                        "endColumns": "39,49",
+                        "endOffsets": "90,140"
+                    }
+                }
+            ]
+        }
+    ]
+}

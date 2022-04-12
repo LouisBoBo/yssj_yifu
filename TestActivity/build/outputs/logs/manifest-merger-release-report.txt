@@ -1,0 +1,9 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/hebo/Desktop/云商项目/yssj_app/TestActivity/src/main/AndroidManifest.xml:1:1-5:12
+INJECTED from /Users/hebo/Desktop/云商项目/yssj_app/TestActivity/src/main/AndroidManifest.xml:1:1-5:12
+INJECTED from /Users/hebo/Desktop/云商项目/yssj_app/TestActivity/src/main/AndroidManifest.xml:1:1-5:12
+	package
+		ADDED from /Users/hebo/Desktop/云商项目/yssj_app/TestActivity/src/main/AndroidManifest.xml:2:5-56
+		INJECTED from /Users/hebo/Desktop/云商项目/yssj_app/TestActivity/src/main/AndroidManifest.xml
+		INJECTED from /Users/hebo/Desktop/云商项目/yssj_app/TestActivity/src/main/AndroidManifest.xml

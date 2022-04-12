@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Users/hebo/Desktop/云商项目/yssj_app/TestActivity/build/intermediates/intermediate-jars/release/classes.jar"
+        jumboMode="false"
+        min-sdk-version="24"
+        optimize="true"
+        revision="28.0.3"
+        sha1="ceacbc15a87ad42e9b11b945636084fff71a707b">
+        <dex dex="/Users/hebo/Desktop/云商项目/yssj_app/app/build/intermediates/transforms/preDex/release/87/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/hebo/Desktop/云商项目/yssj_app/app/libs/rebound-0.3.8.jar"
+        jumboMode="false"
+        min-sdk-version="24"
+        optimize="true"
+        revision="28.0.3"
+        sha1="c8b90640dddaf1e7ad75d7cb00b09a44b3788f7e">
+        <dex dex="/Users/hebo/Desktop/云商项目/yssj_app/app/build/intermediates/transforms/preDex/release/10/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/hebo/Desktop/云商项目/yssj_app/app/libs/nineoldandroids-2.4.0.jar"
+        jumboMode="false"
+        min-sdk-version="24"
+        optimize="true"
+        revision="28.0.3"
+        sha1="197e497b95d34c42c8725f2bc4a58ede6040ba95">
+        <dex dex="/Users/hebo/Desktop/云商项目/yssj_app/app/build/intermediates/transforms/preDex/release/9/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/hebo/Desktop/云商项目/yssj_app/app/libs/apache-commons-lang.jar"
+        jumboMode="false"
+        min-sdk-version="24"
+        optimize="true"
+        revision="28.0.3"
+        sha1="0ce1edb914c94ebc388f086c6827e8bdeec71ac2">
+        <dex dex="/Users/hebo/Desktop/云商项目/yssj_app/app/build/intermediates/transforms/preDex/release/5/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/hebo/Desktop/云商项目/yssj_app/app/libs/alipayutdid.jar"
+        jumboMode="false"
+        min-sdk-version="24"
+        optimize="true"
+        revision="28.0.3"
+        sha1="4345fa0a5a7768f2f9c86aaab7db9e2906765193">
+        <dex dex="/Users/hebo/Desktop/云商项目/yssj_app/app/build/intermediates/transforms/preDex/release/3/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/hebo/Desktop/云商项目/yssj_app/LibraryPullToRefresh/build/intermediates/intermediate-jars/release/classes.jar"
+        jumboMode="false"
+        min-sdk-version="24"
+        optimize="true"
+        revision="28.0.3"
+        sha1="86217554641da2f74a2844a2fd76b75d1bcd95cc">
+        <dex dex="/Users/hebo/Desktop/云商项目/yssj_app/app/build/intermediates/transforms/preDex/release/85/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/hebo/Desktop/云商项目/yssj_app/app/libs/BaiduLBS_Android.jar"
+        jumboMode="false"
+        min-sdk-version="24"
+        optimize="true"
+        revision="28.0.3"
+        sha1="d420c4dd9fe379db1250124bb19686df855bed92">
+        <dex dex="/Users/hebo/Desktop/云商项目/yssj_app/app/build/intermediates/transforms/preDex/release/11/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/hebo/Desktop/云商项目/yssj_app/app/libs/alipaysdk.jar"
+        jumboMode="false"
+        min-sdk-version="24"
+        optimize="true"
+        revision="28.0.3"
+        sha1="61551cf6e23c5133046a07ec6cd9dee6aa5c78a0">
+        <dex dex="/Users/hebo/Desktop/云商项目/yssj_app/app/build/intermediates/transforms/preDex/release/1/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/hebo/Desktop/云商项目/yssj_app/wheelsruflibrary/build/intermediates/intermediate-jars/release/classes.jar"
+        jumboMode="false"
+        min-sdk-version="24"
+        optimize="true"
+        revision="28.0.3"
+        sha1="f5c7211a28a8b8d8f215f4abe07af75b5d58e6de">
+        <dex dex="/Users/hebo/Desktop/云商项目/yssj_app/app/build/intermediates/transforms/preDex/release/86/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/hebo/Desktop/云商项目/yssj_app/app/libs/fastjson-1.1.41.jar"
+        jumboMode="false"
+        min-sdk-version="24"
+        optimize="true"
+        revision="28.0.3"
+        sha1="a244aa752b9e0210d0e50b5c1e11319711ed9290">
+        <dex dex="/Users/hebo/Desktop/云商项目/yssj_app/app/build/intermediates/transforms/preDex/release/7/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/hebo/Desktop/云商项目/yssj_app/app/libs/alipaysecsdk.jar"
+        jumboMode="false"
+        min-sdk-version="24"
+        optimize="true"
+        revision="28.0.3"
+        sha1="7413c074c9edf523050267b93d0875151dc4b644">
+        <dex dex="/Users/hebo/Desktop/云商项目/yssj_app/app/build/intermediates/transforms/preDex/release/2/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/hebo/Desktop/云商项目/yssj_app/app/libs/core.jar"
+        jumboMode="false"
+        min-sdk-version="24"
+        optimize="true"
+        revision="28.0.3"
+        sha1="ce182c0fddefa07cb7be8a5e53d5dc7826667da3">
+        <dex dex="/Users/hebo/Desktop/云商项目/yssj_app/app/build/intermediates/transforms/preDex/release/6/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/hebo/Desktop/云商项目/yssj_app/lib.permission/build/intermediates/intermediate-jars/release/classes.jar"
+        jumboMode="false"
+        min-sdk-version="24"
+        optimize="true"
+        revision="28.0.3"
+        sha1="73b890bb1668532e5e874fb2c5e984cbdebdbad5">
+        <dex dex="/Users/hebo/Desktop/云商项目/yssj_app/app/build/intermediates/transforms/preDex/release/88/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/hebo/Desktop/云商项目/yssj_app/app/libs/httpmime-4.1.2.jar"
+        jumboMode="false"
+        min-sdk-version="24"
+        optimize="true"
+        revision="28.0.3"
+        sha1="ed8b5ee0167cb27dea55851259eb34b609f31df0">
+        <dex dex="/Users/hebo/Desktop/云商项目/yssj_app/app/build/intermediates/transforms/preDex/release/8/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/hebo/Desktop/云商项目/yssj_app/app/libs/umeng_social_sdk.jar"
+        jumboMode="false"
+        min-sdk-version="24"
+        optimize="true"
+        revision="28.0.3"
+        sha1="38c1f37e256f912f926a587ef006ffb44b584437">
+        <dex dex="/Users/hebo/Desktop/云商项目/yssj_app/app/build/intermediates/transforms/preDex/release/12/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/hebo/Desktop/云商项目/yssj_app/app/libs/AndroidViewAnimations-1.1.3.jar"
+        jumboMode="false"
+        min-sdk-version="24"
+        optimize="true"
+        revision="28.0.3"
+        sha1="d8db345547f7a025130d1622f2608ec68e761641">
+        <dex dex="/Users/hebo/Desktop/云商项目/yssj_app/app/build/intermediates/transforms/preDex/release/4/classes.dex" />
+    </item>
+
+</items>
