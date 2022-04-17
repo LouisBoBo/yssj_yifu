@@ -42,6 +42,7 @@
             android:layout_alignParentRight="true"
             android:layout_marginRight="25dp"
             android:text=""
+            android:visibility="gone"
             android:textColor="#a8a8a8"
             android:textSize="@dimen/tv_size11" />
 

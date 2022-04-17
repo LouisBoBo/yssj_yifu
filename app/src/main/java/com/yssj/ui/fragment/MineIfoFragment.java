@@ -614,14 +614,14 @@ public class MineIfoFragment extends Fragment implements OnClickListener, onUser
         }
 
         if (info.getReviewers() == 1) {
-            my_qianming.setVisibility(View.GONE);
-            tv_zhaopian.setVisibility(View.VISIBLE);
-            tv_vip.setVisibility(View.GONE);
-
-
-            tv_haoyoujiangli.setVisibility(View.GONE);
-            tv_shouchang.setVisibility(View.INVISIBLE);
-            tv_shouchang1.setVisibility(View.VISIBLE);
+//            my_qianming.setVisibility(View.GONE);
+//            tv_zhaopian.setVisibility(View.VISIBLE);
+//            tv_vip.setVisibility(View.GONE);
+//
+//
+//            tv_haoyoujiangli.setVisibility(View.GONE);
+//            tv_shouchang.setVisibility(View.INVISIBLE);
+//            tv_shouchang1.setVisibility(View.VISIBLE);
 
 
 
@@ -632,14 +632,14 @@ public class MineIfoFragment extends Fragment implements OnClickListener, onUser
 
         } else {
 
-            tv_haoyoujiangli.setVisibility(View.VISIBLE);
-            tv_shouchang.setVisibility(View.VISIBLE);
-            tv_shouchang1.setVisibility(View.GONE);
-
-
-            my_qianming.setVisibility(View.VISIBLE);
-            tv_zhaopian.setVisibility(View.GONE);
-            tv_vip.setVisibility(View.GONE);
+//            tv_haoyoujiangli.setVisibility(View.VISIBLE);
+//            tv_shouchang.setVisibility(View.VISIBLE);
+//            tv_shouchang1.setVisibility(View.GONE);
+//
+//
+//            my_qianming.setVisibility(View.VISIBLE);
+//            tv_zhaopian.setVisibility(View.GONE);
+//            tv_vip.setVisibility(View.GONE);
         }
 
         // 刷新消息中心小点
@@ -753,7 +753,7 @@ public class MineIfoFragment extends Fragment implements OnClickListener, onUser
 
         Glide.get(mContext).clearMemory();
 
-        // MobclickAgent.onPageStart("MineInfoFragment"); // 统计页面
+//         MobclickAgent.onPageStart("MineInfoFragment"); // 统计页面
         MyInfoActivity.setOnUserInfoUpdate(this);
         if (this.isVisible() == false) {
             return;

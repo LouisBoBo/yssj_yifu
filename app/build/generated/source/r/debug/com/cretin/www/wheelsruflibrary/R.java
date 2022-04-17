@@ -585,8 +585,8 @@ public final class R {
         public static final int notification_template_icon_low_bg = 0x7f070506;
         public static final int notification_tile_bg = 0x7f070507;
         public static final int notify_panel_notification_icon_bg = 0x7f070508;
-        public static final int tooltip_frame_dark = 0x7f070706;
-        public static final int tooltip_frame_light = 0x7f070707;
+        public static final int tooltip_frame_dark = 0x7f070707;
+        public static final int tooltip_frame_light = 0x7f070708;
     }
     public static final class id {
         public static final int action_bar = 0x7f080027;
@@ -680,9 +680,9 @@ public final class R {
         public static final int titleDividerNoCustom = 0x7f080b4e;
         public static final int title_template = 0x7f080b57;
         public static final int topPanel = 0x7f080b6d;
-        public static final int uniform = 0x7f080fe9;
-        public static final int up = 0x7f080fec;
-        public static final int wrap_content = 0x7f081045;
+        public static final int uniform = 0x7f080fec;
+        public static final int up = 0x7f080fef;
+        public static final int wrap_content = 0x7f081048;
     }
     public static final class integer {
         public static final int abc_config_activityDefaultDur = 0x7f090000;

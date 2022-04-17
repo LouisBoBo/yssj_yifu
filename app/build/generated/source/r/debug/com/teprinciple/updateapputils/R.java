@@ -447,7 +447,7 @@ public final class R {
         public static final int text_title = 0x7f0500c8;
         public static final int tooltip_background_dark = 0x7f0500d3;
         public static final int tooltip_background_light = 0x7f0500d4;
-        public static final int white = 0x7f0500f2;
+        public static final int white = 0x7f0500f3;
     }
     public static final class dimen {
         public static final int abc_action_bar_content_inset_material = 0x7f060000;
@@ -665,8 +665,8 @@ public final class R {
         public static final int notification_template_icon_low_bg = 0x7f070506;
         public static final int notification_tile_bg = 0x7f070507;
         public static final int notify_panel_notification_icon_bg = 0x7f070508;
-        public static final int tooltip_frame_dark = 0x7f070706;
-        public static final int tooltip_frame_light = 0x7f070707;
+        public static final int tooltip_frame_dark = 0x7f070707;
+        public static final int tooltip_frame_light = 0x7f070708;
     }
     public static final class id {
         public static final int action_bar = 0x7f080027;
@@ -782,13 +782,13 @@ public final class R {
         public static final int title_template = 0x7f080b57;
         public static final int top = 0x7f080b6b;
         public static final int topPanel = 0x7f080b6d;
-        public static final int tv_update_content = 0x7f080efe;
-        public static final int tv_update_title = 0x7f080f00;
-        public static final int uniform = 0x7f080fe9;
-        public static final int up = 0x7f080fec;
-        public static final int view_line = 0x7f081018;
-        public static final int wrap = 0x7f081044;
-        public static final int wrap_content = 0x7f081045;
+        public static final int tv_update_content = 0x7f080f01;
+        public static final int tv_update_title = 0x7f080f03;
+        public static final int uniform = 0x7f080fec;
+        public static final int up = 0x7f080fef;
+        public static final int view_line = 0x7f08101b;
+        public static final int wrap = 0x7f081047;
+        public static final int wrap_content = 0x7f081048;
     }
     public static final class integer {
         public static final int abc_config_activityDefaultDur = 0x7f090000;

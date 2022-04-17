@@ -10,8 +10,8 @@ public class YiYuanJoinRecordActivity$$ViewBinder<T extends com.yssj.ui.activity
     View view;
     view = finder.findRequiredView(source, 2131233535, "field 'tTile'");
     target.tTile = finder.castView(view, 2131233535, "field 'tTile'");
-    view = finder.findRequiredView(source, 2131234525, "field 'tvTotalCount' and method 'onViewClicked'");
-    target.tvTotalCount = finder.castView(view, 2131234525, "field 'tvTotalCount'");
+    view = finder.findRequiredView(source, 2131234528, "field 'tvTotalCount' and method 'onViewClicked'");
+    target.tvTotalCount = finder.castView(view, 2131234528, "field 'tvTotalCount'");
     view.setOnClickListener(
       new butterknife.internal.DebouncingOnClickListener() {
         @Override public void doClick(

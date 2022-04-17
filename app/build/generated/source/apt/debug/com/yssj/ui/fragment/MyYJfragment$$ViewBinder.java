@@ -10,13 +10,13 @@ public class MyYJfragment$$ViewBinder<T extends com.yssj.ui.fragment.MyYJfragmen
     View view;
     view = finder.findRequiredView(source, 2131233759, "field 'tvAllMoney'");
     target.tvAllMoney = finder.castView(view, 2131233759, "field 'tvAllMoney'");
-    view = finder.findRequiredView(source, 2131234320, "field 'tvQingling'");
-    target.tvQingling = finder.castView(view, 2131234320, "field 'tvQingling'");
-    view = finder.findRequiredView(source, 2131234002, "field 'tvFriendCount'");
-    target.tvFriendCount = finder.castView(view, 2131234002, "field 'tvFriendCount'");
-    view = finder.findRequiredView(source, 2131234210, "field 'tvNoData'");
-    target.tvNoData = finder.castView(view, 2131234210, "field 'tvNoData'");
-    view = finder.findRequiredView(source, 2131234516, "method 'onViewClicked'");
+    view = finder.findRequiredView(source, 2131234322, "field 'tvQingling'");
+    target.tvQingling = finder.castView(view, 2131234322, "field 'tvQingling'");
+    view = finder.findRequiredView(source, 2131234004, "field 'tvFriendCount'");
+    target.tvFriendCount = finder.castView(view, 2131234004, "field 'tvFriendCount'");
+    view = finder.findRequiredView(source, 2131234212, "field 'tvNoData'");
+    target.tvNoData = finder.castView(view, 2131234212, "field 'tvNoData'");
+    view = finder.findRequiredView(source, 2131234519, "method 'onViewClicked'");
     view.setOnClickListener(
       new butterknife.internal.DebouncingOnClickListener() {
         @Override public void doClick(

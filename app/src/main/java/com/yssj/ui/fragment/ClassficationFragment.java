@@ -28,6 +28,7 @@ import com.yssj.network.HttpListener;
 import com.yssj.network.YConn;
 import com.yssj.ui.activity.CommonActivity;
 import com.yssj.ui.activity.GuideActivity;
+import com.yssj.ui.activity.MessageCenterActivity;
 import com.yssj.ui.activity.classfication.ClassficationActivity;
 import com.yssj.ui.activity.classfication.ClassficationSearchActivity;
 import com.yssj.ui.activity.classfication.ManufactureActivity;
@@ -85,6 +86,7 @@ public class ClassficationFragment extends Fragment implements View.OnClickListe
     private View rl_sign;
     private TextView tv_fenlei;
     private ImageView iv_hongbao;
+    private ImageView tv_message;
     private MyGridView mMyGridView;
     private List<HashMap<String, String>> listDataTop;
     //	private boolean isActivity;// 从购物页面跳转的分类页面
@@ -163,6 +165,8 @@ public class ClassficationFragment extends Fragment implements View.OnClickListe
 
         tv_fenlei = (TextView) v.findViewById(R.id.tv_fenlei);
         tv_fenlei.setOnClickListener(this);
+        tv_message = v.findViewById(R.id.tv_message);
+        tv_message.setOnClickListener(this);
         mapAll = new LinkedHashMap<String, List<HashMap<String, String>>>();
 //		if ("ClassficationActivity".equals(title)) {
 //			isActivity = true;
@@ -227,6 +231,7 @@ public class ClassficationFragment extends Fragment implements View.OnClickListe
         setZhuanIconAnim();
         titles = new String[]{"流行趋势", "上衣", "裤子", "裙子", "套装"};// 一级类目名称
         types = new int[]{0, 2, 4, 3, 7};// 一级类目ID
+
         if (null != mContext) {
             dbHelp = new YDBHelper(mContext);
         } else {
@@ -517,6 +522,10 @@ public class ClassficationFragment extends Fragment implements View.OnClickListe
                     ((Activity) mContext).overridePendingTransition(R.anim.slide_left_in, R.anim.slide_match);
 //                }
 
+                break;
+            case R.id.tv_message://消息
+                Intent messageintent = new Intent(mContext, MessageCenterActivity.class);
+                startActivity(messageintent);
                 break;
             default:
                 break;

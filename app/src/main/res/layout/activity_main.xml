@@ -12,6 +12,7 @@
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="-12dp"
         android:layout_weight="1"
         android:background="@color/white" />
 
@@ -22,7 +23,7 @@
         android:layout_height="60dp"
         android:layout_alignParentBottom="true"
         android:layout_weight="0"
-        android:background="@color/white">
+        android:background="@color/transparent_color">
 
         <View
             android:layout_width="match_parent"
@@ -35,7 +36,8 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_alignParentBottom="true"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:background="@color/transparent_color">
 
 
             <RadioButton
@@ -46,7 +48,8 @@
                 android:layout_gravity="bottom"
                 android:drawableTop="@drawable/main_shop_selector"
                 android:text="首页"
-                android:textSize="9sp" />
+                android:textSize="9sp"
+                android:background="@color/white"/>
 
             <RadioButton
                 android:id="@+id/tab_two"
@@ -56,7 +59,8 @@
                 android:layout_gravity="bottom"
                 android:drawableTop="@drawable/classfication_selector"
                 android:text="分类"
-                android:textSize="9sp" />
+                android:textSize="9sp"
+                android:background="@color/white"/>
 
 <!--            <RadioButton-->
 <!--                android:id="@+id/tab_three"-->
@@ -76,7 +80,7 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="0dp"
                 android:drawableTop="@drawable/frends_selector"
-                android:layout_gravity="center"
+                android:layout_gravity="top"
                 android:visibility="visible"
 
                 />
@@ -101,7 +105,8 @@
                 android:drawableTop="@drawable/dapei_title_selector"
                 android:text="@string/action_example"
                 android:textSize="9sp"
-                android:visibility="visible" />
+                android:visibility="visible"
+                android:background="@color/white"/>
 
             <RadioButton
                 android:id="@+id/tab_five"
@@ -111,7 +116,8 @@
                 android:layout_gravity="bottom"
                 android:drawableTop="@drawable/mine_info_selector"
                 android:text="@string/tab5_text"
-                android:textSize="9sp" />
+                android:textSize="9sp"
+                android:background="@color/white"/>
         </RadioGroup>
 
         <LinearLayout

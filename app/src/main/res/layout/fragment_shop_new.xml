@@ -78,15 +78,15 @@
                     android:visibility="gone" />
             </RelativeLayout>
 
-            <!-- <TextView
-                android:id="@+id/tv_zhuanqian"
+            <ImageView
+                android:id="@+id/tv_message"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginRight="13dp"
-                android:background="@drawable/icon_zhuanqian_white"
+                android:background="@drawable/icon_news"
                 android:gravity="center_vertical"
-                android:visibility="visible" /> -->
+                android:visibility="visible" />
             <RelativeLayout
                 android:id="@+id/rl_sign"
 	            android:layout_width="wrap_content"

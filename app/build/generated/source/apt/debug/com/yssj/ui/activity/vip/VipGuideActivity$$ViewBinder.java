@@ -19,7 +19,7 @@ public class VipGuideActivity$$ViewBinder<T extends com.yssj.ui.activity.vip.Vip
           target.onViewClicked(p0);
         }
       });
-    view = finder.findRequiredView(source, 2131234008, "method 'onViewClicked'");
+    view = finder.findRequiredView(source, 2131234010, "method 'onViewClicked'");
     view.setOnClickListener(
       new butterknife.internal.DebouncingOnClickListener() {
         @Override public void doClick(

@@ -79,15 +79,17 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
+            <EditText
                 android:id="@+id/tips"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_10"
                 android:padding="@dimen/dp_10"
-                android:textColor="#CFCFCF"
+                android:textColor="@color/black"
                 android:textSize="15sp"
-                android:text="您的样衣如审核通过，每卖出一件，您可得3-20元佣金我们会在大货生产后将样衣返还给您~"
+                android:background="@null"
+                android:gravity="top|left"
+                android:hint="请在这里输入您本次供款样衣的设计点与卖点。您的样衣如审核通过，每卖出一件，您可得3-20元佣金。我们会在大货生产后将样衣返还给您~"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"/>
 

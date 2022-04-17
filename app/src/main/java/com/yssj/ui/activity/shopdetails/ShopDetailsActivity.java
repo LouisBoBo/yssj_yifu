@@ -373,6 +373,7 @@ public class ShopDetailsActivity extends BasicActivity
 
 
     public static VipInfo mVipInfo;
+    public boolean is_sleep = false;
 
     //购买按钮
     private void setBuyBtn() {
@@ -2493,13 +2494,15 @@ public class ShopDetailsActivity extends BasicActivity
                         vh.eView.setVisibility(View.GONE);
                         vh.sizeHint.setVisibility(View.VISIBLE);
                         vh.sizeHint.setTag("system/shop_details.png");
-                        if (width > 720) {
-                            PicassoUtils.initImage(ShopDetailsActivity.this, "system/shop_details.png" + "!450",
-                                    vh.sizeHint);
-                        } else {
-                            PicassoUtils.initImage(ShopDetailsActivity.this, "system/shop_details.png" + "!382",
-                                    vh.sizeHint);
-                        }
+
+                        vh.sizeHint.getLayoutParams().height = 50;
+//                        if (width > 720) {
+//                            PicassoUtils.initImage(ShopDetailsActivity.this, "system/shop_details.png" + "!450",
+//                                    vh.sizeHint);
+//                        } else {
+//                            PicassoUtils.initImage(ShopDetailsActivity.this, "system/shop_details.png" + "!382",
+//                                    vh.sizeHint);
+//                        }
 
                         return v;
                     }
@@ -3011,6 +3014,17 @@ public class ShopDetailsActivity extends BasicActivity
                 vh = (HeaderViewHolder) view.getTag();
             }
 
+            //change_do
+            if(!is_sleep){
+                try {
+                    Thread.sleep(300);
+                } catch (InterruptedException e) {
+                    // block
+                    e.printStackTrace();
+                }
+            }
+            is_sleep = true;
+
             if ("SignShopDetail".equals(signShopDetail)) {
 
                 if (position < imageTag1.length + imageTag2.length + imageTag3.length) {
@@ -3257,7 +3271,8 @@ public class ShopDetailsActivity extends BasicActivity
 
     private Handler newHandler;
     private Handler shareHandler;
-    private TextView tv_buy_now;
+    private View tv_buy_now;
+    private TextView tv_buy_price;
     private TextView tv_fenxiang;
 
 
@@ -3278,8 +3293,9 @@ public class ShopDetailsActivity extends BasicActivity
         rrr = (RelativeLayout) findViewById(R.id.rrr);
         redShare = (LinearLayout) findViewById(R.id.red_share_ll);
         moneyShare = (ImageView) findViewById(R.id.money_share_iv);
-        tv_buy_now = (TextView) findViewById(R.id.tv_buy_now);
+        tv_buy_now = (View) findViewById(R.id.tv_buy_now);
         tv_buy_now.setOnClickListener(this);
+        tv_buy_price = (TextView) findViewById(R.id.tv_buy_price);
         tv_fenxiang = (TextView) findViewById(R.id.tv_fenxiang);// 右边的分享
         tv_fenxiang.setOnClickListener(this);
 
@@ -3288,7 +3304,7 @@ public class ShopDetailsActivity extends BasicActivity
         if (mIsGroup || isSignActiveShop) {
             tv_fenxiang.setVisibility(View.GONE);
         } else {
-            tv_fenxiang.setVisibility(View.VISIBLE);
+            tv_fenxiang.setVisibility(View.GONE);
         }
 
         if (!"SignShopDetail".equals(signShopDetail)) {// 打个标记 这里以后节能改
@@ -3304,7 +3320,7 @@ public class ShopDetailsActivity extends BasicActivity
             tv_shop_car_fake.setText("立即购买");
             tv_shop_car.setText("立即购买");
         }
-        tv_shop_car.setVisibility(View.GONE);
+        tv_shop_car.setVisibility(View.VISIBLE);
         tv_shop_car.setOnClickListener(this);
         if (!"SignShopDetail".equals(signShopDetail)) {// 打个标记 这里以后节能改
 
@@ -4882,6 +4898,7 @@ public class ShopDetailsActivity extends BasicActivity
                         mTwoPrice.setText("¥" + shopd.getRoll_price());
                         mGroupPrice.setText("¥" + shopd.getRoll_price());
                         setEva_count_z = (int) Float.parseFloat(shopd.getEva_count() + ""); // 评价总数
+                        tv_buy_price.setText("¥" + shopd.getShop_se_price());
 
                         LogYiFu.e("评价总数", setEva_count_z + "");
 
@@ -5179,12 +5196,12 @@ public class ShopDetailsActivity extends BasicActivity
                             header_tv_diKou.setText("已抵扣0.0元");
                             header_tv_sjprice.setText("原价¥"
                                     + new DecimalFormat("#0.0").format(shop.getShop_price()));
-                            header_tv_sjprice.setTextColor(Color.parseColor("#ff3f8b"));
+//                            header_tv_sjprice.setTextColor(Color.parseColor("#ff3f8b"));
                             header_tv_sjprice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
 
                             String mOnPrice = "¥" + new DecimalFormat("#0.0")
                                     .format(shop.getShop_se_price());
-                            header_tv_price.setText(mOnPrice);
+                            header_tv_price.setText(mOnPrice+"元");
                             //TODO:_MODIFY_end
 
                             double discount = (shop.getShop_se_price() / shop.getShop_price()) * 10;
@@ -5444,9 +5461,13 @@ public class ShopDetailsActivity extends BasicActivity
                             count = dao.queryCartCommonCount(context);
                             if (/* shop.getCart_count() */count > 0) {
                                 count = count > 99 ? 99 : count;
-                                tv_cart_count.setText(/* shop.getCart_count() */count + "");// 设置购物车数量
-                                tv_cart_count2
-                                        .setText(/* shop.getCart_count() */count + "");// 设置购物车数量
+//                                tv_cart_count.setText(/* shop.getCart_count() */count + "");// 设置购物车数量
+//                                tv_cart_count2
+//                                        .setText(/* shop.getCart_count() */count + "");// 设置购物车数量
+
+                                tv_cart_count.setText(count+"");
+                                tv_cart_count2.setText(count+"");
+
                                 tv_cart_count.setVisibility(View.VISIBLE);
                                 tv_cart_count2.setVisibility(View.VISIBLE);
 
@@ -5612,8 +5633,7 @@ public class ShopDetailsActivity extends BasicActivity
         if(YJApplication.instance.isLoginSucess() && YCache.getCacheUser(instance).getReviewers() == 1){
             tv_fenxiang.setVisibility(View.GONE);
         }else{
-            tv_fenxiang.setVisibility(View.VISIBLE);
-
+            tv_fenxiang.setVisibility(View.GONE);
         }
 
 
@@ -6185,11 +6205,13 @@ public class ShopDetailsActivity extends BasicActivity
         }
 
         if (!id_flag) {// 需要获取id
-            if (shop_num > 2) {
-                // clickFlag = true;
-                rootView.removeView(pointRoot);
-                ToastUtil.showShortText(context, "抱歉，数量有限，最多只能购买2件噢！");
-            } else {
+            //change_do 去掉只能购买2件的限制
+//            if (shop_num > 222222222) {
+//                // clickFlag = true;
+//                rootView.removeView(pointRoot);
+//                ToastUtil.showShortText(context, "抱歉，数量有限，最多只能购买2件噢！");
+//            } else
+                {
                 new SAsyncTask<String, Void, HashMap<String, Object>>(this, v, R.string.wait) {
 
                     @Override
@@ -6243,15 +6265,20 @@ public class ShopDetailsActivity extends BasicActivity
 
         } else {// 不需要获取购物车id
             if (id_flag) {// 只有有效的
-                if (shop_num + shop_num_old > 2) {
-                    // clickFlag = true;
-                    rootView.removeView(pointRoot);
-                    ToastUtil.showShortText(context, "抱歉，数量有限，最多只能购买2件噢！");
-                } else {
-                    addCart(size, color, shop_num, stock_type_id, pic, realPrice, supplyId, kickback, original_price, v,
-                            id_dao);
-                    dao.modify("" + stock_type_id, shop_num + shop_num_old);
-                }
+                //change_do 去掉只能购买2件的限制
+//                if (shop_num + shop_num_old > 2) {
+//                    // clickFlag = true;
+//                    rootView.removeView(pointRoot);
+//                    ToastUtil.showShortText(context, "抱歉，数量有限，最多只能购买2件噢！");
+//                } else {
+//                    addCart(size, color, shop_num, stock_type_id, pic, realPrice, supplyId, kickback, original_price, v,
+//                            id_dao);
+//                    dao.modify("" + stock_type_id, shop_num + shop_num_old);
+//                }
+
+                addCart(size, color, shop_num, stock_type_id, pic, realPrice, supplyId, kickback, original_price, v,
+                        id_dao);
+                dao.modify("" + stock_type_id, shop_num + shop_num_old);
             }
 
         }
@@ -7299,11 +7326,11 @@ public class ShopDetailsActivity extends BasicActivity
         if (!isMad) {
             return;
         }
-        if (!isSignActiveShop) {
-            tv_buy_now.setText("0元购全返");
-            tv_buy_now.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
-            tv_buy_now.setTextSize(16);
-        }
+//        if (!isSignActiveShop) {
+//            tv_buy_now.setText("0元购全返");
+//            tv_buy_now.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+//            tv_buy_now.setTextSize(16);
+//        }
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         String shopDetailsBuyTips = SharedPreferencesUtil.getStringData(context, Pref.SHOPDETAILSBUYTIPS, "0");
         long shopDetailsBuyTipsTimes = Long.valueOf(shopDetailsBuyTips);

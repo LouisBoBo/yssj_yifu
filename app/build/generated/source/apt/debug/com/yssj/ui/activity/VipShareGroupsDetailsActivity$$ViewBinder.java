@@ -10,16 +10,16 @@ public class VipShareGroupsDetailsActivity$$ViewBinder<T extends com.yssj.ui.act
     View view;
     view = finder.findRequiredView(source, 2131231845, "field 'imgShopPic'");
     target.imgShopPic = finder.castView(view, 2131231845, "field 'imgShopPic'");
-    view = finder.findRequiredView(source, 2131234405, "field 'tvShopName'");
-    target.tvShopName = finder.castView(view, 2131234405, "field 'tvShopName'");
-    view = finder.findRequiredView(source, 2131234304, "field 'tvProductColor'");
-    target.tvProductColor = finder.castView(view, 2131234304, "field 'tvProductColor'");
-    view = finder.findRequiredView(source, 2131234307, "field 'tvProductSize'");
-    target.tvProductSize = finder.castView(view, 2131234307, "field 'tvProductSize'");
-    view = finder.findRequiredView(source, 2131234292, "field 'tvPrice'");
-    target.tvPrice = finder.castView(view, 2131234292, "field 'tvPrice'");
-    view = finder.findRequiredView(source, 2131234395, "field 'tvShareCount'");
-    target.tvShareCount = finder.castView(view, 2131234395, "field 'tvShareCount'");
+    view = finder.findRequiredView(source, 2131234407, "field 'tvShopName'");
+    target.tvShopName = finder.castView(view, 2131234407, "field 'tvShopName'");
+    view = finder.findRequiredView(source, 2131234306, "field 'tvProductColor'");
+    target.tvProductColor = finder.castView(view, 2131234306, "field 'tvProductColor'");
+    view = finder.findRequiredView(source, 2131234309, "field 'tvProductSize'");
+    target.tvProductSize = finder.castView(view, 2131234309, "field 'tvProductSize'");
+    view = finder.findRequiredView(source, 2131234294, "field 'tvPrice'");
+    target.tvPrice = finder.castView(view, 2131234294, "field 'tvPrice'");
+    view = finder.findRequiredView(source, 2131234397, "field 'tvShareCount'");
+    target.tvShareCount = finder.castView(view, 2131234397, "field 'tvShareCount'");
     view = finder.findRequiredView(source, 2131231707, "method 'onViewClicked'");
     view.setOnClickListener(
       new butterknife.internal.DebouncingOnClickListener() {
@@ -38,7 +38,7 @@ public class VipShareGroupsDetailsActivity$$ViewBinder<T extends com.yssj.ui.act
           target.onViewClicked(p0);
         }
       });
-    view = finder.findRequiredView(source, 2131234393, "method 'onViewClicked'");
+    view = finder.findRequiredView(source, 2131234395, "method 'onViewClicked'");
     view.setOnClickListener(
       new butterknife.internal.DebouncingOnClickListener() {
         @Override public void doClick(
@@ -47,7 +47,7 @@ public class VipShareGroupsDetailsActivity$$ViewBinder<T extends com.yssj.ui.act
           target.onViewClicked(p0);
         }
       });
-    view = finder.findRequiredView(source, 2131234394, "method 'onViewClicked'");
+    view = finder.findRequiredView(source, 2131234396, "method 'onViewClicked'");
     view.setOnClickListener(
       new butterknife.internal.DebouncingOnClickListener() {
         @Override public void doClick(

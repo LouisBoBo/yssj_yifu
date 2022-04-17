@@ -22,6 +22,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -92,6 +93,7 @@ public class CommitContributionsActivity extends BasicActivity implements View.O
     private View size_view;
     private TextView type_content;
     private TextView size_content;
+    private EditText edit_tips;
     private FlexboxLayout flexboxLayout_type;
     private FlexboxLayout flexboxLayout_size;
     private List<TextView> type_textViews = new ArrayList<>();
@@ -252,6 +254,7 @@ public class CommitContributionsActivity extends BasicActivity implements View.O
         size_view = findViewById(R.id.size_base);
         type_content = findViewById(R.id.type_content);
         size_content = findViewById(R.id.size_content);
+        edit_tips = findViewById(R.id.tips);
 
         img_back.setOnClickListener(this);
         sub_tv.setOnClickListener(this);
@@ -519,6 +522,9 @@ public class CommitContributionsActivity extends BasicActivity implements View.O
         pairsMap.put("supplyMaterialImages",imgaeids);
         pairsMap.put("shop_specification",type_content.getText().toString());
         pairsMap.put("shop_size",size_content.getText().toString());
+        if(edit_tips.getText().toString().length()>0){
+            pairsMap.put("remark",edit_tips.getText().toString());
+        }
 
 
         String url = contribution_status==3?YUrl.CLOUD_API_WAR_SUPPLYMATERIAL_UPDATESUPPLY:YUrl.CLOUD_API_WAR_SUPPLYMATERIAL_SUPPLY;

@@ -597,6 +597,7 @@
                         android:textSize="@dimen/tv_size14" />
 
                     <TextView
+                        android:visibility="gone"
                         android:id="@+id/tv_zhaopian"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -620,7 +621,7 @@
 
 
                     <TextView
-                        android:visibility="gone"
+                        android:visibility="visible"
                         android:id="@+id/tv_haoyoujiangli"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -634,6 +635,11 @@
                         android:text="佣金"
                         android:textColor="#000"
                         android:textSize="@dimen/tv_size14" />
+
+                    <View
+                        android:layout_width="0.3dp"
+                        android:layout_height="match_parent"
+                        android:background="#e5e5e5" />
 
                     <TextView
                         android:id="@+id/tv_shouchang1"
@@ -776,6 +782,7 @@
                         android:background="#e5e5e5" />
 
                     <TextView
+                        android:visibility="invisible"
                         android:id="@+id/tv_chuanda"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -790,12 +797,13 @@
                         android:textColor="#000"
                         android:textSize="@dimen/tv_size14" />
 
-                    <View
-                        android:layout_width="0.3dp"
-                        android:layout_height="match_parent"
-                        android:background="#e5e5e5" />
+<!--                    <View-->
+<!--                        android:layout_width="0.3dp"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:background="#e5e5e5" />-->
 
                     <TextView
+                        android:visibility="invisible"
                         android:id="@+id/tv_miyou"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -811,10 +819,10 @@
                         android:textSize="@dimen/tv_size14" />
 
 
-                    <View
-                        android:layout_width="0.3dp"
-                        android:layout_height="match_parent"
-                        android:background="#e5e5e5" />
+<!--                    <View-->
+<!--                        android:layout_width="0.3dp"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:background="#e5e5e5" />-->
 
                     <TextView
                         android:visibility="invisible"
@@ -832,14 +840,26 @@
                         android:textColor="#000"
                         android:textSize="@dimen/tv_size14" />
 
-                    <View
-                        android:layout_width="0.3dp"
-                        android:layout_height="match_parent"
-                        android:background="#e5e5e5" />
+<!--                    <View-->
+<!--                        android:layout_width="0.3dp"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:background="#e5e5e5" />-->
 
                     <TextView
-                        android:visibility="invisible"
                         android:id="@+id/tv_space"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_marginBottom="14dp"
+                        android:layout_marginTop="14dp"
+                        android:layout_weight="1"
+                        android:drawablePadding="10dp"
+                        android:gravity="center"
+                        android:textColor="#000"
+                        android:textSize="@dimen/tv_size14" />
+
+                    <TextView
+                        android:id="@+id/tv_space1"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_centerVertical="true"

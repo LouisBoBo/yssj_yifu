@@ -99,7 +99,7 @@ public final class R {
         public static final int pull_to_refresh_sub_text = 0x7f080850;
         public static final int pull_to_refresh_text = 0x7f080851;
         public static final int scrollview = 0x7f080a0e;
-        public static final int webview = 0x7f081034;
+        public static final int webview = 0x7f081037;
     }
     public static final class layout {
         public static final int pull_to_refresh_header_horizontal = 0x7f0a035d;

@@ -10,24 +10,24 @@ public class ShareGroupChatActivity$$ViewBinder<T extends com.yssj.ui.fragment.o
     View view;
     view = finder.findRequiredView(source, 2131231845, "field 'imgShopPic'");
     target.imgShopPic = finder.castView(view, 2131231845, "field 'imgShopPic'");
-    view = finder.findRequiredView(source, 2131234405, "field 'tvShopName'");
-    target.tvShopName = finder.castView(view, 2131234405, "field 'tvShopName'");
-    view = finder.findRequiredView(source, 2131234304, "field 'tvProductColor'");
-    target.tvProductColor = finder.castView(view, 2131234304, "field 'tvProductColor'");
-    view = finder.findRequiredView(source, 2131234307, "field 'tvProductSize'");
-    target.tvProductSize = finder.castView(view, 2131234307, "field 'tvProductSize'");
-    view = finder.findRequiredView(source, 2131234292, "field 'tvPrice'");
-    target.tvPrice = finder.castView(view, 2131234292, "field 'tvPrice'");
-    view = finder.findRequiredView(source, 2131234625, "field 'tvYikan'");
-    target.tvYikan = finder.castView(view, 2131234625, "field 'tvYikan'");
-    view = finder.findRequiredView(source, 2131234642, "field 'tvZaikan'");
-    target.tvZaikan = finder.castView(view, 2131234642, "field 'tvZaikan'");
+    view = finder.findRequiredView(source, 2131234407, "field 'tvShopName'");
+    target.tvShopName = finder.castView(view, 2131234407, "field 'tvShopName'");
+    view = finder.findRequiredView(source, 2131234306, "field 'tvProductColor'");
+    target.tvProductColor = finder.castView(view, 2131234306, "field 'tvProductColor'");
+    view = finder.findRequiredView(source, 2131234309, "field 'tvProductSize'");
+    target.tvProductSize = finder.castView(view, 2131234309, "field 'tvProductSize'");
+    view = finder.findRequiredView(source, 2131234294, "field 'tvPrice'");
+    target.tvPrice = finder.castView(view, 2131234294, "field 'tvPrice'");
+    view = finder.findRequiredView(source, 2131234628, "field 'tvYikan'");
+    target.tvYikan = finder.castView(view, 2131234628, "field 'tvYikan'");
+    view = finder.findRequiredView(source, 2131234645, "field 'tvZaikan'");
+    target.tvZaikan = finder.castView(view, 2131234645, "field 'tvZaikan'");
     view = finder.findRequiredView(source, 2131231221, "field 'cpbProgresbar2'");
     target.cpbProgresbar2 = finder.castView(view, 2131231221, "field 'cpbProgresbar2'");
     view = finder.findRequiredView(source, 2131232343, "field 'listView1'");
     target.listView1 = finder.castView(view, 2131232343, "field 'listView1'");
-    view = finder.findRequiredView(source, 2131234393, "field 'tvShare1'");
-    target.tvShare1 = finder.castView(view, 2131234393, "field 'tvShare1'");
+    view = finder.findRequiredView(source, 2131234395, "field 'tvShare1'");
+    target.tvShare1 = finder.castView(view, 2131234395, "field 'tvShare1'");
     view = finder.findRequiredView(source, 2131232513, "field 'llWxin' and method 'onViewClicked'");
     target.llWxin = finder.castView(view, 2131232513, "field 'llWxin'");
     view.setOnClickListener(
@@ -38,8 +38,8 @@ public class ShareGroupChatActivity$$ViewBinder<T extends com.yssj.ui.fragment.o
           target.onViewClicked(p0);
         }
       });
-    view = finder.findRequiredView(source, 2131234626, "field 'tvYikanEndStr'");
-    target.tvYikanEndStr = finder.castView(view, 2131234626, "field 'tvYikanEndStr'");
+    view = finder.findRequiredView(source, 2131234629, "field 'tvYikanEndStr'");
+    target.tvYikanEndStr = finder.castView(view, 2131234629, "field 'tvYikanEndStr'");
     view = finder.findRequiredView(source, 2131231707, "method 'onViewClicked'");
     view.setOnClickListener(
       new butterknife.internal.DebouncingOnClickListener() {

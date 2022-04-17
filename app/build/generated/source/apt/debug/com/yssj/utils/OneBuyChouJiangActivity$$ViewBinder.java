@@ -32,8 +32,8 @@ public class OneBuyChouJiangActivity$$ViewBinder<T extends com.yssj.utils.OneBuy
       });
     view = finder.findRequiredView(source, 2131232343, "field 'listView1'");
     target.listView1 = finder.castView(view, 2131232343, "field 'listView1'");
-    view = finder.findRequiredView(source, 2131234486, "field 'tvTime' and method 'onViewClicked'");
-    target.tvTime = finder.castView(view, 2131234486, "field 'tvTime'");
+    view = finder.findRequiredView(source, 2131234489, "field 'tvTime' and method 'onViewClicked'");
+    target.tvTime = finder.castView(view, 2131234489, "field 'tvTime'");
     view.setOnClickListener(
       new butterknife.internal.DebouncingOnClickListener() {
         @Override public void doClick(
@@ -42,8 +42,8 @@ public class OneBuyChouJiangActivity$$ViewBinder<T extends com.yssj.utils.OneBuy
           target.onViewClicked();
         }
       });
-    view = finder.findRequiredView(source, 2131234023, "field 'tvGuize' and method 'onClick'");
-    target.tvGuize = finder.castView(view, 2131234023, "field 'tvGuize'");
+    view = finder.findRequiredView(source, 2131234025, "field 'tvGuize' and method 'onClick'");
+    target.tvGuize = finder.castView(view, 2131234025, "field 'tvGuize'");
     view.setOnClickListener(
       new butterknife.internal.DebouncingOnClickListener() {
         @Override public void doClick(

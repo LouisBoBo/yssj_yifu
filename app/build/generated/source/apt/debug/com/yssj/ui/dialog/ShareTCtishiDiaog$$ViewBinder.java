@@ -8,18 +8,18 @@ import butterknife.ButterKnife.ViewBinder;
 public class ShareTCtishiDiaog$$ViewBinder<T extends com.yssj.ui.dialog.ShareTCtishiDiaog> implements ViewBinder<T> {
   @Override public void bind(final Finder finder, final T target, Object source) {
     View view;
-    view = finder.findRequiredView(source, 2131234608, "field 'xjNumTv'");
-    target.xjNumTv = finder.castView(view, 2131234608, "field 'xjNumTv'");
-    view = finder.findRequiredView(source, 2131233972, "field 'fMoneyTv'");
-    target.fMoneyTv = finder.castView(view, 2131233972, "field 'fMoneyTv'");
-    view = finder.findRequiredView(source, 2131233950, "field 'ednumTv'");
-    target.ednumTv = finder.castView(view, 2131233950, "field 'ednumTv'");
-    view = finder.findRequiredView(source, 2131233971, "field 'fExtraTv'");
-    target.fExtraTv = finder.castView(view, 2131233971, "field 'fExtraTv'");
-    view = finder.findRequiredView(source, 2131234135, "field 'moneyTv'");
-    target.moneyTv = finder.castView(view, 2131234135, "field 'moneyTv'");
-    view = finder.findRequiredView(source, 2131233969, "field 'extraTv'");
-    target.extraTv = finder.castView(view, 2131233969, "field 'extraTv'");
+    view = finder.findRequiredView(source, 2131234611, "field 'xjNumTv'");
+    target.xjNumTv = finder.castView(view, 2131234611, "field 'xjNumTv'");
+    view = finder.findRequiredView(source, 2131233974, "field 'fMoneyTv'");
+    target.fMoneyTv = finder.castView(view, 2131233974, "field 'fMoneyTv'");
+    view = finder.findRequiredView(source, 2131233952, "field 'ednumTv'");
+    target.ednumTv = finder.castView(view, 2131233952, "field 'ednumTv'");
+    view = finder.findRequiredView(source, 2131233973, "field 'fExtraTv'");
+    target.fExtraTv = finder.castView(view, 2131233973, "field 'fExtraTv'");
+    view = finder.findRequiredView(source, 2131234137, "field 'moneyTv'");
+    target.moneyTv = finder.castView(view, 2131234137, "field 'moneyTv'");
+    view = finder.findRequiredView(source, 2131233971, "field 'extraTv'");
+    target.extraTv = finder.castView(view, 2131233971, "field 'extraTv'");
     view = finder.findRequiredView(source, 2131231645, "field 'iconClose' and method 'onClick'");
     target.iconClose = finder.castView(view, 2131231645, "field 'iconClose'");
     view.setOnClickListener(

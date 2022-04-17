@@ -295,7 +295,7 @@ public class ShopCartCommonAdpter extends ArrayAdapter<ShopCart> {
 			holder.new_lines_invalid.setVisibility(View.GONE);
 			holder.new_delete_cart.setVisibility(View.GONE);
 			holder.goods_count.setVisibility(View.VISIBLE);
-			holder.tv_item_supply.setVisibility(View.VISIBLE);
+			holder.tv_item_supply.setVisibility(View.GONE);
 			holder.tv_edit_color_size.setVisibility(View.VISIBLE);
 		}
 		// if (mListValidNew.size() == 0 && position == 0) {// 展示内部去逛逛页面
@@ -513,17 +513,20 @@ public class ShopCartCommonAdpter extends ArrayAdapter<ShopCart> {
 				// return;
 				// }
 				ShopCart shopCart = mListAllNew.get(position);
-				if (shopCart.getShop_num() >= 2) {
-					ToastUtil.showShortText(mContext, "抱歉，数量有限，最多只能购买2件噢！");
-					return;
-				}
+				//change_do 去掉只能购买2件的限制
+//				if (shopCart.getShop_num() >= 2) {
+//					ToastUtil.showShortText(mContext, "抱歉，数量有限，最多只能购买2件噢！");
+//					return;
+//				}
 				if (cartadpterInterface != null) {
 					int shop_number = Integer.parseInt(TextUtils.isEmpty(holder.tv_goods_num.getText().toString()) ? "0"
 							: holder.tv_goods_num.getText().toString());
-					if (shop_number >= 2) {
-						ToastUtil.showShortText(mContext, "抱歉，数量有限，最多只能购买2件噢！");
-						return;
-					} else {
+					//change_do 去掉只能购买2件的限制
+//					if (shop_number >= 2) {
+//						ToastUtil.showShortText(mContext, "抱歉，数量有限，最多只能购买2件噢！");
+//						return;
+//					} else
+						{
 						shop_number++;
 					}
 					// holder.tv_goods_num.setText(shop_number + "");

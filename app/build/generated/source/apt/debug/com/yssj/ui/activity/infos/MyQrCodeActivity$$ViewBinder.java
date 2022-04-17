@@ -14,8 +14,8 @@ public class MyQrCodeActivity$$ViewBinder<T extends com.yssj.ui.activity.infos.M
     target.ivQrCode = finder.castView(view, 2131232185, "field 'ivQrCode'");
     view = finder.findRequiredView(source, 2131233215, "field 'rlQrcode'");
     target.rlQrcode = finder.castView(view, 2131233215, "field 'rlQrcode'");
-    view = finder.findRequiredView(source, 2131234368, "field 'tvSave' and method 'onViewClicked'");
-    target.tvSave = finder.castView(view, 2131234368, "field 'tvSave'");
+    view = finder.findRequiredView(source, 2131234370, "field 'tvSave' and method 'onViewClicked'");
+    target.tvSave = finder.castView(view, 2131234370, "field 'tvSave'");
     view.setOnClickListener(
       new butterknife.internal.DebouncingOnClickListener() {
         @Override public void doClick(

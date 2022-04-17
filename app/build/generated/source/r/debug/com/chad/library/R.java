@@ -28,7 +28,7 @@ public final class R {
         public static final int load_more_loading_view = 0x7f080711;
         public static final int loading_progress = 0x7f080719;
         public static final int loading_text = 0x7f08071a;
-        public static final int tv_prompt = 0x7f080e04;
+        public static final int tv_prompt = 0x7f080e06;
     }
     public static final class layout {
         public static final int brvah_quick_view_load_more = 0x7f0a0112;

@@ -74,7 +74,8 @@
 
     <color name="navigationbar_color_durk">#606265</color>
 
-
+    //透明
+    <color name="transparent_color">#00000000</color>
 
 
 </resources>

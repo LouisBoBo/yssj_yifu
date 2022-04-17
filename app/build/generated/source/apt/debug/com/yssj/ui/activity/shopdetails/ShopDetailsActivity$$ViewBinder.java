@@ -24,10 +24,10 @@ public class ShopDetailsActivity$$ViewBinder<T extends com.yssj.ui.activity.shop
     target.btnBuyRightTopText = finder.castView(view, 2131230949, "field 'btnBuyRightTopText'");
     view = finder.findRequiredView(source, 2131230946, "field 'btnBuyRightBottomText'");
     target.btnBuyRightBottomText = finder.castView(view, 2131230946, "field 'btnBuyRightBottomText'");
-    view = finder.findRequiredView(source, 2131234092, "field 'tvLeftRmb'");
-    target.tvLeftRmb = finder.castView(view, 2131234092, "field 'tvLeftRmb'");
-    view = finder.findRequiredView(source, 2131234364, "field 'tvRightRmb'");
-    target.tvRightRmb = finder.castView(view, 2131234364, "field 'tvRightRmb'");
+    view = finder.findRequiredView(source, 2131234094, "field 'tvLeftRmb'");
+    target.tvLeftRmb = finder.castView(view, 2131234094, "field 'tvLeftRmb'");
+    view = finder.findRequiredView(source, 2131234366, "field 'tvRightRmb'");
+    target.tvRightRmb = finder.castView(view, 2131234366, "field 'tvRightRmb'");
     view = finder.findRequiredView(source, 2131232430, "method 'onViewClicked'");
     view.setOnClickListener(
       new butterknife.internal.DebouncingOnClickListener() {

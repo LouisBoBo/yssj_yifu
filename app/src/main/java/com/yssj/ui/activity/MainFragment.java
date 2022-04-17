@@ -53,12 +53,14 @@ import com.yssj.model.ComModel2;
 import com.yssj.model.ModQingfeng;
 import com.yssj.network.HttpListener;
 import com.yssj.network.YConn;
+import com.yssj.ui.activity.classfication.ClassficationActivity;
 import com.yssj.ui.activity.logins.LoginActivity;
 import com.yssj.ui.activity.setting.FeedBackActivity;
 import com.yssj.ui.activity.setting.SettingActivity;
 import com.yssj.ui.activity.shopdetails.NoShareActivity;
 import com.yssj.ui.dialog.DialogExitThirty;
 import com.yssj.ui.fragment.ClassficationFragment;
+import com.yssj.ui.fragment.ClassficationNewFragment;
 import com.yssj.ui.fragment.FriendsFragment;
 import com.yssj.ui.fragment.HomePageFragment;
 import com.yssj.ui.fragment.MatchFragment;
@@ -1435,6 +1437,10 @@ public class MainFragment extends Fragment implements OnClickListener, OnChecked
                 if (getChildFragmentManager().findFragmentByTag("1") != null) {
                     ft.show(getChildFragmentManager().findFragmentByTag("1"));
                 } else {
+
+//                    ft.add(R.id.container, ClassficationNewFragment.newInstance("ClassficationNewFragment", mContext), "1");// 购物---老分类
+
+
                     ft.add(R.id.container, ClassficationFragment.newInstance("tab1", mContext), "1");// 购物---老分类
                 }
                 // }

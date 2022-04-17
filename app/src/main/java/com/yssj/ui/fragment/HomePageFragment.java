@@ -67,6 +67,7 @@ import com.yssj.ui.activity.CommonActivity;
 import com.yssj.ui.activity.GuideActivity;
 import com.yssj.ui.activity.MainFragment;
 import com.yssj.ui.activity.MainMenuActivity;
+import com.yssj.ui.activity.MessageCenterActivity;
 import com.yssj.ui.activity.MyLikeActivity;
 import com.yssj.ui.activity.classfication.ClassficationActivity;
 import com.yssj.ui.activity.classfication.ClassficationSearchActivity;
@@ -134,7 +135,8 @@ public class HomePageFragment extends Fragment implements OnClickListener {
     public static HomePageFragment instance;
     // private RelativeLayout my_shop_rl_show_time;
     // private TextView mTimeNotice;
-    public static TextView et_search, tv_zhuanqian, tv_fenlei;
+    public static TextView et_search, tv_zhuanqian, tv_fenlei ;
+    public static ImageView tv_message;
     // private ImageView mNowStart;
     // private long recLen = 24 * 60 * 60 * 1000;
     // Timer timer = new Timer();
@@ -186,6 +188,8 @@ public class HomePageFragment extends Fragment implements OnClickListener {
         tv_zhuanqian = (TextView) view.findViewById(R.id.tv_zhuanqian);
         tv_fenlei = (TextView) view.findViewById(R.id.tv_fenlei);
         tv_fenlei.setOnClickListener(this);
+        tv_message = view.findViewById(R.id.tv_message);
+        tv_message.setOnClickListener(this);
         ll_search = (LinearLayout) view.findViewById(R.id.ll_search);
         ll_search.setBackgroundResource(R.drawable.zhezhao2x);
         iv_xuanfurugou = (ImageView) view.findViewById(R.id.iv_xuanfurugou);
@@ -901,6 +905,10 @@ public class HomePageFragment extends Fragment implements OnClickListener {
                 // -----------------------------测试-------------------------------------------------
                 // new ChoicenessDialog(getActivity(), R.style.DialogStyle1).show();
 
+                break;
+            case R.id.tv_message://消息
+                Intent messageintent = new Intent(mContext, MessageCenterActivity.class);
+                startActivity(messageintent);
                 break;
 
             case R.id.et_search:// 跳至搜索页

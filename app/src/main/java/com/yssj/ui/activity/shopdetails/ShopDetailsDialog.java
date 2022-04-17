@@ -553,10 +553,11 @@ public class ShopDetailsDialog extends Dialog implements OnClickListener, OnItem
         buyStock = Integer.parseInt(tv_clothes_number.getText().toString());
         if (type == 0 && buyStock < stock) {
             buyStock++;
-            if (buyStock > 2) {
-                buyStock = 2;
-                ToastUtil.showLongText(context, "抱歉,数量有限,最多只能购买两件噢!");
-            }
+            //change_do 去掉只能购买两件的限制
+//            if (buyStock > 2) {
+//                buyStock = 2;
+//                ToastUtil.showLongText(context, "抱歉,数量有限,最多只能购买两件噢!");
+//            }
             tv_clothes_number.setText(String.valueOf(buyStock));
 
         } else if (type == 1 && buyStock > 1) {
