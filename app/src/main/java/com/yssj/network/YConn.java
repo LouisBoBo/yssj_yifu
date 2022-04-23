@@ -484,7 +484,7 @@ public class YConn {
                     intent.putExtra("login_register", "login");
                     intent.putExtra("mustLogin",true);
 
-                    ((FragmentActivity) context).startActivity(intent);
+//                    ((FragmentActivity) context).startActivity(intent);
 
                     throw new YException(jsonStatus, jsonMessage);
 
@@ -699,7 +699,7 @@ public class YConn {
                             intent.putExtra("login_register", "login");
                             intent.putExtra("mustLogin",true);
 
-                            ((FragmentActivity) context).startActivity(intent);
+//                            ((FragmentActivity) context).startActivity(intent);
 
                             throw new YException(jsonStatus, jsonMessage);
 
@@ -973,7 +973,7 @@ public class YConn {
                             Intent intent = new Intent(context, LoginActivity.class);
                             intent.putExtra("login_register", "login");
                             intent.putExtra("mustLogin",true);
-                            ((FragmentActivity) context).startActivity(intent);
+//                            ((FragmentActivity) context).startActivity(intent);
 
                             throw new YException(jsonStatus, jsonMessage);
 

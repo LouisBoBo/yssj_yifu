@@ -76,18 +76,18 @@ public final class R {
         public static final int notification_top_pad_large_text = 0x7f0600b8;
     }
     public static final class drawable {
-        public static final int notification_action_background = 0x7f0704fd;
-        public static final int notification_bg = 0x7f0704fe;
-        public static final int notification_bg_low = 0x7f0704ff;
-        public static final int notification_bg_low_normal = 0x7f070500;
-        public static final int notification_bg_low_pressed = 0x7f070501;
-        public static final int notification_bg_normal = 0x7f070502;
-        public static final int notification_bg_normal_pressed = 0x7f070503;
-        public static final int notification_icon_background = 0x7f070504;
-        public static final int notification_template_icon_bg = 0x7f070505;
-        public static final int notification_template_icon_low_bg = 0x7f070506;
-        public static final int notification_tile_bg = 0x7f070507;
-        public static final int notify_panel_notification_icon_bg = 0x7f070508;
+        public static final int notification_action_background = 0x7f070502;
+        public static final int notification_bg = 0x7f070503;
+        public static final int notification_bg_low = 0x7f070504;
+        public static final int notification_bg_low_normal = 0x7f070505;
+        public static final int notification_bg_low_pressed = 0x7f070506;
+        public static final int notification_bg_normal = 0x7f070507;
+        public static final int notification_bg_normal_pressed = 0x7f070508;
+        public static final int notification_icon_background = 0x7f070509;
+        public static final int notification_template_icon_bg = 0x7f07050a;
+        public static final int notification_template_icon_low_bg = 0x7f07050b;
+        public static final int notification_tile_bg = 0x7f07050c;
+        public static final int notify_panel_notification_icon_bg = 0x7f07050d;
     }
     public static final class id {
         public static final int action_container = 0x7f08002e;

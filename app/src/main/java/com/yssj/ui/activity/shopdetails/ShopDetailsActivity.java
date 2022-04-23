@@ -4947,7 +4947,7 @@ public class ShopDetailsActivity extends BasicActivity
                                     float min_num = Float.parseFloat(shopd.getSupply_min_num());
                                     int scare = (int)(current_num/min_num*100);
 
-                                    progressscale.setText(scare +"%");
+                                    progressscale.setText("进度"+scare +"%");
                                     progressbar.setProgress(scare);
                                 }
 

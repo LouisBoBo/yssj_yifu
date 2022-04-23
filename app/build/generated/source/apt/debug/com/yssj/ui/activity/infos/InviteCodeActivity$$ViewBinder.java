@@ -47,7 +47,7 @@ public class InviteCodeActivity$$ViewBinder<T extends com.yssj.ui.activity.infos
           target.onViewClicked(p0);
         }
       });
-    view = finder.findRequiredView(source, 2131234618, "method 'onViewClicked'");
+    view = finder.findRequiredView(source, 2131234616, "method 'onViewClicked'");
     view.setOnClickListener(
       new butterknife.internal.DebouncingOnClickListener() {
         @Override public void doClick(
@@ -56,7 +56,7 @@ public class InviteCodeActivity$$ViewBinder<T extends com.yssj.ui.activity.infos
           target.onViewClicked(p0);
         }
       });
-    view = finder.findRequiredView(source, 2131234463, "method 'onViewClicked'");
+    view = finder.findRequiredView(source, 2131234461, "method 'onViewClicked'");
     view.setOnClickListener(
       new butterknife.internal.DebouncingOnClickListener() {
         @Override public void doClick(

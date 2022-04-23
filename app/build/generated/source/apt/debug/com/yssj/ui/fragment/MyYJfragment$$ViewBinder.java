@@ -16,7 +16,7 @@ public class MyYJfragment$$ViewBinder<T extends com.yssj.ui.fragment.MyYJfragmen
     target.tvFriendCount = finder.castView(view, 2131234004, "field 'tvFriendCount'");
     view = finder.findRequiredView(source, 2131234212, "field 'tvNoData'");
     target.tvNoData = finder.castView(view, 2131234212, "field 'tvNoData'");
-    view = finder.findRequiredView(source, 2131234519, "method 'onViewClicked'");
+    view = finder.findRequiredView(source, 2131234517, "method 'onViewClicked'");
     view.setOnClickListener(
       new butterknife.internal.DebouncingOnClickListener() {
         @Override public void doClick(

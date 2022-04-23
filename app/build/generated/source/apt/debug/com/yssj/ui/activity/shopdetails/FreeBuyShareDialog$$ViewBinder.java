@@ -18,8 +18,8 @@ public class FreeBuyShareDialog$$ViewBinder<T extends com.yssj.ui.activity.shopd
           target.onViewClicked(p0);
         }
       });
-    view = finder.findRequiredView(source, 2131234498, "field 'tvTitle'");
-    target.tvTitle = finder.castView(view, 2131234498, "field 'tvTitle'");
+    view = finder.findRequiredView(source, 2131234496, "field 'tvTitle'");
+    target.tvTitle = finder.castView(view, 2131234496, "field 'tvTitle'");
     view = finder.findRequiredView(source, 2131232476, "field 'llShare' and method 'onViewClicked'");
     target.llShare = finder.castView(view, 2131232476, "field 'llShare'");
     view.setOnClickListener(

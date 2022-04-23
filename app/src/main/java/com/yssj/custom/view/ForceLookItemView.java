@@ -204,6 +204,7 @@ public class ForceLookItemView extends LinearLayout {
         tv_supply_name.setVisibility(GONE);
         if (!"".equals(map.get("supp_label")) && null != map.get("supp_label")) {
             new_sub.setVisibility(View.VISIBLE);
+            new_sub.setVisibility(View.GONE);
             new_sub.setText("" + map.get("supp_label"));
         } else {
             if (null != map.get("supp_label_id") && !"".equals(map.get("supp_label_id"))) {
@@ -212,12 +213,15 @@ public class ForceLookItemView extends LinearLayout {
                 listDataSupple = dbHelp.query(sql);
                 if (listDataSupple.size() > 0) {
                     new_sub.setVisibility(View.VISIBLE);
+                    new_sub.setVisibility(View.GONE);
                     new_sub.setText(listDataSupple.get(0).get("name"));
                 } else {
                     new_sub.setVisibility(View.INVISIBLE);
+                    new_sub.setVisibility(View.GONE);
                 }
             } else {
                 new_sub.setVisibility(View.INVISIBLE);
+                new_sub.setVisibility(View.GONE);
             }
         }
 
@@ -412,6 +416,7 @@ public class ForceLookItemView extends LinearLayout {
         tv_supply_name.setVisibility(GONE);
         if (!"".equals(map.get("supp_label")) && null != map.get("supp_label")) {
             new_sub.setVisibility(View.VISIBLE);
+            new_sub.setVisibility(View.GONE);
             new_sub.setText("" + map.get("supp_label"));
         } else {
             if (null != map.get("supp_label_id") && !"".equals(map.get("supp_label_id"))) {
@@ -420,12 +425,15 @@ public class ForceLookItemView extends LinearLayout {
                 listDataSupple = dbHelp.query(sql);
                 if (listDataSupple.size() > 0) {
                     new_sub.setVisibility(View.VISIBLE);
+                    new_sub.setVisibility(View.GONE);
                     new_sub.setText(listDataSupple.get(0).get("name"));
                 } else {
                     new_sub.setVisibility(View.INVISIBLE);
+                    new_sub.setVisibility(View.GONE);
                 }
             } else {
                 new_sub.setVisibility(View.INVISIBLE);
+                new_sub.setVisibility(View.GONE);
             }
         }
 
@@ -659,6 +667,7 @@ public class ForceLookItemView extends LinearLayout {
         tv_supply_name.setVisibility(GONE);
         if (!"".equals(map.get("supp_label")) && null != map.get("supp_label")) {
             new_sub.setVisibility(View.VISIBLE);
+            new_sub.setVisibility(View.GONE);
             new_sub.setText("" + map.get("supp_label"));
         } else {
             if (null != map.get("supp_label_id") && !"".equals(map.get("supp_label_id"))) {
@@ -667,12 +676,15 @@ public class ForceLookItemView extends LinearLayout {
                 listDataSupple = dbHelp.query(sql);
                 if (listDataSupple.size() > 0) {
                     new_sub.setVisibility(View.VISIBLE);
+                    new_sub.setVisibility(View.GONE);
                     new_sub.setText(listDataSupple.get(0).get("name"));
                 } else {
                     new_sub.setVisibility(View.INVISIBLE);
+                    new_sub.setVisibility(View.GONE);
                 }
             } else {
                 new_sub.setVisibility(View.INVISIBLE);
+                new_sub.setVisibility(View.GONE);
             }
         }
 

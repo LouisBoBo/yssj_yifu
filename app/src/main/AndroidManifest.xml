@@ -84,7 +84,6 @@
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/SplashThemeOld"
-
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

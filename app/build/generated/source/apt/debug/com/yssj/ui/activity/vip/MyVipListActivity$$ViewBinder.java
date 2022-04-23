@@ -60,14 +60,14 @@ public class MyVipListActivity$$ViewBinder<T extends com.yssj.ui.activity.vip.My
       });
     view = finder.findRequiredView(source, 2131232505, "field 'llVipRight'");
     target.llVipRight = finder.castView(view, 2131232505, "field 'llVipRight'");
-    view = finder.findRequiredView(source, 2131234502, "field 'tvTixianDay'");
-    target.tvTixianDay = finder.castView(view, 2131234502, "field 'tvTixianDay'");
-    view = finder.findRequiredView(source, 2131234564, "field 'tvUseJinglijin'");
-    target.tvUseJinglijin = finder.castView(view, 2131234564, "field 'tvUseJinglijin'");
-    view = finder.findRequiredView(source, 2131234531, "field 'tvTotalPayMoneyShifu'");
-    target.tvTotalPayMoneyShifu = finder.castView(view, 2131234531, "field 'tvTotalPayMoneyShifu'");
-    view = finder.findRequiredView(source, 2131234534, "field 'tvTotalPayMoneyYuanjia'");
-    target.tvTotalPayMoneyYuanjia = finder.castView(view, 2131234534, "field 'tvTotalPayMoneyYuanjia'");
+    view = finder.findRequiredView(source, 2131234500, "field 'tvTixianDay'");
+    target.tvTixianDay = finder.castView(view, 2131234500, "field 'tvTixianDay'");
+    view = finder.findRequiredView(source, 2131234562, "field 'tvUseJinglijin'");
+    target.tvUseJinglijin = finder.castView(view, 2131234562, "field 'tvUseJinglijin'");
+    view = finder.findRequiredView(source, 2131234529, "field 'tvTotalPayMoneyShifu'");
+    target.tvTotalPayMoneyShifu = finder.castView(view, 2131234529, "field 'tvTotalPayMoneyShifu'");
+    view = finder.findRequiredView(source, 2131234532, "field 'tvTotalPayMoneyYuanjia'");
+    target.tvTotalPayMoneyYuanjia = finder.castView(view, 2131234532, "field 'tvTotalPayMoneyYuanjia'");
     view = finder.findRequiredView(source, 2131232510, "field 'llWenhao'");
     target.llWenhao = finder.castView(view, 2131232510, "field 'llWenhao'");
     view = finder.findRequiredView(source, 2131233900, "field 'tvDaojukaTishi'");
@@ -102,8 +102,8 @@ public class MyVipListActivity$$ViewBinder<T extends com.yssj.ui.activity.vip.My
     target.ivKefuText = finder.castView(view, 2131232172, "field 'ivKefuText'");
     view = finder.findRequiredView(source, 2131232372, "field 'llBotToPay'");
     target.llBotToPay = finder.castView(view, 2131232372, "field 'llBotToPay'");
-    view = finder.findRequiredView(source, 2131234532, "field 'tvTotalPayMoneyShifuHg'");
-    target.tvTotalPayMoneyShifuHg = finder.castView(view, 2131234532, "field 'tvTotalPayMoneyShifuHg'");
+    view = finder.findRequiredView(source, 2131234530, "field 'tvTotalPayMoneyShifuHg'");
+    target.tvTotalPayMoneyShifuHg = finder.castView(view, 2131234530, "field 'tvTotalPayMoneyShifuHg'");
     view = finder.findRequiredView(source, 2131234013, "field 'tvGoPayHg' and method 'onViewClicked'");
     target.tvGoPayHg = finder.castView(view, 2131234013, "field 'tvGoPayHg'");
     view.setOnClickListener(
@@ -116,8 +116,8 @@ public class MyVipListActivity$$ViewBinder<T extends com.yssj.ui.activity.vip.My
       });
     view = finder.findRequiredView(source, 2131233155, "field 'rlBotToPayHg'");
     target.rlBotToPayHg = finder.castView(view, 2131233155, "field 'rlBotToPayHg'");
-    view = finder.findRequiredView(source, 2131234533, "field 'tvTotalPayMoneyShifuHgBot'");
-    target.tvTotalPayMoneyShifuHgBot = finder.castView(view, 2131234533, "field 'tvTotalPayMoneyShifuHgBot'");
+    view = finder.findRequiredView(source, 2131234531, "field 'tvTotalPayMoneyShifuHgBot'");
+    target.tvTotalPayMoneyShifuHgBot = finder.castView(view, 2131234531, "field 'tvTotalPayMoneyShifuHgBot'");
     view = finder.findRequiredView(source, 2131233802, "field 'tvBuyYuanjiaBot'");
     target.tvBuyYuanjiaBot = finder.castView(view, 2131233802, "field 'tvBuyYuanjiaBot'");
     view = finder.findRequiredView(source, 2131232429, "field 'llKefu'");

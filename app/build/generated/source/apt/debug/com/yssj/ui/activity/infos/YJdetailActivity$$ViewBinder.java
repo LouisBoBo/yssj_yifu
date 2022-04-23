@@ -12,8 +12,8 @@ public class YJdetailActivity$$ViewBinder<T extends com.yssj.ui.activity.infos.Y
     target.tvMyYj = finder.castView(view, 2131234174, "field 'tvMyYj'");
     view = finder.findRequiredView(source, 2131234323, "field 'tvQinglingYj'");
     target.tvQinglingYj = finder.castView(view, 2131234323, "field 'tvQinglingYj'");
-    view = finder.findRequiredView(source, 2131234625, "field 'tvYiTiXian'");
-    target.tvYiTiXian = finder.castView(view, 2131234625, "field 'tvYiTiXian'");
+    view = finder.findRequiredView(source, 2131234623, "field 'tvYiTiXian'");
+    target.tvYiTiXian = finder.castView(view, 2131234623, "field 'tvYiTiXian'");
     view = finder.findRequiredView(source, 2131232465, "method 'onViewClicked'");
     view.setOnClickListener(
       new butterknife.internal.DebouncingOnClickListener() {

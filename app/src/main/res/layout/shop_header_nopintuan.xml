@@ -433,9 +433,9 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="5dp"
+            android:layout_height="10dp"
             android:layout_marginTop="10dp"
-            android:background="@color/shopcar_bn" />
+            android:background="#f0f0f0" />
         <!-- new decleration -->
 
 

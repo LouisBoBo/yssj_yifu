@@ -2192,6 +2192,10 @@
         "source": "/Users/hebo/Desktop/云商项目/yssj_app/app/src/main/res/drawable-xxhdpi/sign_gray.png"
     },
     {
+        "merged": "/Users/hebo/Desktop/云商项目/yssj_app/app/build/intermediates/res/merged/debug/drawable-xxhdpi_lingdang_white.png.flat",
+        "source": "/Users/hebo/Desktop/云商项目/yssj_app/app/src/main/res/drawable-xxhdpi/lingdang_white.png"
+    },
+    {
         "merged": "/Users/hebo/Desktop/云商项目/yssj_app/app/build/intermediates/res/merged/debug/drawable_bg_zero_shop_title_default.xml.flat",
         "source": "/Users/hebo/Desktop/云商项目/yssj_app/app/src/main/res/drawable/bg_zero_shop_title_default.xml"
     },
@@ -3318,6 +3322,10 @@
     {
         "merged": "/Users/hebo/Desktop/云商项目/yssj_app/app/build/intermediates/res/merged/debug/drawable-xhdpi_img_buy_nomal_shop.png.flat",
         "source": "/Users/hebo/Desktop/云商项目/yssj_app/app/src/main/res/drawable-xhdpi/img_buy_nomal_shop.png"
+    },
+    {
+        "merged": "/Users/hebo/Desktop/云商项目/yssj_app/app/build/intermediates/res/merged/debug/drawable-xxhdpi_lingdang_black_icon.png.flat",
+        "source": "/Users/hebo/Desktop/云商项目/yssj_app/app/src/main/res/drawable-xxhdpi/lingdang_black_icon.png"
     },
     {
         "merged": "/Users/hebo/Desktop/云商项目/yssj_app/app/build/intermediates/res/merged/debug/drawable_bg_square_search.xml.flat",
@@ -11808,6 +11816,10 @@
         "source": "/Users/hebo/Desktop/云商项目/yssj_app/app/src/main/res/layout/item_qindao.xml"
     },
     {
+        "merged": "/Users/hebo/Desktop/云商项目/yssj_app/app/build/intermediates/res/merged/debug/drawable-xxhdpi_lingdang_white_icon.png.flat",
+        "source": "/Users/hebo/Desktop/云商项目/yssj_app/app/src/main/res/drawable-xxhdpi/lingdang_white_icon.png"
+    },
+    {
         "merged": "/Users/hebo/Desktop/云商项目/yssj_app/app/build/intermediates/res/merged/debug/drawable-xhdpi_task_dialog_zhu7_2.png.flat",
         "source": "/Users/hebo/Desktop/云商项目/yssj_app/app/src/main/res/drawable-xhdpi/task_dialog_zhu7_2.png"
     },
@@ -12054,6 +12066,10 @@
     {
         "merged": "/Users/hebo/Desktop/云商项目/yssj_app/app/build/intermediates/res/merged/debug/drawable-xhdpi_btn_send_bg.9.png.flat",
         "source": "/Users/hebo/Desktop/云商项目/yssj_app/app/src/main/res/drawable-xhdpi/btn_send_bg.9.png"
+    },
+    {
+        "merged": "/Users/hebo/Desktop/云商项目/yssj_app/app/build/intermediates/res/merged/debug/drawable-xxhdpi_lingdang_black.png.flat",
+        "source": "/Users/hebo/Desktop/云商项目/yssj_app/app/src/main/res/drawable-xxhdpi/lingdang_black.png"
     },
     {
         "merged": "/Users/hebo/Desktop/云商项目/yssj_app/app/build/intermediates/res/merged/debug/layout_daily_amount_fragment.xml.flat",
@@ -13294,6 +13310,10 @@
     {
         "merged": "/Users/hebo/Desktop/云商项目/yssj_app/app/build/intermediates/res/merged/debug/drawable-xxhdpi_shopcart_icon_close.png.flat",
         "source": "/Users/hebo/Desktop/云商项目/yssj_app/app/src/main/res/drawable-xxhdpi/shopcart_icon_close.png"
+    },
+    {
+        "merged": "/Users/hebo/Desktop/云商项目/yssj_app/app/build/intermediates/res/merged/debug/drawable-xxhdpi_newstart_view.jpg.flat",
+        "source": "/Users/hebo/Desktop/云商项目/yssj_app/app/src/main/res/drawable-xxhdpi/newstart_view.jpg"
     },
     {
         "merged": "/Users/hebo/Desktop/云商项目/yssj_app/app/build/intermediates/res/merged/debug/color_abc_secondary_text_material_dark.xml.flat",

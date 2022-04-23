@@ -598,8 +598,14 @@ public class ShopDetailsDialog extends Dialog implements OnClickListener, OnItem
                 // }
                 // double a = sType.getOriginal_price();
                 // int original_prices = (int) a;
+
+                //CHANGE_DO
+                int price =0;
+                if(sType.getCore() != null){
+                    price = Integer.parseInt(sType.getCore());
+                }
                 callBackShopCart.callBackChoose(1, size, color, sType.getPrice(), buyStock, stock_type_id, stock,
-                        newPic, sType.getSupp_id(), kickback, Integer.parseInt(sType.getCore()), v);
+                        newPic, sType.getSupp_id(), kickback, price, v);
             }
         } else if (buy_shopcart == 1) {// 加入购物车
             // if (listSize.size() == 1) {

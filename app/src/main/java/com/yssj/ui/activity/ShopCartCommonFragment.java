@@ -148,9 +148,9 @@ public class ShopCartCommonFragment extends Fragment implements OnClickListener,
 			@Override
 			public void onClick(View v) {
 				mEditFlag = !mEditFlag;
-//				if(adpter!=null){
-//				adpter.notifyDataSetChanged();
-//				}
+				if(adpter!=null){
+				adpter.notifyDataSetChanged();
+				}
 				if (mEditFlag) {
 					tv_join_my_love.setVisibility(View.VISIBLE);
 					tv_price.setVisibility(View.GONE);
@@ -774,9 +774,10 @@ public class ShopCartCommonFragment extends Fragment implements OnClickListener,
 					}
 					tv_allchoose.setCompoundDrawablesWithIntrinsicBounds(
 							mContext.getResources().getDrawable(R.drawable.icon_dapeigou_normal), null, null, null);
-//					if(adpter!=null){
-//					adpter.notifyDataSetChanged();
-//					}
+					ToastUtil.showShortText(mContext, "删除成功");
+					if(adpter!=null){
+					adpter.notifyDataSetChanged();
+					}
 				} else {
 
 				}
@@ -1381,7 +1382,7 @@ public class ShopCartCommonFragment extends Fragment implements OnClickListener,
 			}
 			String price = new java.text.DecimalFormat("#0.0").format(cPrice);
 			String savemoneyStr = new java.text.DecimalFormat("#0.0").format(saveMoney);
-			if (!mEditFlag) {
+			if (!mEditFlag && spImg.size()>0) {
 				tv_price.setText("合计 " + price + "元");
 				tv_pay.setText("结算(" + goodsNum + ")");
 				tv_no_freight.setText("比专柜节省¥" + savemoneyStr+"元");
@@ -1401,7 +1402,7 @@ public class ShopCartCommonFragment extends Fragment implements OnClickListener,
 			if (!mEditFlag) {
 				tv_price.setText("合计 " + cPrice + "元");
 				tv_pay.setText("结算(0)");
-				tv_no_freight.setText("比专柜节省￥0.0"+"元");
+				tv_no_freight.setText("比专柜节省￥0.0元");
 			}
 		}
 		//TODO:_MODIFY_更新购物车选中状态

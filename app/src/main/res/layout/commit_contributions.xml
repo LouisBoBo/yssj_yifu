@@ -109,8 +109,6 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginTop="110dp"
-                android:layout_marginLeft="@dimen/dp_10"
-                android:layout_marginRight="@dimen/dp_10"
                 android:gravity="center"
                 app:layout_constraintTop_toBottomOf="@id/tips"
                 app:layout_constraintStart_toStartOf="parent"
@@ -136,8 +134,6 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginTop="@dimen/dp_10"
-                android:layout_marginLeft="@dimen/dp_10"
-                android:layout_marginRight="@dimen/dp_10"
                 android:gravity="center"
                 app:layout_constraintTop_toBottomOf="@id/baseview1"
                 app:layout_constraintStart_toStartOf="parent"
@@ -161,7 +157,6 @@
                 android:id="@+id/zhedie_base"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="20dp"
                 app:layout_constraintTop_toBottomOf="@id/baseview2">
 
                 <TextView

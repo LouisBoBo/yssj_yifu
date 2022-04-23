@@ -8,8 +8,8 @@ import butterknife.ButterKnife.ViewBinder;
 public class ShareTCtishiDiaog$$ViewBinder<T extends com.yssj.ui.dialog.ShareTCtishiDiaog> implements ViewBinder<T> {
   @Override public void bind(final Finder finder, final T target, Object source) {
     View view;
-    view = finder.findRequiredView(source, 2131234611, "field 'xjNumTv'");
-    target.xjNumTv = finder.castView(view, 2131234611, "field 'xjNumTv'");
+    view = finder.findRequiredView(source, 2131234609, "field 'xjNumTv'");
+    target.xjNumTv = finder.castView(view, 2131234609, "field 'xjNumTv'");
     view = finder.findRequiredView(source, 2131233974, "field 'fMoneyTv'");
     target.fMoneyTv = finder.castView(view, 2131233974, "field 'fMoneyTv'");
     view = finder.findRequiredView(source, 2131233952, "field 'ednumTv'");

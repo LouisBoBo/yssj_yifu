@@ -72,7 +72,7 @@
     <string name="tv_price_num"><Data><![CDATA[<br>x<font color="#ff814d">%1$s</font>]]></Data></string>
     <string name="tv_choose_all">全选</string>
     <string name="tv_pay_money">去结算(0)</string>
-    <string name="tv_price">合计：0元</string>
+    <string name="tv_price">合计 0.0元</string>
     <string name="tv_no_freight">不含运费</string>
     <string name="tv_etgoods">编辑</string>
     <string name="tv_dcprice">手机专享价</string>

@@ -76,7 +76,6 @@ public class ResultItemView extends LinearLayout {
         price = (TextView) findViewById(R.id.tv_price);
         // iv_selector=(ImageView) findViewById(R.id.iv_selector);
         // if(isInviteHot){
-        // iv_selector.setVisibility(View.VISIBLE);
         // }else{
         // iv_selector.setVisibility(View.GONE);
         // }
@@ -129,6 +128,7 @@ public class ResultItemView extends LinearLayout {
         }
         if (!"".equals(map.get("supp_label")) && null != map.get("supp_label")) {
             tv_supply_name.setVisibility(View.VISIBLE);
+            tv_supply_name.setVisibility(View.GONE);
             tv_supply_name.setText("" + map.get("supp_label") + "制造商出品");
         } else {
             tv_supply_name.setVisibility(View.GONE);
@@ -191,9 +191,11 @@ public class ResultItemView extends LinearLayout {
 
         if (!"".equals(map.get("supp_label")) && null != map.get("supp_label")) {
             new_sub.setVisibility(View.VISIBLE);
+            new_sub.setVisibility(GONE);
             new_sub.setText("" + map.get("supp_label"));
         } else {
             new_sub.setVisibility(View.INVISIBLE);
+            new_sub.setVisibility(GONE);
         }
 
         int virtual_sales = 0;
@@ -508,6 +510,7 @@ public class ResultItemView extends LinearLayout {
         }
         if (!"".equals(map.get("supp_label")) && null != map.get("supp_label")) {
             tv_supply_name.setVisibility(View.VISIBLE);
+            tv_supply_name.setVisibility(View.GONE);
             tv_supply_name.setText("" + map.get("supp_label") + "制造商出品");
         } else {
             tv_supply_name.setVisibility(View.GONE);
@@ -570,9 +573,11 @@ public class ResultItemView extends LinearLayout {
 
         if (!"".equals(map.get("supp_label")) && null != map.get("supp_label")) {
             new_sub.setVisibility(View.VISIBLE);
+            new_sub.setVisibility(GONE);//CHANGE_DO
             new_sub.setText("" + map.get("supp_label"));
         } else {
             new_sub.setVisibility(View.INVISIBLE);
+            new_sub.setVisibility(GONE);//CHANGE_DO
         }
 
         int virtual_sales = 0;

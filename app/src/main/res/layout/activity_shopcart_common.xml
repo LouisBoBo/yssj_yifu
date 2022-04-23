@@ -107,6 +107,13 @@
         android:layout_above="@+id/lay_bottom"
         android:background="@drawable/vertical_line" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.3dp"
+        android:layout_below="@+id/lay_bottom"
+        android:layout_marginTop="-0.3dp"
+        android:background="@drawable/vertical_line" />
+
     <!-- 全部随便逛逛 -->
 
     <include

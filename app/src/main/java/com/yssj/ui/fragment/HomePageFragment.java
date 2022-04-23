@@ -252,24 +252,24 @@ public class HomePageFragment extends Fragment implements OnClickListener {
 
 
 
-            HashMap<String, String> pairsMap = new HashMap<>();
-            YConn.httpPost(mContext, YUrl.QUERY_VIP_INFO2, pairsMap
-                    , new HttpListener<VipInfo>() {
-                        @Override
-                        public void onSuccess(VipInfo vipInfo) {
-                            if (vipInfo.getIsVip() > 0) {
-                                iv_hongbao.setImageResource(R.drawable.small_redhongbao_nintymoney_600);
-                            }else{
-                                iv_hongbao.setImageResource(R.drawable.small_redhongbao_nintymoney_90);
-                            }
-                            setHongBaoAnim();
-                        }
-
-                        @Override
-                        public void onError() {
-
-                        }
-                    });
+//            HashMap<String, String> pairsMap = new HashMap<>();
+//            YConn.httpPost(mContext, YUrl.QUERY_VIP_INFO2, pairsMap
+//                    , new HttpListener<VipInfo>() {
+//                        @Override
+//                        public void onSuccess(VipInfo vipInfo) {
+//                            if (vipInfo.getIsVip() > 0) {
+//                                iv_hongbao.setImageResource(R.drawable.small_redhongbao_nintymoney_600);
+//                            }else{
+//                                iv_hongbao.setImageResource(R.drawable.small_redhongbao_nintymoney_90);
+//                            }
+//                            setHongBaoAnim();
+//                        }
+//
+//                        @Override
+//                        public void onError() {
+//
+//                        }
+//                    });
         }else{
 //            iv_hongbao.setVisibility(View.VISIBLE);
             iv_hongbao.setImageResource(R.drawable.small_redhongbao_nintymoney_90);

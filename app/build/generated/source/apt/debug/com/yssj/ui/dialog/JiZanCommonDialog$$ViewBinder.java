@@ -8,8 +8,8 @@ import butterknife.ButterKnife.ViewBinder;
 public class JiZanCommonDialog$$ViewBinder<T extends com.yssj.ui.dialog.JiZanCommonDialog> implements ViewBinder<T> {
   @Override public void bind(final Finder finder, final T target, Object source) {
     View view;
-    view = finder.findRequiredView(source, 2131234498, "field 'tvTitle'");
-    target.tvTitle = finder.castView(view, 2131234498, "field 'tvTitle'");
+    view = finder.findRequiredView(source, 2131234496, "field 'tvTitle'");
+    target.tvTitle = finder.castView(view, 2131234496, "field 'tvTitle'");
     view = finder.findRequiredView(source, 2131233872, "field 'tvContent'");
     target.tvContent = finder.castView(view, 2131233872, "field 'tvContent'");
     view = finder.findRequiredView(source, 2131230898, "field 'btLeft' and method 'onClick'");

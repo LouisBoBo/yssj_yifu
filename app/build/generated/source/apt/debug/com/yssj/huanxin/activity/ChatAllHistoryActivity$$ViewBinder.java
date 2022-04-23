@@ -10,8 +10,8 @@ public class ChatAllHistoryActivity$$ViewBinder<T extends com.yssj.huanxin.activ
     View view;
     view = finder.findRequiredView(source, 2131233719, "field 'tvTitleBase'");
     target.tvTitleBase = finder.castView(view, 2131233719, "field 'tvTitleBase'");
-    view = finder.findRequiredView(source, 2131234606, "field 'tvWxh'");
-    target.tvWxh = finder.castView(view, 2131234606, "field 'tvWxh'");
+    view = finder.findRequiredView(source, 2131234604, "field 'tvWxh'");
+    target.tvWxh = finder.castView(view, 2131234604, "field 'tvWxh'");
     view = finder.findRequiredView(source, 2131232513, "field 'llWxin' and method 'onViewClicked'");
     target.llWxin = finder.castView(view, 2131232513, "field 'llWxin'");
     view.setOnClickListener(

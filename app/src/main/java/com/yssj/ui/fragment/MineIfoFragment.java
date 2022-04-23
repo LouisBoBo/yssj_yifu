@@ -346,8 +346,10 @@ public class MineIfoFragment extends Fragment implements OnClickListener, onUser
         tv_vip = v.findViewById(R.id.tv_vip);
         tv_vip.setOnClickListener(this);
 
-        tv_chuanda.setVisibility(View.GONE);
-        tv_miyou.setVisibility(View.GONE);
+        tv_chuanda.setVisibility(View.INVISIBLE);
+        tv_miyou.setVisibility(View.INVISIBLE);
+        tv_shouchang.setVisibility(View.INVISIBLE);
+
 
 
         iv_vvv = (ImageView) v.findViewById(R.id.iv_vvv);

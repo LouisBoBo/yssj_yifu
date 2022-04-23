@@ -9,7 +9,7 @@
         android:layout_height="match_parent"
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
-        android:src="@drawable/start_view" />
+        android:src="@drawable/newstart_view" />
 
     <ImageView
         android:id="@+id/new_add_pic"

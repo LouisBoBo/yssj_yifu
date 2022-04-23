@@ -10,8 +10,8 @@ public class SubmitFreeBuyShopActivty$$ViewBinder<T extends com.yssj.ui.activity
     View view;
     view = finder.findRequiredView(source, 2131234001, "field 'tvFreeBuyYouhui'");
     target.tvFreeBuyYouhui = finder.castView(view, 2131234001, "field 'tvFreeBuyYouhui'");
-    view = finder.findRequiredView(source, 2131234635, "field 'tvYouohuiShowText'");
-    target.tvYouohuiShowText = finder.castView(view, 2131234635, "field 'tvYouohuiShowText'");
+    view = finder.findRequiredView(source, 2131234633, "field 'tvYouohuiShowText'");
+    target.tvYouohuiShowText = finder.castView(view, 2131234633, "field 'tvYouohuiShowText'");
   }
 
   @Override public void unbind(T target) {

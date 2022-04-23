@@ -8,8 +8,8 @@ import butterknife.ButterKnife.ViewBinder;
 public class HomePage3Fragment$$ViewBinder<T extends com.yssj.ui.fragment.HomePage3Fragment> implements ViewBinder<T> {
   @Override public void bind(final Finder finder, final T target, Object source) {
     View view;
-    view = finder.findRequiredView(source, 2131234489, "field 'tvTime'");
-    target.tvTime = finder.castView(view, 2131234489, "field 'tvTime'");
+    view = finder.findRequiredView(source, 2131234487, "field 'tvTime'");
+    target.tvTime = finder.castView(view, 2131234487, "field 'tvTime'");
   }
 
   @Override public void unbind(T target) {
