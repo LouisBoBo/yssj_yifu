@@ -243,13 +243,20 @@ public class MineIfoFragment extends Fragment implements OnClickListener, onUser
 
             @Override
             public void onSuccess(MyInfoCenterDate result) {
-                like_count = result.getLike_count();
+                if(result == null){
+                    return;
+                }
+
+                if(result.getLike_count() != null){
+                    like_count = result.getLike_count();
+                }
 
                 if (Integer.parseInt(result.getBalance_show()) == 1) {
 
                 } else {
 
                 }
+
                 vipData = result.getVipData();
                 if (null != vipData && !StringUtils.isEmpty(vipData.getVip_name())) {
 
@@ -285,18 +292,31 @@ public class MineIfoFragment extends Fragment implements OnClickListener, onUser
 
                 java.text.DecimalFormat df = new java.text.DecimalFormat("#0.00");
                 if (YCache.getCacheUser(mContext).getReviewers() == 1) {
-                    tv_wallet_red.setText("¥ " + df.format(Double.parseDouble("" + result.getCoupon_sum())));
-                    ;
+                    if(result.getCoupon_sum() != null) {
+//                        tv_wallet_red.setText("¥ " + df.format(Double.parseDouble("" + result.getCoupon_sum())));
+                        tv_wallet_red.setText("￥" + result.getCoupon_sum());
+                    }
 
                 } else {
-                    tv_wallet_red.setText("¥ " + df.format(Double.parseDouble("" + result.getShowExtMoney())));
-
+                    if(result.getShowExtMoney() != null) {
+//                        tv_wallet_red.setText("¥ " + df.format(Double.parseDouble("" + result.getShowExtMoney())));
+                        tv_wallet_red.setText("￥" + result.getShowExtMoney());
+                    }
                 }
 
+                if(result.getCoupon_sum() != null) {
+//                    tv_coupons_red.setText("¥ " + df.format(Double.parseDouble("" + result.getCoupon_sum())));
+                    tv_coupons_red.setText("￥" + result.getCoupon_sum());
+                }
 
-                tv_coupons_red.setText("¥ " + df.format(Double.parseDouble("" + result.getCoupon_sum())));
-                myStepCount = result.getMySteps_count();
-                store_shop_count = result.getStore_shop_count();
+                if(result.getMySteps_count() != null) {
+                    myStepCount = result.getMySteps_count();
+                }
+
+                if(result.getStore_shop_count() != null) {
+                    store_shop_count = result.getStore_shop_count();
+                }
+
                 initRedPointView(result.getPay_count(), result.getSend_count(),
                         result.getFurl_count(), result.getAss_count() + "",
                         result.getRefund_count(), "0");

@@ -152,6 +152,7 @@ public class ItemView extends LinearLayout {
         tv_pro_name.setText(Shop.getShopNameStrNew((String) map.get("shop_name")));
         if (!"".equals(map.get("supp_label")) && null != map.get("supp_label")) {
             tv_supply_name.setVisibility(View.VISIBLE);
+            tv_supply_name.setVisibility(View.GONE);
             tv_supply_name.setText("" + map.get("supp_label") + "制造商出品");
         } else {
             tv_supply_name.setVisibility(View.GONE);
@@ -201,9 +202,11 @@ public class ItemView extends LinearLayout {
 
         if (!"".equals(map.get("supp_label")) && null != map.get("supp_label")) {
             new_sub.setVisibility(View.VISIBLE);
+            new_sub.setVisibility(View.GONE);
             new_sub.setText("" + map.get("supp_label"));
         } else {
             new_sub.setVisibility(View.INVISIBLE);
+            new_sub.setVisibility(View.GONE);
         }
 
 
@@ -291,6 +294,7 @@ public class ItemView extends LinearLayout {
         tv_pro_name.setText(Shop.getShopNameStrNew((String) map.get("shop_name")));
         if (!"".equals(map.get("supp_label")) && null != map.get("supp_label")) {
             tv_supply_name.setVisibility(View.VISIBLE);
+            tv_supply_name.setVisibility(View.GONE);
             tv_supply_name.setText("" + map.get("supp_label") + "制造商出品");
         } else {
             tv_supply_name.setVisibility(View.GONE);
@@ -328,9 +332,11 @@ public class ItemView extends LinearLayout {
 
         if (!"".equals(map.get("supp_label")) && null != map.get("supp_label")) {
             new_sub.setVisibility(View.VISIBLE);
+            new_sub.setVisibility(View.GONE);
             new_sub.setText("" + map.get("supp_label"));
         } else {
             new_sub.setVisibility(View.INVISIBLE);
+            new_sub.setVisibility(View.GONE);
         }
 
 

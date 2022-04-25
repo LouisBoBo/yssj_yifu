@@ -849,6 +849,9 @@ public class MainFragment extends Fragment implements OnClickListener, OnChecked
                 // tv_tab3.setVisibility(View.GONE);
                 checked = 3;
                 SharedPreferencesUtil.saveStringData(getActivity(), "first_animation", systime_new + "");
+
+
+
                 // tab_three.setCompoundDrawablesWithIntrinsicBounds(null,
                 // getResources().getDrawable(R.drawable.sign_gray),
                 // null, null);
@@ -1786,6 +1789,7 @@ public class MainFragment extends Fragment implements OnClickListener, OnChecked
 //                    mIntimateFaBuIcon.setVisibility(View.GONE);
                 }
                 }
+                checkID = 4;
                 // ((MainMenuActivity)
                 // (mContext)).getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_NONE);
                 if (YJApplication.instance.isLoginSucess() == false) {

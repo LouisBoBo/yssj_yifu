@@ -1314,7 +1314,6 @@ public class ShopDetailsActivity extends BasicActivity
         progressnum = headerView.findViewById(R.id.tv_num);
         progressscale = headerView.findViewById(R.id.tv_scale);
         progressbar = (ProgressBar) headerView.findViewById(R.id.pb_determinate);
-        progressbar.setProgress(90);
 
         //拼团相关
         llPtAllHeaderImg = headerView.findViewById(R.id.ll_pt_all_header_img);
@@ -4940,7 +4939,7 @@ public class ShopDetailsActivity extends BasicActivity
                             if (mshop_kind.equals("1")) {
                                 progressview.setVisibility(View.VISIBLE);
 
-                                if(shopd.getSupply_min_num() !=null && shopd.getSupply_min_num().length()>0 && shopd.getSupply_current_num()!=null && shopd.getSupply_current_num().length()>0){
+                                if(shopd.getSupply_min_num() !=null && shopd.getSupply_min_num().length()>0 && shopd.getSupply_current_num()!=null && shopd.getSupply_current_num().length()>0 && !shopd.getSupply_current_num().equals("null")){
                                     progressnum.setText("已下单" + shopd.getSupply_current_num() + "/" +shopd.getSupply_min_num() + "件");
 
                                     float current_num = Float.parseFloat(shopd.getSupply_current_num());

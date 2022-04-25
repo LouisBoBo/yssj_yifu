@@ -5821,7 +5821,7 @@
 
     </style><style name="SplashThemeOld" parent="android:Theme.NoTitleBar.Fullscreen">
 
-
+        <item name="android:windowIsTranslucent">false</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowBackground">@drawable/logo_splash</item>

@@ -381,7 +381,7 @@
                         android:id="@+id/tv_num"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="已下单8件/10件"
+                        android:text="已下单0件/0件"
                         android:textSize="10sp"
                         android:textColor="@color/white"
                         android:layout_marginLeft="5dp"
@@ -400,7 +400,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/sp_14"
                     android:layout_marginLeft="@dimen/dp_10"
-                    android:text="进度100%"/>
+                    android:text="进度0%"/>
             </LinearLayout>
 
 

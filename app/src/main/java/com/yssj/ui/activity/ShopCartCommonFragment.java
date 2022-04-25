@@ -1139,13 +1139,13 @@ public class ShopCartCommonFragment extends Fragment implements OnClickListener,
 					} else {
 						adpter.notifyDataSetChanged();
 					}//TODO:_MODIFY_恢复购物车列表
-					// if (listShopCarts != null && listShopCarts.size() >
-					// 0) {
-					// setPrice();
-					// } else {
-					// tv_price.setText("合计 " + 0.0 + "元");
-					// tv_no_freight.setText("比专柜节省¥" + 0.0);
-					// }
+
+//					 if (mListAllNew != null && mListAllNew.size() > 0) {
+//					 setPrice();
+//					 } else {
+//					 tv_price.setText("合计 " + 0.0 + "元");
+//					 tv_no_freight.setText("比专柜节省¥" + 0.0);
+//					 }
 					LoadingDialog.hide(mContext);
 				}
 
@@ -1159,6 +1159,7 @@ public class ShopCartCommonFragment extends Fragment implements OnClickListener,
 			for (int i = 0; i < mListValidNew.size(); i++) {
 				spImg.add(1);
 			}
+			setPrice();
 			if (adpter == null) {
 				adpter = new ShopCartCommonAdpter((FragmentActivity) mContext, resource, mListAllNew, sp, spImg, 1,
 						mListValidNew, mListInValidNew, flag_activity);
@@ -1399,7 +1400,7 @@ public class ShopCartCommonFragment extends Fragment implements OnClickListener,
 						mContext.getResources().getDrawable(R.drawable.icon_dapeigou_normal), null, null, null);
 			}
 			cPrice = 0;
-			if (!mEditFlag) {
+			if (!mEditFlag && spImg.size()>0) {
 				tv_price.setText("合计 " + cPrice + "元");
 				tv_pay.setText("结算(0)");
 				tv_no_freight.setText("比专柜节省￥0.0元");
