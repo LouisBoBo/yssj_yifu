@@ -5810,41 +5810,39 @@ public class ShopDetailsActivity extends BasicActivity
 
     private void setHeadImg(String picPath, final ImageView img_header) {
         try {
-//            URL url = new URL(picPath);
-//            // 打开连接
-//            URLConnection con = url.openConnection();
-//            // 获得文件的长度
-//            int contentLength = con.getContentLength();
-//            // System.out.println("长度 :" + contentLength);
-//            // 输入流
-//            InputStream is = con.getInputStream();
-//            // 1K的数据缓冲
-//            byte[] bs = new byte[8192];
-//            // 读取到的数据长度
-//            int len;
-//            final BitmapDrawable bmpDraw = new BitmapDrawable(is);
-//
-//            // 完毕，关闭所有链接
-//            is.close();
-//
-//            final Bitmap bitmap = bmpDraw.getBitmap();
-//            runOnUiThread(new Runnable() {
-//                @Override
-//                public void run() {
-//                    if(bitmap != null) {
-//                        int w = bitmap.getWidth(); // 得到图片的宽，高
-//                        int cropHeight = w * 7 / 6;
-//                        Bitmap cropBitmap = Bitmap.createBitmap(bitmap, 0, 0, w, cropHeight, null, false);
-//                        img_header.setImageBitmap(cropBitmap);
-//                    }
-//                }
-//            });
+            URL url = new URL(picPath);
+            // 打开连接
+            URLConnection con = url.openConnection();
+            // 获得文件的长度
+            int contentLength = con.getContentLength();
+            // System.out.println("长度 :" + contentLength);
+            // 输入流
+            InputStream is = con.getInputStream();
+            // 1K的数据缓冲
+            byte[] bs = new byte[8192];
+            // 读取到的数据长度
+            int len;
+            final BitmapDrawable bmpDraw = new BitmapDrawable(is);
+
+            // 完毕，关闭所有链接
+            is.close();
+
+            final Bitmap bitmap = bmpDraw.getBitmap();
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    if(bitmap != null) {
+                        int w = bitmap.getWidth(); // 得到图片的宽，高
+                        int cropHeight = w * 7 / 6;
+                        Bitmap cropBitmap = Bitmap.createBitmap(bitmap, 0, 0, w, cropHeight, null, false);
+                        img_header.setImageBitmap(cropBitmap);
+                    }
+                }
+            });
 
 
-//            PicassoUtils.initImage(context,picPath,img_header);
+            PicassoUtils.initImage(context,picPath,img_header);
 
-
-            img_header.setImageBitmap(getImage(picPath));
 
         } catch (Exception e) {
             LogYiFu.e("TAG", "下载失败");

@@ -2752,7 +2752,7 @@ public final class R {
      * <tr><td>barrier</td><td>2</td><td></td></tr>
      * <tr><td>chains</td><td>4</td><td></td></tr>
      * <tr><td>dimensions</td><td>8</td><td></td></tr>
-     * <tr><td>direct</td><td>1</td><td></td></tr>
+     * <tr><td>direct</td><td>1</td><td>direct, barriers, chains</td></tr>
      * <tr><td>groups</td><td>20</td><td></td></tr>
      * <tr><td>none</td><td>0</td><td></td></tr>
      * <tr><td>standard</td><td>7</td><td></td></tr>
@@ -2776,10 +2776,10 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Constant</th><th>Value</th><th>Description</th></tr>
-     * <tr><td>FixedBehind</td><td>2</td><td></td></tr>
-     * <tr><td>FixedFront</td><td>3</td><td></td></tr>
-     * <tr><td>MatchLayout</td><td>4</td><td></td></tr>
-     * <tr><td>Scale</td><td>1</td><td></td></tr>
+     * <tr><td>FixedBehind</td><td>2</td><td>拉伸形变</td></tr>
+     * <tr><td>FixedFront</td><td>3</td><td>固定在背后</td></tr>
+     * <tr><td>MatchLayout</td><td>4</td><td>固定在前面</td></tr>
+     * <tr><td>Scale</td><td>1</td><td>平行移动</td></tr>
      * <tr><td>Translate</td><td>0</td><td></td></tr>
      * </table>
      */
@@ -3971,8 +3971,8 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Constant</th><th>Value</th><th>Description</th></tr>
-     * <tr><td>FixedBehind</td><td>2</td><td></td></tr>
-     * <tr><td>Scale</td><td>1</td><td></td></tr>
+     * <tr><td>FixedBehind</td><td>2</td><td>拉伸形变</td></tr>
+     * <tr><td>Scale</td><td>1</td><td>平行移动</td></tr>
      * <tr><td>Translate</td><td>0</td><td></td></tr>
      * </table>
      */
@@ -17486,8 +17486,8 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Constant</th><th>Value</th><th>Description</th></tr>
-     * <tr><td>FixedBehind</td><td>2</td><td></td></tr>
-     * <tr><td>Scale</td><td>1</td><td></td></tr>
+     * <tr><td>FixedBehind</td><td>2</td><td>拉伸形变</td></tr>
+     * <tr><td>Scale</td><td>1</td><td>平行移动</td></tr>
      * <tr><td>Translate</td><td>0</td><td></td></tr>
      * </table>
      *
@@ -18091,8 +18091,8 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Constant</th><th>Value</th><th>Description</th></tr>
-     * <tr><td>FixedBehind</td><td>2</td><td></td></tr>
-     * <tr><td>Scale</td><td>1</td><td></td></tr>
+     * <tr><td>FixedBehind</td><td>2</td><td>拉伸形变</td></tr>
+     * <tr><td>Scale</td><td>1</td><td>平行移动</td></tr>
      * <tr><td>Translate</td><td>0</td><td></td></tr>
      * </table>
      *
@@ -18360,8 +18360,8 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Constant</th><th>Value</th><th>Description</th></tr>
-     * <tr><td>FixedBehind</td><td>2</td><td></td></tr>
-     * <tr><td>Scale</td><td>1</td><td></td></tr>
+     * <tr><td>FixedBehind</td><td>2</td><td>拉伸形变</td></tr>
+     * <tr><td>Scale</td><td>1</td><td>平行移动</td></tr>
      * <tr><td>Translate</td><td>0</td><td></td></tr>
      * </table>
      *
@@ -19711,7 +19711,7 @@ public final class R {
      * <tr><td>barrier</td><td>2</td><td></td></tr>
      * <tr><td>chains</td><td>4</td><td></td></tr>
      * <tr><td>dimensions</td><td>8</td><td></td></tr>
-     * <tr><td>direct</td><td>1</td><td></td></tr>
+     * <tr><td>direct</td><td>1</td><td>direct, barriers, chains</td></tr>
      * <tr><td>groups</td><td>20</td><td></td></tr>
      * <tr><td>none</td><td>0</td><td></td></tr>
      * <tr><td>standard</td><td>7</td><td></td></tr>
@@ -25831,10 +25831,10 @@ public final class R {
      * <colgroup align="left" />
      * <colgroup align="left" />
      * <tr><th>Constant</th><th>Value</th><th>Description</th></tr>
-     * <tr><td>FixedBehind</td><td>2</td><td></td></tr>
-     * <tr><td>FixedFront</td><td>3</td><td></td></tr>
-     * <tr><td>MatchLayout</td><td>4</td><td></td></tr>
-     * <tr><td>Scale</td><td>1</td><td></td></tr>
+     * <tr><td>FixedBehind</td><td>2</td><td>拉伸形变</td></tr>
+     * <tr><td>FixedFront</td><td>3</td><td>固定在背后</td></tr>
+     * <tr><td>MatchLayout</td><td>4</td><td>固定在前面</td></tr>
+     * <tr><td>Scale</td><td>1</td><td>平行移动</td></tr>
      * <tr><td>Translate</td><td>0</td><td></td></tr>
      * </table>
      *
