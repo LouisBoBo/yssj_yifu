@@ -70,7 +70,7 @@
             android:layout_height="25dp"
             android:layout_gravity="center_vertical"
             android:layout_marginRight="13dp"
-            android:background="@drawable/lingdang_black"
+            android:background="@drawable/icon_news_black"
             android:gravity="center_vertical"
             android:visibility="visible" />
 

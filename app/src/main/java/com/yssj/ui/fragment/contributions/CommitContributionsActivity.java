@@ -177,9 +177,9 @@ public class CommitContributionsActivity extends BasicActivity implements View.O
         type_ids[0] = 1;
         type_ids[1] = 2;
         type_ids[2] = 3;
-        type_ids[3] = 4;
-        type_ids[4] = 5;
-        type_ids[5] = 6;
+        type_ids[3] = 3;
+        type_ids[4] = 4;
+        type_ids[5] = 4;
     }
 
     private void initView() {

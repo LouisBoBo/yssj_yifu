@@ -244,6 +244,7 @@ public class ScrollPagerList extends LinearLayout {
                                     HomePageFragment.tv_fenlei.setBackgroundResource(R.drawable.icon_fenlei_black);
                                     HomePageFragment.tv_zhuanqian.setBackgroundResource(R.drawable.icon_zhuanqian_black);
                                     HomePageFragment.ll_search.setBackgroundColor(getResources().getColor(R.color.white));
+                                    HomePageFragment.tv_message.setBackgroundResource(R.drawable.icon_news_black);
 
                                     if (childAt == null) {
                                         myposition = 0;
@@ -493,12 +494,12 @@ public class ScrollPagerList extends LinearLayout {
                     HomePageFragment.tv_fenlei.setBackgroundResource(R.drawable.icon_fenlei_black);
                     HomePageFragment.tv_zhuanqian.setBackgroundResource(R.drawable.icon_zhuanqian_black);
                     HomePageFragment.ll_search.setBackgroundResource(R.drawable.white_fanzao);
-                    HomePageFragment.tv_message.setBackgroundResource(R.drawable.lingdang_black);
+                    HomePageFragment.tv_message.setBackgroundResource(R.drawable.icon_news_black);
                 } else {
                     HomePageFragment.tv_fenlei.setBackgroundResource(R.drawable.icon_fenlei_white);
                     HomePageFragment.tv_zhuanqian.setBackgroundResource(R.drawable.icon_zhuanqian_white);
                     HomePageFragment.ll_search.setBackgroundResource(R.drawable.zhezhao2x);
-                    HomePageFragment.tv_message.setBackgroundResource(R.drawable.lingdang_white);
+                    HomePageFragment.tv_message.setBackgroundResource(R.drawable.icon_news_white);
 
                 }
                 mLastY = y;
