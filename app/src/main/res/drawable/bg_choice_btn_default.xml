@@ -10,5 +10,5 @@
     <!-- 边框 -->
     <stroke
         android:width="0.3dp"
-        android:color="@color/gray_color" />
+        android:color="@color/line_color" />
 </shape>

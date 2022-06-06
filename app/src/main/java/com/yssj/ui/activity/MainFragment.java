@@ -494,7 +494,6 @@ public class MainFragment extends Fragment implements OnClickListener, OnChecked
 
                 if(result.getData() != null){
                     contirbution_status = result.getData().getStatus();
-//                    contirbution_status = 2;//测试用
                 }
 
             }

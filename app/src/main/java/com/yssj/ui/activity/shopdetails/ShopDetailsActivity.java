@@ -96,6 +96,7 @@ import com.yssj.entity.Shop;
 import com.yssj.entity.ShopCart;
 import com.yssj.entity.ShopComment;
 import com.yssj.entity.ShopOption;
+import com.yssj.entity.ShopPriceList;
 import com.yssj.entity.StockType;
 import com.yssj.entity.Store;
 import com.yssj.entity.UserInfo;
@@ -126,6 +127,7 @@ import com.yssj.ui.dialog.NewSignCommonDiaolg;
 import com.yssj.ui.dialog.PublicToastDialog;
 import com.yssj.ui.dialog.XunBaoScollDialog;
 import com.yssj.ui.fragment.circles.SignListAdapter;
+import com.yssj.ui.fragment.contributions.ContributionStatusBean;
 import com.yssj.ui.receiver.TaskReceiver;
 import com.yssj.utils.CommonUtils;
 import com.yssj.utils.ComputeUtil;
@@ -374,6 +376,8 @@ public class ShopDetailsActivity extends BasicActivity
 
     public static VipInfo mVipInfo;
     public boolean is_sleep = false;
+
+    private CountDownTimer timer;//倒计时
 
     //购买按钮
     private void setBuyBtn() {
@@ -1347,6 +1351,9 @@ public class ShopDetailsActivity extends BasicActivity
         fromShouye3 = getIntent().getBooleanExtra("fromShouye3", false);
         fromKTtask = getIntent().getBooleanExtra("fromKTtask", false);
 
+        //CHANGE_DO
+        header_tv_sjprice.setVisibility(View.INVISIBLE);
+        tv_active_discount.setVisibility(View.INVISIBLE);
 
         if (isforcelook == true || isforcelookMatch
                 || (isSignActiveShop && SignListAdapter.doType == 4 && isSignActiveShopScan)) {//// 活动商品并且是浏览个数的任务
@@ -3779,6 +3786,7 @@ public class ShopDetailsActivity extends BasicActivity
                     }
                     String four_pic = result.get("four_pic") + "";
 
+
                     if (isNewMeal) {
                         String shareMIniAPPimgPic = YUrl.imgurl + shop.getShop_code().substring(1, 4) + "/" + shop.getShop_code() + "/" + shop.getDef_pic() + "!280";
                         String wxMiniPathdUO = "/pages/shouye/detail/detail?shop_code=" + shop.getShop_code() +
@@ -4824,6 +4832,7 @@ public class ShopDetailsActivity extends BasicActivity
         }.execute();
     }
 
+
     /***
      * 查询普通商品详情页
      */
@@ -4890,8 +4899,6 @@ public class ShopDetailsActivity extends BasicActivity
                         shareshop = (ShareShop) map.get("shareshop");
                     }
                     if (shopd != null) {
-
-
                         //
                         mSinglePrice.setText("¥" + new DecimalFormat("#0.0").format(shopd.getShop_se_price()));
                         mTwoPrice.setText("¥" + shopd.getRoll_price());
@@ -4952,8 +4959,14 @@ public class ShopDetailsActivity extends BasicActivity
 
                                 if(shopd.getSupply_end_time() != null && shopd.getSupply_end_time().length()>0) {
                                     msupply_end_time = shopd.getSupply_end_time();
-                                    progresstime.setText("结束时间:" + DateUtil.Formatsecond(Long.parseLong(msupply_end_time)));
+
+                                    getCountDownTime(getStrTime(msupply_end_time));
+//                                    progresstime.setText("结束时间:" + DateUtil.Formatsecond(Long.parseLong(msupply_end_time)));
                                 }
+
+                                getqueryPriceList(shopd.getShop_code());//如果是供款商品查询供款信息
+                            }else {
+                                progressview.setVisibility(View.GONE);
                             }
                         }else {
                             progressview.setVisibility(View.GONE);
@@ -5552,6 +5565,28 @@ public class ShopDetailsActivity extends BasicActivity
     }
 
 
+    //查询工价单信息
+    public void getqueryPriceList(String shopcode){
+
+        HashMap<String, String> pairsMap = new HashMap<>();
+        pairsMap.put("code",shopcode);
+
+        YConn.httpPost(this, YUrl.SHOP_QUERYPRICELIST, pairsMap, new HttpListener<ShopPriceList>() {
+            @Override
+            public void onSuccess(ShopPriceList result) {
+
+                if(result != null){
+
+                    shop.setShopPriceList(result.getPrice_list());
+                }
+            }
+
+            @Override
+            public void onError() {
+
+            }
+        });
+    }
     private void getDIKOU(final TextView diKou) {
 
 
@@ -7397,4 +7432,45 @@ public class ShopDetailsActivity extends BasicActivity
     }
 
 
+    // 将时间戳转为剩余毫秒数
+    public static long getStrTime(String cc_time) {
+        //当前时间毫秒数
+        long currentTime = System.currentTimeMillis();
+
+        //剩余毫秒数
+        long lcc_time = (Long.valueOf(cc_time))+48*60*60*1000 - currentTime;
+
+        return lcc_time;
+    }
+
+    //倒计时
+    public void getCountDownTime(long timeStemp) {
+        if(timeStemp <=0){
+            progresstime.setText("剩余时间：" + 0 + "时" + 0 + "分" + 0 + "秒");
+            return;
+        }
+
+        timer = new CountDownTimer(timeStemp, 1000) {
+            @Override
+            public void onTick(long l) {
+
+                long day = l / (1000 * 24 * 60 * 60); //单位天
+                long hour = (l - day * (1000 * 24 * 60 * 60)) / (1000 * 60 * 60); //单位时
+                long minute = (l - day * (1000 * 24 * 60 * 60) - hour * (1000 * 60 * 60)) / (1000 * 60); //单位分
+                long second = (l - day * (1000 * 24 * 60 * 60) - hour * (1000 * 60 * 60) - minute * (1000 * 60)) / 1000;//单位秒
+
+                long H = day*24+hour;
+                progresstime.setText("剩余时间：" + H + "时" + minute + "分" + second + "秒");
+            }
+
+            @Override
+            public void onFinish() {
+                //倒计时为0时执行此方法
+                progresstime.setText("剩余时间：" + 0 + "时" + 0 + "分" + 0 + "秒");
+                timer.cancel();
+            }
+        };
+
+        timer.start();
+    }
 }

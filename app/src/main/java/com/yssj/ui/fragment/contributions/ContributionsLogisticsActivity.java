@@ -10,10 +10,15 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
+import com.yssj.YUrl;
 import com.yssj.activity.R;
 import com.yssj.app.AppManager;
 import com.yssj.eventbus.MessageEvent;
+import com.yssj.network.HttpListener;
+import com.yssj.network.YConn;
 import com.yssj.ui.base.BasicActivity;
+import com.yssj.utils.SharedPreferencesUtil;
+import com.yssj.utils.ToastUtil;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -70,8 +75,11 @@ public class ContributionsLogisticsActivity extends BasicActivity implements Vie
         post_num = bundle.getString("num");
 
         initview();
+
+        initLogistData();
+
         //查询物流信息
-        ExpressUtils.main(post_num,getLogisticType(post_name));
+//        ExpressUtils.main(post_num,getLogisticType(post_name));
     }
 
     public void initview(){
@@ -95,6 +103,36 @@ public class ContributionsLogisticsActivity extends BasicActivity implements Vie
             }
         });
 
+    }
+
+    public void initLogistData(){
+
+        HashMap<String, String> pairsMap = new HashMap<>();
+        pairsMap.put("nu",post_num);
+
+        YConn.httpPost(mcontext, YUrl.SUPPLYMATERIAL_EXPQUERY, pairsMap, new HttpListener<SupplyLogistBean>() {
+            @Override
+            public void onSuccess(SupplyLogistBean result) {
+                if(result != null && result.getData().size()>0){
+                    setData(result.getData().get(0).getLastResult().getData());
+                }
+            }
+
+            @Override
+            public void onError() {
+
+            }
+        });
+    }
+    public void setData(List<SupplyLogistBean.DataDTOX.LastResultDTO.DataDTO> data){
+        for (SupplyLogistBean.DataDTOX.LastResultDTO.DataDTO datum : data) {
+            Trace trace = new Trace();
+            trace.setAcceptTime(datum.getFtime());
+            trace.setAcceptStation(datum.getContext());
+            traceList.add(trace);
+        }
+
+        myHandler.sendEmptyMessage(123);
     }
 
     public void initData(LogistticsBean bean){

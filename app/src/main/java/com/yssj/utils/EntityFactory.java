@@ -2835,6 +2835,7 @@ public class EntityFactory {
 
         // shop.setCount(jAttr1.optInt("count"));
         // /////
+
         if (!j.has("returnOneText") || null == j.getString("returnOneText") || j.getString("returnOneText").equals("null")
                 || j.getString("returnOneText").equals("")) {
             shop.setReturnOneText("一键参与");
@@ -3057,6 +3058,7 @@ public class EntityFactory {
         shop.setSupp_label(obj.optString("supp_label"));
         shop.setSupp_label_id(obj.optString("supp_label_id"));
         shop.setShop_kind(obj.optString("shop_kind"));
+        shop.setNewfour_pic(obj.optString("four_pic"));
         shop.setSupply_end_time(obj.optString("supply_end_time"));
         shop.setSupply_min_num(obj.optString("supply_min_num"));
         shop.setSupply_current_num(obj.optString("supply_current_num"));
@@ -5954,6 +5956,13 @@ public class EntityFactory {
                 } else {
 
                     resultInfo.put("shop_kind", object.getString("shop_kind"));
+                }
+
+                if (!object.has("four_pic") || null == object.getString("four_pic") || "null".equals(object.getString("supp_label"))) {
+                    resultInfo.put("four_pic", "");
+                } else {
+
+                    resultInfo.put("four_pic", object.getString("four_pic"));
                 }
 
                 // resultInfo.put("content", object.getString("content"));

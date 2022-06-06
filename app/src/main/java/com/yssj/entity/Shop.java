@@ -83,6 +83,7 @@ public class Shop implements Serializable {
     private double minshop_se_price; // Double 价格最小值 不返回数据
     private double maxshop_se_price; // Double 价格最大值 不返回数据
     private List<StockType> stocktype;
+    private List<ShopPrice> shopPriceList;
     private long shop_discount_time;
     private List<StockType> list_stock_type;// 商品库存分类 stock_type[]
     private double kickback;// 返现
@@ -95,6 +96,14 @@ public class Shop implements Serializable {
     private int cart_count;// 购物车上的商品数量
 
     private float color_count;// 色差
+
+    public List<ShopPrice> getShopPriceList() {
+        return shopPriceList;
+    }
+
+    public void setShopPriceList(List<ShopPrice> shopPriceList) {
+        this.shopPriceList = shopPriceList;
+    }
 
     public int getAdvance_sale_days() {
         return advance_sale_days;
@@ -139,6 +148,7 @@ public class Shop implements Serializable {
                 ", Shop_price=" + Shop_price +
                 ", shop_type_id=" + Arrays.toString(shop_type_id) +
                 ", shop_attr=" + shop_attr +
+//                ", supply_material_price_list=" + supply_material_price_list +
                 ", shop_se_price=" + shop_se_price +
                 ", def_pic='" + def_pic + '\'' +
                 ", shop_pic='" + shop_pic + '\'' +
@@ -250,9 +260,11 @@ public class Shop implements Serializable {
     private String banner;
     private int group_number;
     private String shop_kind;
+    private String newfour_pic;
     private String supply_end_time;
     private String supply_min_num;
     private String supply_current_num;
+    private List<SupplyMaterialPriceListDTO> supply_material_price_list;
 
     public String getSupply_min_num() {
         return supply_min_num;
@@ -284,6 +296,14 @@ public class Shop implements Serializable {
 
     public void setShop_kind(String shop_kind) {
         this.shop_kind = shop_kind;
+    }
+
+    public String getNewfour_pic() {
+        return newfour_pic;
+    }
+
+    public void setNewfour_pic(String newfour_pic) {
+        this.newfour_pic = newfour_pic;
     }
 
     public int getGroup_number() {
@@ -816,5 +836,181 @@ public class Shop implements Serializable {
 
     public void setAudit_time(String audit_time) {
         this.audit_time = audit_time;
+    }
+
+    public List<SupplyMaterialPriceListDTO> getSupply_material_price_list() {
+        return supply_material_price_list;
+    }
+
+    public void setSupply_material_price_list(List<SupplyMaterialPriceListDTO> supply_material_price_list) {
+        this.supply_material_price_list = supply_material_price_list;
+    }
+
+    public static class SupplyMaterialPriceListDTO implements Serializable {
+        private String type_name;
+        private int parent_id;
+        private int id;
+        private long create_date;
+        private int supply_material_id;
+        private int supply_material_price_list_id;
+        private int type_key;
+        private List<SupplyMaterialPriceListDTO.ChildrenDTO> children;
+
+        public String getType_name() {
+            return type_name;
+        }
+
+        public void setType_name(String type_name) {
+            this.type_name = type_name;
+        }
+
+        public int getParent_id() {
+            return parent_id;
+        }
+
+        public void setParent_id(int parent_id) {
+            this.parent_id = parent_id;
+        }
+
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+
+        public long getCreate_date() {
+            return create_date;
+        }
+
+        public void setCreate_date(long create_date) {
+            this.create_date = create_date;
+        }
+
+        public int getSupply_material_id() {
+            return supply_material_id;
+        }
+
+        public void setSupply_material_id(int supply_material_id) {
+            this.supply_material_id = supply_material_id;
+        }
+
+        public int getSupply_material_price_list_id() {
+            return supply_material_price_list_id;
+        }
+
+        public void setSupply_material_price_list_id(int supply_material_price_list_id) {
+            this.supply_material_price_list_id = supply_material_price_list_id;
+        }
+
+        public int getType_key() {
+            return type_key;
+        }
+
+        public void setType_key(int type_key) {
+            this.type_key = type_key;
+        }
+
+        public List<SupplyMaterialPriceListDTO.ChildrenDTO> getChildren() {
+            return children;
+        }
+
+        public void setChildren(List<SupplyMaterialPriceListDTO.ChildrenDTO> children) {
+            this.children = children;
+        }
+
+        public static class ChildrenDTO implements Serializable {
+            private String type_name;
+            private int parent_id;
+            private int price;
+            private int type_use;
+            private int id;
+            private long create_date;
+            private int supply_material_id;
+            private String type_value;
+            private int supply_material_price_list_id;
+            private List<?> children;
+
+            public String getType_name() {
+                return type_name;
+            }
+
+            public void setType_name(String type_name) {
+                this.type_name = type_name;
+            }
+
+            public int getParent_id() {
+                return parent_id;
+            }
+
+            public void setParent_id(int parent_id) {
+                this.parent_id = parent_id;
+            }
+
+            public int getPrice() {
+                return price;
+            }
+
+            public void setPrice(int price) {
+                this.price = price;
+            }
+
+            public int getType_use() {
+                return type_use;
+            }
+
+            public void setType_use(int type_use) {
+                this.type_use = type_use;
+            }
+
+            public int getId() {
+                return id;
+            }
+
+            public void setId(int id) {
+                this.id = id;
+            }
+
+            public long getCreate_date() {
+                return create_date;
+            }
+
+            public void setCreate_date(long create_date) {
+                this.create_date = create_date;
+            }
+
+            public int getSupply_material_id() {
+                return supply_material_id;
+            }
+
+            public void setSupply_material_id(int supply_material_id) {
+                this.supply_material_id = supply_material_id;
+            }
+
+            public String getType_value() {
+                return type_value;
+            }
+
+            public void setType_value(String type_value) {
+                this.type_value = type_value;
+            }
+
+            public int getSupply_material_price_list_id() {
+                return supply_material_price_list_id;
+            }
+
+            public void setSupply_material_price_list_id(int supply_material_price_list_id) {
+                this.supply_material_price_list_id = supply_material_price_list_id;
+            }
+
+            public List<?> getChildren() {
+                return children;
+            }
+
+            public void setChildren(List<?> children) {
+                this.children = children;
+            }
+        }
     }
 }

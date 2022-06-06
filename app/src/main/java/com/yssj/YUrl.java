@@ -1999,7 +1999,8 @@ public class YUrl {
     /**
      * 是否要去免费领 （会员）
      */
-    public static String NEED_JUM_FREE_LING = YSS_URL_ANDROID +"userVipCard/forcedJumpFreePage";//是否需要调过去免费领
+    public static String NEED_JUM_FREE_LING = YSS_URL_ANDROID +"";//是否需要调过去免费领
+//    public static String NEED_JUM_FREE_LING = YSS_URL_ANDROID +"userVipCard/forcedJumpFreePage";//是否需要调过去免费领
 
     /**
      * 查询是否是会员
@@ -2142,7 +2143,17 @@ public class YUrl {
     public static String SUPPLYMATERIAL_EXPRESS_ACTION = YSS_URL_ANDROID + "supplyMaterial/express.action";
 
     /**
-     * 修改物流
+     * 修改物流F
      */
     public static String SUPPLYMATERIAL_UPDATEEXPRESS = YSS_URL_ANDROID + "supplyMaterial/updateExpress";
+
+    /**
+     * 工价单信息
+     */
+    public static String SHOP_QUERYPRICELIST = YSS_URL_ANDROID + "shop/queryPriceList";
+
+    /**
+     * 供款查看物流
+     */
+    public static String SUPPLYMATERIAL_EXPQUERY = YSS_URL_ANDROID + "supplyMaterial/expQuery";
 }

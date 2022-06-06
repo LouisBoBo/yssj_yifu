@@ -6,6 +6,7 @@ import java.util.List;
 public class ContributionStatusBean implements Serializable {
 
     private DataDTO data;
+    private DataddressTO dataddress;
     private SupplyMaterialExpressDTO SupplyMaterialExpress;
     private String message;
     private String status;
@@ -17,6 +18,14 @@ public class ContributionStatusBean implements Serializable {
 
     public void setData(DataDTO data) {
         this.data = data;
+    }
+
+    public DataddressTO getDataddress() {
+        return dataddress;
+    }
+
+    public void setDataddress(DataddressTO dataddress) {
+        this.dataddress = dataddress;
     }
 
     public SupplyMaterialExpressDTO getSupplyMaterialExpress() {
@@ -57,6 +66,7 @@ public class ContributionStatusBean implements Serializable {
         private String shop_specification;
         private String shop_size;
         private String shop_num;
+        private String refuse;
         private int creator;
         private long create_date;
         private long update_date;
@@ -84,6 +94,14 @@ public class ContributionStatusBean implements Serializable {
 
         public void setShop_specification(String shop_specification) {
             this.shop_specification = shop_specification;
+        }
+
+        public String getRefuse() {
+            return refuse;
+        }
+
+        public void setRefuse(String refuse) {
+            this.refuse = refuse;
         }
 
         public String getShop_size() {
@@ -192,6 +210,44 @@ public class ContributionStatusBean implements Serializable {
         }
     }
 
+    public static class DataddressTO implements Serializable {
+        private int id;
+        private String address;
+        private String consignee;
+        private String phone;
+
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+
+        public String getAddress() {
+            return address;
+        }
+
+        public void setAddress(String address) {
+            this.address = address;
+        }
+
+        public String getConsignee() {
+            return consignee;
+        }
+
+        public void setConsignee(String consignee) {
+            this.consignee = consignee;
+        }
+
+        public String getPhone() {
+            return phone;
+        }
+
+        public void setPhone(String phone) {
+            this.phone = phone;
+        }
+    }
     public static class SupplyMaterialExpressDTO implements Serializable {
         private int id;
         private int creator;

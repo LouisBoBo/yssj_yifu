@@ -13,10 +13,12 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewCompat;
 import android.util.Log;
 import android.view.Gravity;
@@ -33,7 +35,9 @@ import com.google.gson.JsonObject;
 import com.yssj.YUrl;
 import com.yssj.activity.R;
 import com.yssj.app.AppManager;
+import com.yssj.custom.view.CommonLoadingView;
 import com.yssj.custom.view.FilterTitleView;
+import com.yssj.custom.view.LoadingDialog;
 import com.yssj.data.YDBHelper;
 import com.yssj.entity.ShopCart;
 import com.yssj.entity.VipDikouData;
@@ -41,6 +45,7 @@ import com.yssj.entity.VipInfo;
 import com.yssj.eventbus.MessageEvent;
 import com.yssj.network.HttpListener;
 import com.yssj.network.YConn;
+import com.yssj.ui.activity.setting.SettingActivity;
 import com.yssj.ui.activity.testfile.TestActivity;
 import com.yssj.ui.activity.testfile.UpLoadUtil;
 import com.yssj.ui.base.BasicActivity;
@@ -120,7 +125,7 @@ public class CommitContributionsActivity extends BasicActivity implements View.O
     private int select_image_id=-1;
     private int contribution_status = 999;
 
-//    private List<Integer> image_ids = new ArrayList<>();
+    //    private List<Integer> image_ids = new ArrayList<>();
     Integer[] image_ids = new Integer[6];
     Integer[] type_ids = new Integer[6];
 
@@ -132,6 +137,8 @@ public class CommitContributionsActivity extends BasicActivity implements View.O
     private static int RESULT_LOAD_IMAGE = 3;
     private static int RESULT_LOAD_PICTURE = 4;
     private static final int RESULT_OK = -1;
+
+    private CommonLoadingView loading;
 
     private Uri uriImageData;
 
@@ -184,6 +191,9 @@ public class CommitContributionsActivity extends BasicActivity implements View.O
 
     private void initView() {
         instance = this;
+        loading = new CommonLoadingView(context);
+
+
         EventBus.getDefault().register(this);
 
         Bundle bundle = this.getIntent().getExtras();
@@ -279,6 +289,7 @@ public class CommitContributionsActivity extends BasicActivity implements View.O
         if(contribution_status == 3){//如果是3显示用户已申请的供款信息
             initContributionStatusData();
         }
+
     }
 
     //获取供款状态-供款信息
@@ -396,63 +407,63 @@ public class CommitContributionsActivity extends BasicActivity implements View.O
             show_image6.setVisibility(View.GONE);
         }else {
             switch (v.getId()) {
-            case R.id.img_back:
-                onBackPressed();
-                break;
-            case R.id.submit:
-                submitData();
-                break;
-            case R.id.add_image1:
-                select_image_index =1;
-                selectPicDialog(v);
-                break;
-            case R.id.add_image2:
-                select_image_index =2;
-                selectPicDialog(v);
-                break;
-            case R.id.add_image3:
-                select_image_index =3;
-                selectPicDialog(v);
-                break;
-            case R.id.add_image4:
-                select_image_index =4;
-                selectPicDialog(v);
-                break;
-            case R.id.add_image5:
-                select_image_index =5;
-                selectPicDialog(v);
-                break;
-            case R.id.add_image6:
-                select_image_index =6;
-                selectPicDialog(v);
-                break;
-            case R.id.explain_limit:
-                Intent intent = new Intent(context, ScanEeamplesActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.zhedie_base:
-                zhedie_view.setSelected(!zhedie_view.isSelected());
-                type_view.setVisibility(zhedie_view.isSelected()?View.INVISIBLE:View.VISIBLE);
-                size_view.setVisibility(zhedie_view.isSelected()?View.INVISIBLE:View.VISIBLE);
-                break;
-            case R.id.type_base:
-                Intent intent1 = new Intent(context, ContributionClassActivity.class);
-                Bundle bundleSimple1 = new Bundle();
-                bundleSimple1.putString("type", "1");
-                intent1.putExtras(bundleSimple1);
+                case R.id.img_back:
+                    onBackPressed();
+                    break;
+                case R.id.submit:
+                    submitData();
+                    break;
+                case R.id.add_image1:
+                    select_image_index =1;
+                    selectPicDialog(v);
+                    break;
+                case R.id.add_image2:
+                    select_image_index =2;
+                    selectPicDialog(v);
+                    break;
+                case R.id.add_image3:
+                    select_image_index =3;
+                    selectPicDialog(v);
+                    break;
+                case R.id.add_image4:
+                    select_image_index =4;
+                    selectPicDialog(v);
+                    break;
+                case R.id.add_image5:
+                    select_image_index =5;
+                    selectPicDialog(v);
+                    break;
+                case R.id.add_image6:
+                    select_image_index =6;
+                    selectPicDialog(v);
+                    break;
+                case R.id.explain_limit:
+                    Intent intent = new Intent(context, ScanEeamplesActivity.class);
+                    startActivity(intent);
+                    break;
+                case R.id.zhedie_base:
+                    zhedie_view.setSelected(!zhedie_view.isSelected());
+                    type_view.setVisibility(zhedie_view.isSelected()?View.INVISIBLE:View.VISIBLE);
+                    size_view.setVisibility(zhedie_view.isSelected()?View.INVISIBLE:View.VISIBLE);
+                    break;
+                case R.id.type_base:
+                    Intent intent1 = new Intent(context, ContributionClassActivity.class);
+                    Bundle bundleSimple1 = new Bundle();
+                    bundleSimple1.putString("type", "1");
+                    intent1.putExtras(bundleSimple1);
 
-                startActivity(intent1);
-                break;
-            case R.id.size_base:
-                Intent intent2 = new Intent(context, ContributionClassActivity.class);
-                Bundle bundleSimple2 = new Bundle();
-                bundleSimple2.putString("type", "2");
-                intent2.putExtras(bundleSimple2);
-                startActivity(intent2);
-                break;
-            default:
-                break;
-        }
+                    startActivity(intent1);
+                    break;
+                case R.id.size_base:
+                    Intent intent2 = new Intent(context, ContributionClassActivity.class);
+                    Bundle bundleSimple2 = new Bundle();
+                    bundleSimple2.putString("type", "2");
+                    intent2.putExtras(bundleSimple2);
+                    startActivity(intent2);
+                    break;
+                default:
+                    break;
+            }
         }
 
     }
@@ -536,9 +547,11 @@ public class CommitContributionsActivity extends BasicActivity implements View.O
                 if(contribution_status == 3) {
                     ToastUtil.showShortText2("修改成功");
                 }else {
-                    Intent intent = new Intent(context, ContributionStatusActivity.class);
-                    startActivity(intent);
+                    ToastUtil.showShortText2("提交成功");
                 }
+
+                Intent intent = new Intent(context, ContributionStatusActivity.class);
+                startActivity(intent);
             }
 
             @Override
@@ -588,18 +601,33 @@ public class CommitContributionsActivity extends BasicActivity implements View.O
     }
 
     private void takePicFromGallery() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN &&
-                ActivityCompat.checkSelfPermission(context, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
-        ) {
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN &&
+//                ActivityCompat.checkSelfPermission(context, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
+//        ) {
+//
+//            String[] permissions = new String[2];
+//            permissions[0] = Manifest.permission.READ_EXTERNAL_STORAGE;
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//                this.requestPermissions(permissions, TAKE_GALLERY_PERMISSION_REQUEST_CODE);
+//            }
+//            return;
+//        }
 
+
+        //相机的话 相机权限和存储权限都需要
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN &&
+                (ActivityCompat.checkSelfPermission(context, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED
+                        || ActivityCompat.checkSelfPermission(context, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
+                )
+        ) {
             String[] permissions = new String[2];
-            permissions[0] = Manifest.permission.READ_EXTERNAL_STORAGE;
+            permissions[0] = Manifest.permission.CAMERA;
+            permissions[1] = Manifest.permission.READ_EXTERNAL_STORAGE;
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 this.requestPermissions(permissions, TAKE_GALLERY_PERMISSION_REQUEST_CODE);
             }
             return;
         }
-
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             ArrayList<String> mimeTypes = new ArrayList();
@@ -680,18 +708,14 @@ public class CommitContributionsActivity extends BasicActivity implements View.O
                         );
                     }
 
-                    new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            try {
-                                UpLoadPic(uriImageData);
-                                uriList.add(uriImageData);
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
+                    loading.show();
+                    try {
+                        UpLoadPic(uriImageData);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    uriList.add(uriImageData);
 
-                        }
-                    }).start();
 
                     break;
                 case TAKE_GALLERY_PIC_FILE_REQUEST_CODE:
@@ -738,19 +762,14 @@ public class CommitContributionsActivity extends BasicActivity implements View.O
 //                    }
 
 
-                    new Thread(new Runnable() {
-                        @Override
-                        public void run() {
+                    loading.show();
+                    try {
+                        UpLoadPic(gallerySelectUrl);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    uriList.add(gallerySelectUrl);
 
-                            try {
-                                UpLoadPic(gallerySelectUrl);
-                                uriList.add(gallerySelectUrl);
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-
-                        }
-                    }).start();
                     break;
                 default:
 
@@ -773,16 +792,20 @@ public class CommitContributionsActivity extends BasicActivity implements View.O
         UpLoadUtil.uploadImage(context,material_type,img_path, new UpLoadUtil.UpLoadImgListener() {
             @Override
             public void upLoadSuccess(int imgId) {
+                myHandler.sendEmptyMessage(123);
+
                 select_image_id = imgId;
-                Log.i("sfakfa", "upLoadSuccess: ");
-//                ToastUtil.showShortText2("上传成功");
                 image_ids[select_image_index-1] = select_image_id;
+
+
+                Log.i("sfakfa", "upLoadSuccess: ");
             }
 
             @Override
             public void upLoadFail() {
+
+                myHandler.sendEmptyMessage(123);
                 Log.i("fajfaj", "upLoadFail: ");
-//                ToastUtil.showShortText2("上传失败");
             }
         });
     }
@@ -792,19 +815,14 @@ public class CommitContributionsActivity extends BasicActivity implements View.O
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case 123:
-//                    image_ids[select_image_index-1] = select_image_id;
-                    try {
-                        UpLoadPic(uriImageData);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    uriList.add(uriImageData);
+                    loading.dismiss();
                     break;
             }
 
             super.handleMessage(msg);
         }
     };
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {

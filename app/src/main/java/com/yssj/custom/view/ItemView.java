@@ -252,7 +252,8 @@ public class ItemView extends LinearLayout {
 //			tv_price.setText("¥"+GuideActivity.oneShopPrice);
 
 
-        String onPrice = map.get("app_shop_group_price") + "";
+//        String onPrice = map.get("app_shop_group_price") + "";
+        String onPrice = map.get("shop_se_price") + "";//CHANGE_DO
         onPrice = new java.text.DecimalFormat("#0.0")
                 .format(Double.parseDouble(onPrice));
         tv_price.setText("¥"+onPrice );

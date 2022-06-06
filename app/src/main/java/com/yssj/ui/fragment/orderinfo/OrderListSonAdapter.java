@@ -302,9 +302,11 @@ public class OrderListSonAdapter extends BaseAdapter {
 //                    intent.putExtra("isSignActiveShop", true);
                     context.startActivity(intent);
                     ((Activity) context).overridePendingTransition(R.anim.slide_left_in, R.anim.slide_left_out);
-                } else if (order.getShop_from() == 1) {
-                    ToastUtil.showShortText(context, "商品已下架");
-                } else {
+                }
+//                else if (order.getShop_from() == 1) {
+//                    ToastUtil.showShortText(context, "商品已下架");
+//                }
+                else {
                     if (order.getShop_from() == 4 || 6 == order.getShop_from()) {
 //						ToastUtil.showLongText(context, "请在签到界面—夺宝记录中进行查看！");
                         return;

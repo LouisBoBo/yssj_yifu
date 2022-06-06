@@ -50,6 +50,217 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="15dp"
         android:orientation="vertical" >
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/base_price_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/iv_price"
+            android:layout_width="109dp"
+            android:layout_height="38dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/price_detail" />
+
+        <LinearLayout
+            android:id="@+id/price_head"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="#a8a8a8">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="2">
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:text="项目"
+                    android:textSize="@dimen/tv_size12" />
+
+                <TextView
+                    android:id="@+id/tv_size1"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:text="名称"
+                    android:textSize="@dimen/tv_size12" />
+
+                <TextView
+                    android:id="@+id/tv_size2"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:text="单价"
+                    android:textSize="@dimen/tv_size12" />
+
+                <TextView
+                    android:id="@+id/tv_size3"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:text="用量"
+                    android:textSize="@dimen/tv_size12" />
+
+                <TextView
+                    android:id="@+id/tv_size4"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:text="价格"
+                    android:textSize="@dimen/tv_size12" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:orientation="horizontal"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/tv_size5"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:text="服装样式"
+                    android:textSize="@dimen/tv_size12" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/baseviewContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                android:id="@+id/priceViewContainer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="2dp"
+                android:paddingRight="2dp"
+                android:paddingTop="2dp"
+                android:background="@drawable/background_white_gray"
+                android:layout_weight="2">
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/detailViewContainer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="-2dp"
+                android:background="@drawable/background_white_gray"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/tv_detail_shop_code"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/margin30"
+                    android:gravity="center"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:text=""/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#f6f6f6"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginLeft="2dp"/>
+
+                <ImageView
+                    android:id="@+id/detail_shop_img"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#f6f6f6"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/margin30"
+                    android:gravity="center"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:background="#f6f6f6"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginLeft="2dp"
+                    android:text="成本价"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#f6f6f6"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center|bottom"
+                    android:paddingTop="@dimen/margin25"
+                    android:paddingBottom="@dimen/margin30"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/tv_size12"
+                        android:textColor="@color/black"
+                        android:text="￥"/>
+
+                    <TextView
+                        android:id="@+id/tv_detail_shop_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:textStyle="bold"
+                        android:textSize="@dimen/tv_size20"
+                        android:textColor="@color/black"
+                        android:text=""/>
+
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+        </LinearLayout>
     </LinearLayout>
 
     <ImageView

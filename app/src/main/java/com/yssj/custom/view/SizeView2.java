@@ -4,22 +4,26 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import com.umeng.socialize.utils.Log;
+import com.bumptech.glide.Glide;
 import com.yssj.YConstance.SizeIndex;
+import com.yssj.YUrl;
 import com.yssj.activity.R;
 import com.yssj.data.YDBHelper;
 import com.yssj.entity.Shop;
-import com.yssj.utils.LogYiFu;
+import com.yssj.entity.ShopPrice;
 
 import android.content.Context;
 import android.graphics.Color;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.AbsListView;
 import android.widget.BaseAdapter;
+import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -30,6 +34,9 @@ public class SizeView2 extends LinearLayout {
 
 	private TextView tv_shopconnect;
 	private LinearLayout viewContainer;
+	private LinearLayout priceviewContainer;
+	private LinearLayout detailViewContainer;
+	private LinearLayout basepriceviewContainer;
 
 	private Shop shop;
 
@@ -45,6 +52,12 @@ public class SizeView2 extends LinearLayout {
 	private TextView tv_shop_code;
 	private LinearLayout mLlFristRow;
 	private TextView mRowLong, mRowShort;
+
+	private TextView order_shop_code;
+	private ImageView order_shop_img;
+	private TextView order_shop_price;
+	private TextView tv_name;
+
 	// private MyGridAdapter adapter1,adapter2,adapter3;
 
 	public SizeView2(Context context, AttributeSet attrs) {
@@ -55,7 +68,11 @@ public class SizeView2 extends LinearLayout {
 		mLlFristRow = (LinearLayout) findViewById(R.id.size_ll_frist_row);
 		mRowLong = (TextView) findViewById(R.id.size_tag_item_long);
 		mRowShort = (TextView) findViewById(R.id.size_tag_item_short);
+		tv_name = (TextView) findViewById(R.id.tv_name);
 		viewContainer = (LinearLayout) findViewById(R.id.viewContainer);
+		priceviewContainer = (LinearLayout) findViewById(R.id.priceViewContainer);
+		detailViewContainer = (LinearLayout) findViewById(R.id.detailViewContainer);
+		basepriceviewContainer = (LinearLayout) findViewById(R.id.base_price_view);
 
 		tv_shopconnect = (TextView) findViewById(R.id.tv_shopconnect);
 
@@ -67,6 +84,10 @@ public class SizeView2 extends LinearLayout {
 		content = (TextView) findViewById(R.id.content);
 		tv_shop_code = (TextView) findViewById(R.id.tv_shop_code);
 		isRefresh = true;
+
+		order_shop_code = findViewById(R.id.tv_detail_shop_code);
+		order_shop_img = (ImageView)findViewById(R.id.detail_shop_img);
+		order_shop_price = findViewById(R.id.tv_detail_shop_price);
 	}
 
 	public void setContent(Shop shop, boolean isMeal, int position) {
@@ -76,6 +97,18 @@ public class SizeView2 extends LinearLayout {
 			tv_shopconnect.setText(shop.getContent());
 			tv_shop_code.setText("商品编号:" + shop.getShop_code());
 		}
+
+		if(shop !=null && shop.getNewfour_pic() != null){
+			order_shop_code.setText(String.valueOf(shop.getShop_code()));
+			order_shop_price.setText(String.valueOf(shop.getShop_se_price()));
+
+			String four_pic = shop.getNewfour_pic() + "";
+			String pic = YUrl.imgurl + shop.getShop_code().substring(1, 4) + "/" + shop.getShop_code() + "/" + four_pic.split(",")[2] + "!280";
+
+			String url = YUrl.imgurl + shop.getShop_code().substring(1, 4) + "/" + shop.getShop_code() + "/" + shop.getDef_pic();
+			Glide.with(context).load(pic).into(order_shop_img);
+		}
+
 		if (isRefresh) {
 			isRefresh = false;
 			if (isMeal) {
@@ -234,6 +267,11 @@ public class SizeView2 extends LinearLayout {
 
 				// sizeTag.setAdapter(new MyGridAdapter(list));
 				refreshSFView();
+
+				if(shop.getShop_kind() !=null && shop.getShop_kind().equals("1") && shop.getShopPriceList() !=null && shop.getShopPriceList().size()>0){
+					basepriceviewContainer.setVisibility(VISIBLE);
+					refreshPriceView();
+				}
 			}
 			/**
 			 * switch (position) { case 0: {
@@ -300,7 +338,15 @@ public class SizeView2 extends LinearLayout {
 		}
 	}
 
-	private void addView(LinearLayout container, List<String[]> listAll) {
+	private void addView(LinearLayout container, List<String[]> listAll,boolean isdel) {
+
+		if(listAll.size()>4 && isdel) {
+			listAll.remove(listAll.size() - 1);
+			listAll.remove(listAll.size() - 1);
+			listAll.remove(listAll.size() - 1);
+			listAll.remove(listAll.size() - 1);
+		}
+
 		container.removeAllViews();
 		int countUse = 0;
 		LayoutInflater inflater = LayoutInflater.from(context);
@@ -385,6 +431,164 @@ public class SizeView2 extends LinearLayout {
 		}
 	}
 
+	private void addPriceListView(LinearLayout container){
+
+		List<List<String>> mlist = new ArrayList<>();
+		int k = 0;
+		for (ShopPrice shopPrice : shop.getShopPriceList()) {
+
+			List<String> mStrings = new ArrayList<>();
+			String titlename = shopPrice.getType_name().toString();
+			mStrings.add(titlename);
+			int allprice =0;
+			for (ShopPrice.ChildrenDTO child : shopPrice.getChildren()) {
+				mStrings.add(child.getType_name());
+				mStrings.add(String.valueOf(child.getPrice()));
+				mStrings.add(String.valueOf(child.getType_use()));
+
+				int totalprice = child.getPrice()*child.getType_use();
+				allprice += totalprice;
+				mStrings.add(String.valueOf(totalprice));
+			}
+
+
+
+			if(k == 0 ){
+				if(shopPrice.getChildren().size()>1){
+					mStrings.add("小计");
+					mStrings.add("");
+					mStrings.add("");
+					mStrings.add(String.valueOf(allprice));
+				}else if(shopPrice.getChildren().size()==1) {
+					mStrings.add("-");
+					mStrings.add("-");
+					mStrings.add("-");
+					mStrings.add("-");
+
+					mStrings.add("小计");
+					mStrings.add("");
+					mStrings.add("");
+					mStrings.add(String.valueOf(allprice));
+				}
+
+			}else if(k == 1){
+				mStrings.add("小计");
+				mStrings.add("");
+				mStrings.add("");
+				mStrings.add(String.valueOf(allprice));
+			}else {
+				if(shopPrice.getChildren().size()>1) {
+					mStrings.add("小计");
+					mStrings.add("");
+					mStrings.add("");
+					mStrings.add(String.valueOf(allprice));
+				}
+			}
+
+			k ++ ;
+			mlist.add(mStrings);
+		}
+
+		LayoutInflater inflater = LayoutInflater.from(context);
+
+		WindowManager wm = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
+		int width = wm.getDefaultDisplay().getWidth();
+		int new_head_width = dip2px(context,30);
+		int space_heigh = dip2px(context,2);
+
+		for(int i=0;i<mlist.size();i++){
+
+			View convertView = inflater.inflate(R.layout.listview_price, null);
+
+			GridLayout gridLayout = (GridLayout) convertView.findViewById(R.id.GirdLayout1);
+			// 7行   5列
+			gridLayout.setColumnCount(5);
+			gridLayout.setRowCount(7);
+
+
+
+
+			for(int j=0;j<mlist.get(i).size();j++){
+				TextView textView = new TextView(context);
+				GridLayout.LayoutParams params = new GridLayout.LayoutParams();
+
+				// 设置行列下标，和比重
+//				params.rowSpec = GridLayout.spec((j+1)/5,1f);
+//				params.columnSpec = GridLayout.spec((j+1)%5,1f);
+
+				// 背景
+				textView.setBackgroundColor(Color.WHITE);
+				textView.setTextColor(Color.BLACK);
+
+
+
+				// 字体颜色
+				if(j == 0)
+				{
+					textView.setBackgroundColor(Color.parseColor("#a8a8a8"));
+					textView.setTextColor(Color.WHITE);
+					textView.setTextSize(11);
+					textView.setPadding(15,0,15,0);
+					params.rowSpec = GridLayout.spec((j+3)/4,6,1f);
+					params.width = new_head_width;
+
+				}else {
+
+					params.width = (width*2/3-new_head_width-10)/4;
+
+					textView.setTextSize(10);
+					textView.setBackgroundColor(Color.parseColor("#ffffff"));
+
+					if(mlist.get(i).size() >5){
+						textView.setPadding(0,10,0,10);
+					}else {
+						textView.setPadding(0,40,0,40);
+					}
+				}
+
+
+				// 居中显示
+				textView.setGravity(Gravity.CENTER);
+
+				// 设置边距
+//				if(j/5 == 0){
+//					params.setMargins(1,5,1,0);
+//				}else {
+//					params.setMargins(1,1,1,1);
+//				}
+				if (i == 0) {
+
+					if(j <5){
+						params.setMargins(1, 0, 1, 1);
+					}else {
+						params.setMargins(1,0,1,1);
+					}
+				}else {
+					if(j <5){
+						if(j==0){
+							params.setMargins(1, space_heigh, 1, 0);
+						}else {
+							params.setMargins(1, space_heigh, 1, 0);
+						}
+					}else {
+						params.setMargins(1,1,1,0);
+					}
+				}
+
+
+
+				// 设置文字
+				textView.setText(mlist.get(i).get(j));
+
+				// 添加item
+				gridLayout.addView(textView,params);
+
+			}
+
+			container.addView(convertView);
+		}
+	}
+
 	private class MyGridAdapter extends BaseAdapter {
 		private List<HashMap<String, String>> list;
 
@@ -424,6 +628,9 @@ public class SizeView2 extends LinearLayout {
 
 	}
 
+	private void refreshPriceView(){
+		addPriceListView(priceviewContainer);//处理工价单
+	}
 	private void refreshSFView() {
 		int l = 0;
 
@@ -450,7 +657,7 @@ public class SizeView2 extends LinearLayout {
 			lSize++;
 		}
 		List<String[]> listAll = toList(lSize, listSize);
-		addView(viewContainer, listAll);
+		addView(viewContainer, listAll,true);//处理尺码
 	}
 
 	private List<String[]> toList(int lSize, List<String[]> list) {
@@ -491,4 +698,10 @@ public class SizeView2 extends LinearLayout {
 		return arrayList;
 
 	}
+
+	public static int dip2px(Context context, float dpValue) {
+		final float scale = context.getResources().getDisplayMetrics().density;
+		return (int) (dpValue * scale + 0.5f);
+	}
+
 }

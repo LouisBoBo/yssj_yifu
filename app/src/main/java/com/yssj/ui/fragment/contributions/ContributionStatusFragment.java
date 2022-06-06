@@ -42,11 +42,13 @@ public class ContributionStatusFragment extends Fragment implements View.OnClick
     private TextView head_title;
     private TextView head_content1;
     private TextView head_content2;
+    private TextView head_content3;
     private ImageView address_img;
     private TextView submit_tv2;
     private TextView submit_tv1;
     private View status_base;
     private View content_base;
+    private View spack_base;
     private View bottom_base;
     private View status_jian;
     private View status_photo;
@@ -94,6 +96,7 @@ public class ContributionStatusFragment extends Fragment implements View.OnClick
     private String express_company = "";
     private String express_num = "";
     private int getExpress_id = 0;
+    private ContributionStatusBean contributionStatusBean;
 
     public static ContributionStatusFragment newInstances(Context context, String jumpFrom) {
         mJumpFrom = jumpFrom;
@@ -115,12 +118,14 @@ public class ContributionStatusFragment extends Fragment implements View.OnClick
         head_title = v.findViewById(R.id.head_title);
         head_content1 = v.findViewById(R.id.content1);
         head_content2 = v.findViewById(R.id.content2);
+        head_content3 = v.findViewById(R.id.content3);
         address_img = v.findViewById(R.id.adress_img);
         submit_tv1 = v.findViewById(R.id.submit1);
         submit_tv2 = v.findViewById(R.id.submit2);
         status_base = v.findViewById(R.id.status_base);
         content_base = v.findViewById(R.id.base_content);
         bottom_base = v.findViewById(R.id.base_bottom);
+        spack_base = v.findViewById(R.id.base_spack);
         status_jian = v.findViewById(R.id.status_jian);
         status_update = v.findViewById(R.id.status_update);
         status_pintuan = v.findViewById(R.id.status_pintuan);
@@ -194,10 +199,10 @@ public class ContributionStatusFragment extends Fragment implements View.OnClick
         back_s.setOnClickListener(this);
         yongjin_s.setOnClickListener(this);
 
-        String status = SharedPreferencesUtil.getStringData(mContext,"contribution_status","");
-        contribution_status = Integer.parseInt(status);
+//        String status = SharedPreferencesUtil.getStringData(mContext,"contribution_status","");
+//        contribution_status = Integer.parseInt(status);
 
-        initView();
+//        initView();
 
         initContributionStatusData();
 
@@ -221,13 +226,15 @@ public class ContributionStatusFragment extends Fragment implements View.OnClick
 
             content_base.setVisibility(View.VISIBLE);
             bottom_base.setVisibility(View.VISIBLE);
+            head_content2.setVisibility(View.VISIBLE);
+            head_content3.setVisibility(View.VISIBLE);
+            address_img.setVisibility(View.VISIBLE);
 
             head_title.setText("审核成功");
-            head_content2.setVisibility(View.VISIBLE);
             head_img.setImageResource(R.drawable.shenhe_success_status);
             head_content1.setText("请将您的样衣快递到以下地址");
-            head_content2.setText("深圳市 南区区登良路恒裕中心B座408");
-            address_img.setVisibility(View.VISIBLE);
+            head_content2.setText(contributionStatusBean.getDataddress().getAddress());
+            head_content3.setText("收件人：" + contributionStatusBean.getDataddress().getConsignee() + "  " + "联系电话：" +contributionStatusBean.getDataddress().getPhone());
             submit_tv2.setText("立即去发样衣");
 
 
@@ -235,6 +242,7 @@ public class ContributionStatusFragment extends Fragment implements View.OnClick
 
             content_base.setVisibility(View.VISIBLE);
             bottom_base.setVisibility(View.VISIBLE);
+
             head_title.setText("审核拒绝");
             head_img.setImageResource(R.drawable.shenhe_jujue_status);
             head_content1.setText("您的申请不通过，您可以更换别的样衣再次申请");
@@ -248,7 +256,7 @@ public class ContributionStatusFragment extends Fragment implements View.OnClick
             head_title.setText("您的样衣图片上传不合格");
             head_content2.setVisibility(View.VISIBLE);
             head_img.setImageResource(R.drawable.shenhe_jujue_status);
-            head_content1.setText("具体原因：面料和辅料图拍糊了，请重新上传");
+            head_content1.setText("具体原因："+contributionStatusBean.getData().getRefuse());
             head_content2.setText("请您修改不合格图片再次上传");
             submit_tv2.setText("修改样衣图");
 
@@ -256,17 +264,20 @@ public class ContributionStatusFragment extends Fragment implements View.OnClick
 
             content_base.setVisibility(View.VISIBLE);
             bottom_base.setVisibility(View.VISIBLE);
+            address_img.setVisibility(View.GONE);
 
             head_title.setText("物流运输中");
             submit_tv1.setVisibility(View.VISIBLE);
             head_content1.setVisibility(View.GONE);
             head_content2.setVisibility(View.GONE);
+            head_content3.setVisibility(View.GONE);
+
             submit_tv1.setText("查看物流");
             submit_tv2.setText("修改物流");
             head_img.setImageResource(R.drawable.shenhezhong_status);
         }else {
             if(getContribution_flow.equals("全成功")){
-                if(contribution_status == 0 || contribution_status == 5 || contribution_status == 9 || contribution_status == 11 || contribution_status == 14 || contribution_status == 98 || contribution_status == 12 || contribution_status == 99 || contribution_status == -1){//全成功
+                if(contribution_status == 0 || contribution_status == 8 || contribution_status == 9 || contribution_status == 18 || contribution_status == 14 || contribution_status == 15 || contribution_status == 16 || contribution_status == 99 || contribution_status == -1){//全成功
                     status_base.setVisibility(View.VISIBLE);
 
                     switch (contribution_status){
@@ -275,7 +286,7 @@ public class ContributionStatusFragment extends Fragment implements View.OnClick
 
                             jian_text.setTextColor(Color.parseColor("#ff3f8b"));
                             break;
-                        case 5:
+                        case 8:
                             jian_img.setImageResource(R.drawable.status_jian_normal);
                             photo_img.setImageResource(R.drawable.status_photo_success);
 
@@ -293,7 +304,7 @@ public class ContributionStatusFragment extends Fragment implements View.OnClick
 
                             update_s.setVisibility(View.VISIBLE);
                             break;
-                        case 11:
+                        case 18:
                             jian_img.setImageResource(R.drawable.status_jian_normal);
                             photo_img.setImageResource(R.drawable.status_photo_success);
                             update_img.setImageResource(R.drawable.status_update_success);
@@ -303,6 +314,8 @@ public class ContributionStatusFragment extends Fragment implements View.OnClick
                             photo_text.setTextColor(Color.parseColor("#ff3f8b"));
                             update_text.setTextColor(Color.parseColor("#ff3f8b"));
                             piantuan_text.setTextColor(Color.parseColor("#ff3f8b"));
+
+                            update_s.setVisibility(View.VISIBLE);
 
                             break;
                         case 14:
@@ -318,8 +331,10 @@ public class ContributionStatusFragment extends Fragment implements View.OnClick
                             piantuan_text.setTextColor(Color.parseColor("#ff3f8b"));
                             success_text.setTextColor(Color.parseColor("#ff3f8b"));
 
+                            update_s.setVisibility(View.VISIBLE);
+
                             break;
-                        case 98:
+                        case 15:
                             jian_img.setImageResource(R.drawable.status_jian_normal);
                             photo_img.setImageResource(R.drawable.status_photo_success);
                             update_img.setImageResource(R.drawable.status_update_success);
@@ -334,8 +349,10 @@ public class ContributionStatusFragment extends Fragment implements View.OnClick
                             success_text.setTextColor(Color.parseColor("#ff3f8b"));
                             daba_text.setTextColor(Color.parseColor("#ff3f8b"));
 
+                            update_s.setVisibility(View.VISIBLE);
+
                             break;
-                        case 12:
+                        case 16:
                             jian_img.setImageResource(R.drawable.status_jian_normal);
                             photo_img.setImageResource(R.drawable.status_photo_success);
                             update_img.setImageResource(R.drawable.status_update_success);
@@ -352,6 +369,7 @@ public class ContributionStatusFragment extends Fragment implements View.OnClick
                             daba_text.setTextColor(Color.parseColor("#ff3f8b"));
                             back_text.setTextColor(Color.parseColor("#ff3f8b"));
 
+                            update_s.setVisibility(View.VISIBLE);
                             back_s.setVisibility(View.VISIBLE);
 
                             break;
@@ -374,7 +392,10 @@ public class ContributionStatusFragment extends Fragment implements View.OnClick
                             back_text.setTextColor(Color.parseColor("#ff3f8b"));
                             yongjin_text.setTextColor(Color.parseColor("#ff3f8b"));
 
+                            update_s.setVisibility(View.VISIBLE);
+                            back_s.setVisibility(View.VISIBLE);
                             yongjin_s.setVisibility(View.VISIBLE);
+
                             break;
 
                         case -1:
@@ -397,11 +418,20 @@ public class ContributionStatusFragment extends Fragment implements View.OnClick
                             back_text.setTextColor(Color.parseColor("#ff3f8b"));
                             yongjin_text.setTextColor(Color.parseColor("#ff3f8b"));
                             end_text.setTextColor(Color.parseColor("#ff3f8b"));
+
+                            update_s.setVisibility(View.VISIBLE);
+                            back_s.setVisibility(View.VISIBLE);
+                            yongjin_s.setVisibility(View.VISIBLE);
+                            bottom_base.setVisibility(View.VISIBLE);
+                            spack_base.setVisibility(View.VISIBLE);
+
+                            submit_tv2.setText("我知道了");
+
                             break;
                     }
                 }
             }else if(getContribution_flow.equals("验衣失败")){
-                if(contribution_status == 0 || contribution_status == 6 || contribution_status == 12 || contribution_status == -1){//验衣失败
+                if(contribution_status == 0 || contribution_status == 6 || contribution_status == 17 || contribution_status == -1){//验衣失败
 
                     status_base.setVisibility(View.VISIBLE);
 
@@ -427,7 +457,7 @@ public class ContributionStatusFragment extends Fragment implements View.OnClick
                             jian_text.setTextColor(Color.parseColor("#ff3f8b"));
                             success_text.setTextColor(Color.parseColor("#ff3f8b"));
                             break;
-                        case 12:
+                        case 17:
                             jian_img.setImageResource(R.drawable.status_jian_normal);
                             success_img.setImageResource(R.drawable.status_fail);
                             back_img.setImageResource(R.drawable.status_back_success);
@@ -439,6 +469,7 @@ public class ContributionStatusFragment extends Fragment implements View.OnClick
                             back_s.setVisibility(View.VISIBLE);
                             break;
                         case -1:
+
                             jian_img.setImageResource(R.drawable.status_jian_normal);
                             success_img.setImageResource(R.drawable.status_fail);
                             back_img.setImageResource(R.drawable.status_back_success);
@@ -448,13 +479,19 @@ public class ContributionStatusFragment extends Fragment implements View.OnClick
                             success_text.setTextColor(Color.parseColor("#ff3f8b"));
                             back_text.setTextColor(Color.parseColor("#ff3f8b"));
                             end_text.setTextColor(Color.parseColor("#ff3f8b"));
+
+
+                            bottom_base.setVisibility(View.VISIBLE);
+                            back_s.setVisibility(View.VISIBLE);
+
+                            submit_tv2.setText("我知道了");
                             break;
 
                     }
 
                 }
             }else if(getContribution_flow.equals("拼单失败")){
-                if(contribution_status == 0 || contribution_status == 5 || contribution_status == 9 || contribution_status == 11 ||contribution_status == 13 || contribution_status == 12 || contribution_status == -1){//拼团失败
+                if(contribution_status == 0 || contribution_status == 8 || contribution_status == 9 || contribution_status == 18 ||contribution_status == 13 || contribution_status == 12 || contribution_status == -1){//拼团失败
 
                     status_base.setVisibility(View.VISIBLE);
 
@@ -471,7 +508,7 @@ public class ContributionStatusFragment extends Fragment implements View.OnClick
                             jian_text.setTextColor(Color.parseColor("#ff3f8b"));
 
                             break;
-                        case 5:
+                        case 8:
                             jian_img.setImageResource(R.drawable.status_jian_normal);
                             photo_img.setImageResource(R.drawable.status_photo_success);
 
@@ -489,7 +526,7 @@ public class ContributionStatusFragment extends Fragment implements View.OnClick
 
                             update_s.setVisibility(View.VISIBLE);
                             break;
-                        case 11:
+                        case 18:
                             jian_img.setImageResource(R.drawable.status_jian_normal);
                             photo_img.setImageResource(R.drawable.status_photo_success);
                             update_img.setImageResource(R.drawable.status_update_success);
@@ -550,6 +587,12 @@ public class ContributionStatusFragment extends Fragment implements View.OnClick
                             success_text.setTextColor(Color.parseColor("#ff3f8b"));
                             back_text.setTextColor(Color.parseColor("#ff3f8b"));
                             end_text.setTextColor(Color.parseColor("#ff3f8b"));
+
+                            back_s.setVisibility(View.VISIBLE);
+                            bottom_base.setVisibility(View.VISIBLE);
+                            spack_base.setVisibility(View.VISIBLE);
+
+                            submit_tv2.setText("我知道了");
                             break;
                     }
                 }
@@ -577,7 +620,7 @@ public class ContributionStatusFragment extends Fragment implements View.OnClick
         }else if(view == submit_tv2 && submit_tv2.getText().toString().contains("修改物流")){
             showDeliverDialog();
         }else if(view == submit_tv2 && submit_tv2.getText().toString().contains("我知道了")){
-            if(contribution_status == 2){//审核拒绝重新审核
+            if(contribution_status == 2 || contribution_status == -1){//审核拒绝重新审核
 //                Intent intent = new Intent(mContext, CommitContributionsActivity.class);
 //                startActivity(intent);
 
@@ -591,7 +634,8 @@ public class ContributionStatusFragment extends Fragment implements View.OnClick
                 getActivity().finish();
         }else if(view == submit_tv1 && submit_tv1.getText().toString().contains("查看物流")){
 
-            if(express_company.length()>0 && express_num.length()>0) {
+            if(express_company.length()>0 && express_num.length()>0)
+            {
                 Intent intent = new Intent(mContext, ContributionsLogisticsActivity.class);
                 Bundle bundleSimple = new Bundle();
                 bundleSimple.putString("name", express_company);
@@ -663,6 +707,7 @@ public class ContributionStatusFragment extends Fragment implements View.OnClick
         pairsMap.put("expressName",com);
         pairsMap.put("expressNum",num);
         pairsMap.put("id",id);
+        pairsMap.put("company",getLogisticType(com));
 
         submit_tv1.setVisibility(View.VISIBLE);
         head_content1.setVisibility(View.GONE);
@@ -708,6 +753,7 @@ public class ContributionStatusFragment extends Fragment implements View.OnClick
         pairsMap.put("expressName",com);
         pairsMap.put("expressNum",num);
         pairsMap.put("id",String.valueOf(getExpress_id));
+        pairsMap.put("company",getLogisticType(com));
 
         YConn.httpPost(getActivity(), YUrl.SUPPLYMATERIAL_UPDATEEXPRESS, pairsMap, new HttpListener<ContributionStatusBean>() {
             @Override
@@ -732,10 +778,11 @@ public class ContributionStatusFragment extends Fragment implements View.OnClick
             public void onSuccess(ContributionStatusBean result) {
                 SharedPreferencesUtil.saveStringData(getActivity(), "id", result.getData().getId()+"");
 
+                contributionStatusBean = result;
                 if(result.getData() != null){
                     contribution_status = result.getData().getStatus();
                     contribution_shop_num = result.getData().getShop_num();
-//                    contribution_status = 2;//测试用
+//                    contribution_status = 3;//测试用
                 }
 
                 if(result.getSupplyMaterialExpress() != null){
@@ -745,7 +792,7 @@ public class ContributionStatusFragment extends Fragment implements View.OnClick
                 }
 
                 getContribution_flow = result.getFlow();
-//                getContribution_flow = "拼单失败";//测试用
+//                getContribution_flow = "全成功";//测试用
 
                 initView();
             }
@@ -755,5 +802,38 @@ public class ContributionStatusFragment extends Fragment implements View.OnClick
 
             }
         });
+
+
+    }
+
+    //获取物流公司编码
+    public String getLogisticType(String name){
+
+        String logistic_type = "";
+        if(name.contains("圆通")){
+            logistic_type = "yuantong";
+        }else if(name.contains("德邦")){
+            logistic_type = "debangwuliu";
+        }else if(name.contains("ems")){
+            logistic_type = "ems";
+        }else if(name.contains("申通")){
+            logistic_type = "shentong";
+        }else if(name.contains("顺丰")){
+            logistic_type = "shunfeng";
+        }else if(name.contains("天天快递")){
+            logistic_type = "tiantian";
+        }else if(name.contains("优速物流")){
+            logistic_type = "youshuwuliu";
+        }else if(name.contains("韵达快运")){
+            logistic_type = "yunda";
+        }else if(name.contains("中通速递")){
+            logistic_type = "zhongtong";
+        }else if(name.contains("京东物流")){
+            logistic_type = "jd";
+        }else if(name.contains("百世快递")){
+            logistic_type = "huitongkuaidi";
+        }
+
+        return logistic_type;
     }
 }
