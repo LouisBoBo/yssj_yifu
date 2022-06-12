@@ -510,7 +510,7 @@ public class OrderDetailsActivity extends BasicActivity implements OnClickListen
     // 去快递100中得到数据
     private void getLogistics(final Order order) {
 
-        if (order.getShop_from() == 10) {
+        if (order.getShop_from() == 10 || order.getLogi_code()==null) {
             rel_logistic.setVisibility(View.GONE);
             return;
         }

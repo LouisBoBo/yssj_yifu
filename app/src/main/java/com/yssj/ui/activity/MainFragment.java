@@ -444,7 +444,7 @@ public class MainFragment extends Fragment implements OnClickListener, OnChecked
             DialogUtils.getDiKouDialogNewTuanFail(mContext,"MainFragment显示");
             tabSignClick = false;
 
-        initContributionStatusData();//获取供款状态
+
         findHistorySupply();//获取历史供款
 
         if (YJApplication.instance.isLoginSucess() == false && YJApplication.isLogined == false) {
@@ -516,6 +516,8 @@ public class MainFragment extends Fragment implements OnClickListener, OnChecked
                 if(result.getData() !=null && result.getData().size() >0){
                     contribution_history_status = result.getData().get(0).getStatus();
                 }
+
+                initContributionStatusData();//获取供款状态
             }
 
             @Override

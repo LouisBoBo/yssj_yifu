@@ -372,6 +372,7 @@ public class ShopDetailsActivity extends BasicActivity
     private String mSupp_label = "";// 供应商名字
     private String mshop_kind = "";//1拼单商品
     private String msupply_end_time;//拼单结束时间
+    private String msupply_start_time;//拼单开始时间
 
 
     public static VipInfo mVipInfo;
@@ -4959,8 +4960,15 @@ public class ShopDetailsActivity extends BasicActivity
 
                                 if(shopd.getSupply_end_time() != null && shopd.getSupply_end_time().length()>0) {
                                     msupply_end_time = shopd.getSupply_end_time();
+                                    msupply_start_time = shopd.getSupply_start_time();
 
-                                    getCountDownTime(getStrTime(msupply_end_time));
+                                    //当前时间毫秒数
+                                    long currentTime = System.currentTimeMillis();
+
+                                    if(currentTime >= Long.valueOf(msupply_start_time)) {
+
+                                        getCountDownTime(getStrTime(msupply_end_time,currentTime));
+                                    }
 //                                    progresstime.setText("结束时间:" + DateUtil.Formatsecond(Long.parseLong(msupply_end_time)));
                                 }
 
@@ -7433,12 +7441,10 @@ public class ShopDetailsActivity extends BasicActivity
 
 
     // 将时间戳转为剩余毫秒数
-    public static long getStrTime(String cc_time) {
-        //当前时间毫秒数
-        long currentTime = System.currentTimeMillis();
+    public static long getStrTime(String end_time,long currentTime) {
 
         //剩余毫秒数
-        long lcc_time = (Long.valueOf(cc_time))+48*60*60*1000 - currentTime;
+        long lcc_time = (Long.valueOf(end_time)) - currentTime;
 
         return lcc_time;
     }

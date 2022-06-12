@@ -13,6 +13,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bigkoo.pickerview.builder.OptionsPickerBuilder;
+import com.bigkoo.pickerview.listener.OnOptionsSelectListener;
+import com.bigkoo.pickerview.view.OptionsPickerView;
+import com.bigkoo.pickerview.view.TimePickerView;
 import com.yssj.YUrl;
 import com.yssj.activity.R;
 import com.yssj.custom.view.ContributionsDialog;
@@ -28,6 +32,7 @@ import com.yssj.ui.fragment.orderinfo.OrderInfoFragment;
 import com.yssj.utils.SharedPreferencesUtil;
 import com.yssj.utils.ToastUtil;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Timer;
@@ -96,7 +101,11 @@ public class ContributionStatusFragment extends Fragment implements View.OnClick
     private String express_company = "";
     private String express_num = "";
     private int getExpress_id = 0;
+    private DeliverGoodsDialog dialog;
+
     private ContributionStatusBean contributionStatusBean;
+
+    private List<String> mLocationOption = new ArrayList<>();
 
     public static ContributionStatusFragment newInstances(Context context, String jumpFrom) {
         mJumpFrom = jumpFrom;
@@ -210,11 +219,14 @@ public class ContributionStatusFragment extends Fragment implements View.OnClick
 
     }
 
+
     //     * 供款状态 status：0已申请供货 1审核通过 2整体拒绝 3图片不合格拒绝 4，样衣发货 5验衣通过 6验衣不通过 7.核验货号通过 8.已确认货号信息（生产工艺）9.上架（生产工艺确认工价单、上传样衣贴货号图 与 上传工艺单完成）10.待上架（上传中）
     public void initView(){
         status_base.setVisibility(View.GONE);
         content_base.setVisibility(View.GONE);
         bottom_base.setVisibility(View.GONE);
+
+        getCompanyList();
 
         if(contribution_status == 0){//审核中
 
@@ -271,6 +283,7 @@ public class ContributionStatusFragment extends Fragment implements View.OnClick
             head_content1.setVisibility(View.GONE);
             head_content2.setVisibility(View.GONE);
             head_content3.setVisibility(View.GONE);
+            address_img.setVisibility(View.GONE);
 
             submit_tv1.setText("查看物流");
             submit_tv2.setText("修改物流");
@@ -668,7 +681,7 @@ public class ContributionStatusFragment extends Fragment implements View.OnClick
 
     //输入物流
     public void showDeliverDialog(){
-        DeliverGoodsDialog dialog = new DeliverGoodsDialog(mContext);
+        dialog = new DeliverGoodsDialog(mContext);
         dialog.show();
 
         dialog.setOnItemClick(new DeliverGoodsDialog.OnItemClick() {
@@ -690,6 +703,13 @@ public class ContributionStatusFragment extends Fragment implements View.OnClick
                     submitData(com , num);
             }
         });
+
+        dialog.setmSelectClick(new DeliverGoodsDialog.SelectClick() {
+            @Override
+            public void click(TextView com) {
+                showPickView(com);
+            }
+        });
     }
 
     //查看货号
@@ -709,16 +729,6 @@ public class ContributionStatusFragment extends Fragment implements View.OnClick
         pairsMap.put("id",id);
         pairsMap.put("company",getLogisticType(com));
 
-        submit_tv1.setVisibility(View.VISIBLE);
-        head_content1.setVisibility(View.GONE);
-        head_content2.setVisibility(View.GONE);
-
-        submit_tv1.setText("查看物流");
-        submit_tv2.setText("修改物流");
-
-        head_img.setImageResource(R.drawable.shenhezhong_status);
-        head_title.setText("物流运输中");
-
         YConn.httpPost(getActivity(), YUrl.SUPPLYMATERIAL_EXPRESS_ACTION, pairsMap, new HttpListener<ContributionStatusBean>() {
             @Override
             public void onSuccess(ContributionStatusBean result) {
@@ -728,6 +738,8 @@ public class ContributionStatusFragment extends Fragment implements View.OnClick
                 submit_tv1.setVisibility(View.VISIBLE);
                 head_content1.setVisibility(View.GONE);
                 head_content2.setVisibility(View.GONE);
+                head_content3.setVisibility(View.GONE);
+                address_img.setVisibility(View.GONE);
 
                 submit_tv1.setText("查看物流");
                 submit_tv2.setText("修改物流");
@@ -806,32 +818,103 @@ public class ContributionStatusFragment extends Fragment implements View.OnClick
 
     }
 
+    //物流公司选择框
+    public void showPickView(final TextView companytv){
+        OptionsPickerView pvOptions = new OptionsPickerBuilder(getContext(), new OnOptionsSelectListener() {
+            @Override
+            public void onOptionsSelect(int options1, int options2, int options3, View v) {
+                String company = mLocationOption.get(options1);
+                companytv.setText(company);
+                dialog.show();
+                //在此获取选择到的内容
+            }
+        })
+                .setTitleText("选择快递公司")
+                .setContentTextSize(16)
+                .build();
+
+        pvOptions.setPicker(mLocationOption);
+        pvOptions.show();
+
+    }
+
+    //物流公司名称
+    public void getCompanyList(){
+        mLocationOption.clear();
+
+        mLocationOption.add("圆通速递");
+        mLocationOption.add("韵达快递");
+        mLocationOption.add("中通快递");
+        mLocationOption.add("申通快递");
+        mLocationOption.add("极兔速递");
+        mLocationOption.add("邮政快递包裹");
+        mLocationOption.add("顺丰速运");
+        mLocationOption.add("EMS");
+        mLocationOption.add("京东物流");
+        mLocationOption.add("邮政标准快递");
+        mLocationOption.add("德邦快递");
+        mLocationOption.add("德邦");
+        mLocationOption.add("百世快递");
+        mLocationOption.add("丰网速运");
+        mLocationOption.add("中通国际");
+        mLocationOption.add("中通快运");
+        mLocationOption.add("韩国邮政");
+        mLocationOption.add("安能快运");
+        mLocationOption.add("京东快运");
+        mLocationOption.add("EWE全球快递");
+        mLocationOption.add("韵达快运");
+        mLocationOption.add("优速快递");
+    }
+
     //获取物流公司编码
     public String getLogisticType(String name){
 
         String logistic_type = "";
-        if(name.contains("圆通")){
+
+        if(name.equals("圆通速递")){
             logistic_type = "yuantong";
-        }else if(name.contains("德邦")){
-            logistic_type = "debangwuliu";
-        }else if(name.contains("ems")){
-            logistic_type = "ems";
-        }else if(name.contains("申通")){
-            logistic_type = "shentong";
-        }else if(name.contains("顺丰")){
-            logistic_type = "shunfeng";
-        }else if(name.contains("天天快递")){
-            logistic_type = "tiantian";
-        }else if(name.contains("优速物流")){
-            logistic_type = "youshuwuliu";
-        }else if(name.contains("韵达快运")){
+        }else if(name.contains("韵达快递")){
             logistic_type = "yunda";
-        }else if(name.contains("中通速递")){
+        }else if(name.contains("中通快递")){
             logistic_type = "zhongtong";
+        }else if(name.contains("申通快递")){
+            logistic_type = "shentong";
+        }else if(name.contains("极兔速递")){
+            logistic_type = "jtexpress";
+        }else if(name.contains("邮政快递包裹")){
+            logistic_type = "youzhengguonei";
+        }else if(name.contains("顺丰速运")){
+            logistic_type = "shunfeng";
+        }else if(name.contains("EMS")){
+            logistic_type = "ems";
         }else if(name.contains("京东物流")){
             logistic_type = "jd";
+        }else if(name.contains("邮政标准快递")){
+            logistic_type = "youzhengbk";
+        }else if(name.contains("德邦快递")){
+            logistic_type = "debangkuaidi";
+        }else if(name.contains("德邦")){
+            logistic_type = "debangwuliu";
         }else if(name.contains("百世快递")){
             logistic_type = "huitongkuaidi";
+        }else if(name.contains("丰网速运")){
+            logistic_type = "fengwang";
+        }else if(name.contains("中通国际")){
+            logistic_type = "zhongtongguoji";
+        }else if(name.contains("中通快运")){
+            logistic_type = "zhongtongkuaiyun";
+        }else if(name.contains("韩国邮政")){
+            logistic_type = "koreapostcn";
+        }else if(name.contains("安能快运")){
+            logistic_type = "annengwuliu";
+        }else if(name.contains("京东快运")){
+            logistic_type = "jingdongkuaiyun";
+        }else if(name.contains("EWE全球快递")){
+            logistic_type = "ewe";
+        }else if(name.contains("韵达快运")){
+            logistic_type = "yundakuaiyun";
+        }else if(name.contains("优速快递")){
+            logistic_type = "youshuwuliu";
         }
 
         return logistic_type;

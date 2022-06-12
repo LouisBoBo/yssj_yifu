@@ -262,6 +262,7 @@ public class Shop implements Serializable {
     private String shop_kind;
     private String newfour_pic;
     private String supply_end_time;
+    private String supply_start_time;
     private String supply_min_num;
     private String supply_current_num;
     private List<SupplyMaterialPriceListDTO> supply_material_price_list;
@@ -280,6 +281,14 @@ public class Shop implements Serializable {
 
     public void setSupply_current_num(String supply_current_num) {
         this.supply_current_num = supply_current_num;
+    }
+
+    public String getSupply_start_time() {
+        return supply_start_time;
+    }
+
+    public void setSupply_start_time(String supply_start_time) {
+        this.supply_start_time = supply_start_time;
     }
 
     public String getSupply_end_time() {

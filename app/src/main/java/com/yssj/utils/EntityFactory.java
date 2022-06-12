@@ -3060,6 +3060,7 @@ public class EntityFactory {
         shop.setShop_kind(obj.optString("shop_kind"));
         shop.setNewfour_pic(obj.optString("four_pic"));
         shop.setSupply_end_time(obj.optString("supply_end_time"));
+        shop.setSupply_start_time(obj.optString("supply_start_time"));
         shop.setSupply_min_num(obj.optString("supply_min_num"));
         shop.setSupply_current_num(obj.optString("supply_current_num"));
         String ss = obj.optString("shop_type_id");

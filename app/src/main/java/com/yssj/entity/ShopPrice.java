@@ -63,8 +63,8 @@ public class ShopPrice implements Serializable {
     public static class ChildrenDTO implements Serializable {
         private String type_name;
         private int parent_id;
-        private int price;
-        private int type_use;
+        private double price;
+        private double type_use;
         private int id;
         private String create_date;
         private String type_value;
@@ -87,19 +87,19 @@ public class ShopPrice implements Serializable {
             this.parent_id = parent_id;
         }
 
-        public int getPrice() {
+        public double getPrice() {
             return price;
         }
 
-        public void setPrice(int price) {
+        public void setPrice(double price) {
             this.price = price;
         }
 
-        public int getType_use() {
+        public double getType_use() {
             return type_use;
         }
 
-        public void setType_use(int type_use) {
+        public void setType_use(double type_use) {
             this.type_use = type_use;
         }
 

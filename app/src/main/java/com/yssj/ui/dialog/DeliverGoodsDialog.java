@@ -18,12 +18,22 @@ public class DeliverGoodsDialog extends Dialog implements android.view.View.OnCl
     private TextView deliver_com;
 
     public DeliverGoodsDialog.OnItemClick mOnItemClick;
+    public DeliverGoodsDialog.SelectClick mSelectClick;
     public interface OnItemClick {
         void click(String address ,String num ,String com);
     }
     public void setOnItemClick(DeliverGoodsDialog.OnItemClick onItemClick) {
         mOnItemClick = onItemClick;
     }
+
+    public interface SelectClick{
+        void click(TextView com);
+    }
+
+    public void setmSelectClick(DeliverGoodsDialog.SelectClick onSelectClick){
+        mSelectClick = onSelectClick;
+    }
+
 
     public DeliverGoodsDialog(Context context) {
         super(context, R.style.my_invate_dialog);
@@ -34,6 +44,10 @@ public class DeliverGoodsDialog extends Dialog implements android.view.View.OnCl
 
         deliver_com = findViewById(R.id.deliver_com);
         deliver_num = findViewById(R.id.deliver_num);
+
+        deliver_com.setOnClickListener(this);
+        deliver_com.setClickable(true);
+
     }
 
 
@@ -46,10 +60,12 @@ public class DeliverGoodsDialog extends Dialog implements android.view.View.OnCl
         dismiss();
         switch (v.getId()) {
             case R.id.deliver:
-            {
                 mOnItemClick.click("深圳市南山区",deliver_num.getText().toString(),deliver_com.getText().toString());
-            }
-            break;
+                break;
+
+            case R.id.deliver_com:
+                mSelectClick.click(deliver_com);
+                break;
 
             default:
                 break;

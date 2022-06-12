@@ -149,6 +149,7 @@ public class SettingCommonFragmentActivity extends BasicActivity implements Clos
                     FirstBindPhoneFragment mFragment = new FirstBindPhoneFragment();
                     Bundle bundle = new Bundle();
                     bundle.putString("thirdparty", mThirdParty);
+                    bundle.putBoolean("is_bing",isBool?false:true);
                     mFragment.setArguments(bundle);
                     getSupportFragmentManager().beginTransaction().replace(R.id.fl_content, mFragment).commit();
                 }

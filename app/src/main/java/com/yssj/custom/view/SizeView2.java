@@ -1,5 +1,6 @@
 package com.yssj.custom.view;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -440,25 +441,30 @@ public class SizeView2 extends LinearLayout {
 			List<String> mStrings = new ArrayList<>();
 			String titlename = shopPrice.getType_name().toString();
 			mStrings.add(titlename);
-			int allprice =0;
+			double allprice =0;
 			for (ShopPrice.ChildrenDTO child : shopPrice.getChildren()) {
 				mStrings.add(child.getType_name());
 				mStrings.add(String.valueOf(child.getPrice()));
 				mStrings.add(String.valueOf(child.getType_use()));
 
-				int totalprice = child.getPrice()*child.getType_use();
+				double totalprice = child.getPrice()*child.getType_use();
 				allprice += totalprice;
-				mStrings.add(String.valueOf(totalprice));
+
+				BigDecimal bg = new BigDecimal(totalprice);
+				double t = bg.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+				mStrings.add(String.valueOf(t));
 			}
 
 
+			BigDecimal bg = new BigDecimal(allprice);
+			double f = bg.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
 
 			if(k == 0 ){
 				if(shopPrice.getChildren().size()>1){
 					mStrings.add("小计");
 					mStrings.add("");
 					mStrings.add("");
-					mStrings.add(String.valueOf(allprice));
+					mStrings.add(String.valueOf(f));
 				}else if(shopPrice.getChildren().size()==1) {
 					mStrings.add("-");
 					mStrings.add("-");
@@ -468,20 +474,20 @@ public class SizeView2 extends LinearLayout {
 					mStrings.add("小计");
 					mStrings.add("");
 					mStrings.add("");
-					mStrings.add(String.valueOf(allprice));
+					mStrings.add(String.valueOf(f));
 				}
 
 			}else if(k == 1){
 				mStrings.add("小计");
 				mStrings.add("");
 				mStrings.add("");
-				mStrings.add(String.valueOf(allprice));
+				mStrings.add(String.valueOf(f));
 			}else {
 				if(shopPrice.getChildren().size()>1) {
 					mStrings.add("小计");
 					mStrings.add("");
 					mStrings.add("");
-					mStrings.add(String.valueOf(allprice));
+					mStrings.add(String.valueOf(f));
 				}
 			}
 
@@ -657,7 +663,7 @@ public class SizeView2 extends LinearLayout {
 			lSize++;
 		}
 		List<String[]> listAll = toList(lSize, listSize);
-		addView(viewContainer, listAll,true);//处理尺码
+		addView(viewContainer, listAll,false);//处理尺码
 	}
 
 	private List<String[]> toList(int lSize, List<String[]> list) {

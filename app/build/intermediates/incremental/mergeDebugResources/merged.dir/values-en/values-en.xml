@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="brvah_load_end">No more data</string>
+    <string name="brvah_load_failed">load more failed</string>
+    <string name="brvah_loading">Loading...</string>
+    <string name="cancel">Cancel</string>
+    <string name="check_wifi_notice">Current net type is not Wifi, Whether to continue</string>
+    <string name="download_fail">Download error, Click retry</string>
+    <string name="downloading">downloading</string>
+    <string name="install">Install</string>
+    <string name="no_storage_permission">Please allow access to storage permissions</string>
+    <string name="notice">Notice</string>
+    <string name="pickerview_cancel">Cancel</string>
+    <string name="pickerview_day"> </string>
+    <string name="pickerview_hours"> </string>
+    <string name="pickerview_minutes"> </string>
+    <string name="pickerview_month"> </string>
+    <string name="pickerview_seconds"> </string>
+    <string name="pickerview_submit">Confirm</string>
+    <string name="pickerview_year"> </string>
+    <string name="sure">OK</string>
+    <string name="toast_download_apk">Start downloading...</string>
+    <string name="update_cancel">Cancel</string>
+    <string name="update_content">New version get ready,update now</string>
+    <string name="update_now">Update</string>
+    <string name="update_title">New version！</string>
+</resources>

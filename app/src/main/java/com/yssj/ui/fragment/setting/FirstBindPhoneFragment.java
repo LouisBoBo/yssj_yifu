@@ -159,10 +159,17 @@ public class FirstBindPhoneFragment extends BaseFragment implements OnClickListe
 
         ivGif.setVisibility(View.GONE);
 
-        sanFangFirstBind = getActivity().getIntent().getBooleanExtra("sanFangFirstBind", false);
+//        sanFangFirstBind = getActivity().getIntent().getBooleanExtra("sanFangFirstBind", false);
+
+         Bundle bundle = getArguments();
+         if (bundle != null) {
+             sanFangFirstBind = bundle.getBoolean("is_bing");
+         }else {
+             sanFangFirstBind = getActivity().getIntent().getBooleanExtra("sanFangFirstBind", false);
+         }
+
         et_pwd_rl = (RelativeLayout) view.findViewById(R.id.et_pwd_rl);
         et_pwd = (EditText) view.findViewById(R.id.et_pwd);
-
 
         //手机号输入框的监听
         et_phone_num.addTextChangedListener(new TextWatcher() {
