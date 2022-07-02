@@ -207,10 +207,13 @@ public class FootItemView extends LinearLayout {
 
 
 
+			tv_save.setVisibility(GONE);
 		if(!GuideActivity.show1yuan){ //非1元购处理
 			price.setText("¥" + new java.text.DecimalFormat("#0.0").format(prices));
-			String no_discount_price = "原价¥" + new java.text.DecimalFormat("#0.0").format(shop_price);
-			tv_save.setText(no_discount_price);
+//			String no_discount_price = "原价¥" + new java.text.DecimalFormat("#0.0").format(shop_price);
+//			tv_save.setText(no_discount_price);
+
+//			tv_save.setText("月销" + map.get("virtual_sales")+ "件");
 		}
 
 
@@ -329,7 +332,7 @@ public class FootItemView extends LinearLayout {
 		}
 
 		double kickBack = Double.parseDouble((String) map.get("kickback"));
-		price.setText("月销" + map.get("virtual_sales") + "件");
+		price.setText("已售" + map.get("virtual_sales") + "件");
 
 
 		returnMoney.setText("" + new java.text.DecimalFormat("#0").format(kickBack) + "元");
@@ -412,13 +415,13 @@ public class FootItemView extends LinearLayout {
 
 //        tv_save.setText("原价¥" + new java.text.DecimalFormat("#0.0").format(prices) + "元");
 
-		tv_save.setText("月销" + map.get("virtual_sales") + "件");
-		tv_save.setVisibility(INVISIBLE);
-		if (!GuideActivity.show1yuan) { //非1元购处理
-			price.setText("¥" + new java.text.DecimalFormat("#0.0").format(prices));
-			String no_discount_price = "原价¥" + new java.text.DecimalFormat("#0.0").format(shop_price);
-			tv_save.setText(no_discount_price);
-		}
+//		tv_save.setText("月销" + map.get("virtual_sales") + "件");
+		tv_save.setVisibility(GONE);
+//		if (!GuideActivity.show1yuan) { //非1元购处理
+//			price.setText("¥" + new java.text.DecimalFormat("#0.0").format(prices));
+//			String no_discount_price = "原价¥" + new java.text.DecimalFormat("#0.0").format(shop_price);
+//			tv_save.setText(no_discount_price);
+//		}
 
 
 		this.setOnClickListener(new OnClickListener() {

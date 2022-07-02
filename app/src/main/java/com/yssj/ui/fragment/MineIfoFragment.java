@@ -99,13 +99,13 @@ public class MineIfoFragment extends Fragment implements OnClickListener, onUser
 
     private RelativeLayout rel_wait_pay, rel_wait_deliver, rel_wait_receipt, rel_wait_judge, rel_wait_payback,
             rel_mydata;
-    private RelativeLayout rel_my_order, ll_xiaoxi;
+    private RelativeLayout rel_my_order,tv_shouchang1 ;
 
     private LinearLayout ll_myqianbao, ll_mycard, ll_vip;
 
     private TextView tv_wait_pay_count, tv_wait_deliver_count, tv_wait_receipt_count, tv_wait_judge_count,
             tv_wait_payback_count, tv_haoyou, tv_miyou, tv_chuanda, tv_zuiai, tv_zuji, my_qianming, tv_zhaopian,
-            tv_shouchang, tv_haoyoujiangli, tv_shouchang1;
+            tv_shouchang, tv_haoyoujiangli,ll_xiaoxi;
 
     private static ImageView ll_top;
     private TextView tv_wallet_red, tv_coupons_red, tv_vip;
@@ -351,7 +351,7 @@ public class MineIfoFragment extends Fragment implements OnClickListener, onUser
         // 获取客服
 //        getKefu();
 
-        ll_xiaoxi = (RelativeLayout) v.findViewById(R.id.ll_xiaoxi);
+        ll_xiaoxi = v.findViewById(R.id.ll_xiaoxi);
 //        tv_haoyou = (TextView) v.findViewById(R.id.tv_haoyou);
         tv_miyou = (TextView) v.findViewById(R.id.tv_miyou);
         tv_shouchang = (TextView) v.findViewById(R.id.tv_shouchang);

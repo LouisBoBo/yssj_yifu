@@ -17,9 +17,17 @@ public class Like {
 	private String is_show; // 是否置顶
 	private String is_del;
 	private String isLike; //是否喜爱
+	private int virtual_sales;
 
 	private String app_shop_group_price = "1.5";//1元购价格
 
+	public int getVirtual_sales() {
+		return virtual_sales;
+	}
+
+	public void setVirtual_sales(int virtual_sales) {
+		this.virtual_sales = virtual_sales;
+	}
 
 	public String getSupp_label_id() {
 		return supp_label_id;

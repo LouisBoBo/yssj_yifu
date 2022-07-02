@@ -19,7 +19,7 @@
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="请下载衣服云工厂APP"
+            android:text="请下载云缝纫APP"
             android:textSize="19sp"
             android:textColor="@color/black"
             />
@@ -28,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin20"
-            android:src="@drawable/download_icon"
+            android:src="@drawable/logo_img"
             />
 
         <Button

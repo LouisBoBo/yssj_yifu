@@ -238,7 +238,7 @@ public class ItemView extends LinearLayout {
         }
 
         if (virtual_sales > 0) {
-            String no_discount_price = "月销" + virtual_sales + "件";
+            String no_discount_price = "已售" + virtual_sales + "件";
 
 
 //			ToastUtil.addStrikeSpan(tv_no_discount_price,no_discount_price);
@@ -356,7 +356,7 @@ public class ItemView extends LinearLayout {
         }
 
         if (virtual_sales > 0) {
-            String no_discount_price = "月销" + virtual_sales + "件";
+            String no_discount_price = "已售" + virtual_sales + "件";
 
 
             tv_save.setText(no_discount_price);

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
@@ -19,6 +20,7 @@ import com.bigkoo.pickerview.view.OptionsPickerView;
 import com.bigkoo.pickerview.view.TimePickerView;
 import com.yssj.YUrl;
 import com.yssj.activity.R;
+import com.yssj.custom.view.CommonLoadingView;
 import com.yssj.custom.view.ContributionsDialog;
 import com.yssj.entity.Order;
 import com.yssj.network.HttpListener;
@@ -104,6 +106,7 @@ public class ContributionStatusFragment extends Fragment implements View.OnClick
     private DeliverGoodsDialog dialog;
 
     private ContributionStatusBean contributionStatusBean;
+    private CommonLoadingView loading;
 
     private List<String> mLocationOption = new ArrayList<>();
 
@@ -115,13 +118,14 @@ public class ContributionStatusFragment extends Fragment implements View.OnClick
         return fragment;
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.activity_contributition_status, container, false);
 
         View headview = v.findViewById(R.id.ll_title);
         headview.setVisibility(View.GONE);
+
+        loading = new CommonLoadingView(getContext());
 
         head_img = v.findViewById(R.id.head_image);
         head_title = v.findViewById(R.id.head_title);
@@ -219,6 +223,10 @@ public class ContributionStatusFragment extends Fragment implements View.OnClick
 
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+    }
 
     //     * 供款状态 status：0已申请供货 1审核通过 2整体拒绝 3图片不合格拒绝 4，样衣发货 5验衣通过 6验衣不通过 7.核验货号通过 8.已确认货号信息（生产工艺）9.上架（生产工艺确认工价单、上传样衣贴货号图 与 上传工艺单完成）10.待上架（上传中）
     public void initView(){
@@ -289,16 +297,15 @@ public class ContributionStatusFragment extends Fragment implements View.OnClick
             submit_tv2.setText("修改物流");
             head_img.setImageResource(R.drawable.shenhezhong_status);
         }else {
+
+            jian_img.setImageResource(R.drawable.status_jian_normal);
+            jian_text.setTextColor(Color.parseColor("#ff3f8b"));
+
             if(getContribution_flow.equals("全成功")){
-                if(contribution_status == 0 || contribution_status == 8 || contribution_status == 9 || contribution_status == 18 || contribution_status == 14 || contribution_status == 15 || contribution_status == 16 || contribution_status == 99 || contribution_status == -1){//全成功
+                if(contribution_status == 5 || contribution_status == 8 || contribution_status == 9 || contribution_status == 18 || contribution_status == 14 || contribution_status == 15 || contribution_status == 16 || contribution_status == 99 || contribution_status == -1){//全成功
                     status_base.setVisibility(View.VISIBLE);
 
                     switch (contribution_status){
-                        case 0:
-                            jian_img.setImageResource(R.drawable.status_jian_normal);
-
-                            jian_text.setTextColor(Color.parseColor("#ff3f8b"));
-                            break;
                         case 8:
                             jian_img.setImageResource(R.drawable.status_jian_normal);
                             photo_img.setImageResource(R.drawable.status_photo_success);
@@ -444,7 +451,7 @@ public class ContributionStatusFragment extends Fragment implements View.OnClick
                     }
                 }
             }else if(getContribution_flow.equals("验衣失败")){
-                if(contribution_status == 0 || contribution_status == 6 || contribution_status == 17 || contribution_status == -1){//验衣失败
+                if(contribution_status == 5 || contribution_status == 6 || contribution_status == 17 || contribution_status == -1){//验衣失败
 
                     status_base.setVisibility(View.VISIBLE);
 
@@ -458,11 +465,7 @@ public class ContributionStatusFragment extends Fragment implements View.OnClick
                     success_img.setImageResource(R.drawable.status_fail_normal);
 
                     switch (contribution_status){
-                        case 0:
-                            jian_img.setImageResource(R.drawable.status_jian_normal);
 
-                            jian_text.setTextColor(Color.parseColor("#ff3f8b"));
-                            break;
                         case 6:
                             jian_img.setImageResource(R.drawable.status_jian_normal);
                             success_img.setImageResource(R.drawable.status_fail);
@@ -504,7 +507,7 @@ public class ContributionStatusFragment extends Fragment implements View.OnClick
 
                 }
             }else if(getContribution_flow.equals("拼单失败")){
-                if(contribution_status == 0 || contribution_status == 8 || contribution_status == 9 || contribution_status == 18 ||contribution_status == 13 || contribution_status == 12 || contribution_status == -1){//拼团失败
+                if(contribution_status == 5 || contribution_status == 8 || contribution_status == 9 || contribution_status == 18 ||contribution_status == 13 || contribution_status == 12 || contribution_status == -1){//拼团失败
 
                     status_base.setVisibility(View.VISIBLE);
 
@@ -515,12 +518,6 @@ public class ContributionStatusFragment extends Fragment implements View.OnClick
                     success_img.setImageResource(R.drawable.status_fail_normal);
 
                     switch (contribution_status){
-                        case 0:
-                            jian_img.setImageResource(R.drawable.status_jian_normal);
-
-                            jian_text.setTextColor(Color.parseColor("#ff3f8b"));
-
-                            break;
                         case 8:
                             jian_img.setImageResource(R.drawable.status_jian_normal);
                             photo_img.setImageResource(R.drawable.status_photo_success);
@@ -785,16 +782,20 @@ public class ContributionStatusFragment extends Fragment implements View.OnClick
 
         HashMap<String, String> pairsMap = new HashMap<>();
 
+        loading.show();
         YConn.httpPost(getActivity(), YUrl.CLOUD_API_WAR_SUPPLYMATERIAL_FINDSUPPLY, pairsMap, new HttpListener<ContributionStatusBean>() {
+
             @Override
             public void onSuccess(ContributionStatusBean result) {
+                loading.dismiss();
+
                 SharedPreferencesUtil.saveStringData(getActivity(), "id", result.getData().getId()+"");
 
                 contributionStatusBean = result;
                 if(result.getData() != null){
                     contribution_status = result.getData().getStatus();
                     contribution_shop_num = result.getData().getShop_num();
-//                    contribution_status = 3;//测试用
+//                    contribution_status = 9;//测试用
                 }
 
                 if(result.getSupplyMaterialExpress() != null){
@@ -811,12 +812,14 @@ public class ContributionStatusFragment extends Fragment implements View.OnClick
 
             @Override
             public void onError() {
-
+                loading.dismiss();
             }
         });
 
 
     }
+
+
 
     //物流公司选择框
     public void showPickView(final TextView companytv){

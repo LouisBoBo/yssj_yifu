@@ -208,7 +208,7 @@ public class ResultItemView extends LinearLayout {
         }
 
         if (virtual_sales > 0) {
-            String no_discount_price = "月销" + virtual_sales + "件";
+            String no_discount_price = "已售" + virtual_sales + "件";
 
 
 //			ToastUtil.addStrikeSpan(tv_no_discount_price,no_discount_price);
@@ -229,11 +229,11 @@ public class ResultItemView extends LinearLayout {
 //        tv_save.setText("原价" + new java.text.DecimalFormat("#0.0").format(prices) + "元");
 
 
-        if (!GuideActivity.show1yuan) { //非1元购处理
-            price.setText("¥" + new java.text.DecimalFormat("#0.0").format(prices));
-            String no_discount_price = "原价¥" + new java.text.DecimalFormat("#0.0").format(shop_price);
-            tv_save.setText(no_discount_price);
-        }
+//        if (!GuideActivity.show1yuan) { //非1元购处理
+//            price.setText("¥" + new java.text.DecimalFormat("#0.0").format(prices));
+//            String no_discount_price = "原价¥" + new java.text.DecimalFormat("#0.0").format(shop_price);
+//            tv_save.setText(no_discount_price);
+//        }
 
 
         this.setOnClickListener(new OnClickListener() {
@@ -590,7 +590,7 @@ public class ResultItemView extends LinearLayout {
         }
 
         if (virtual_sales > 0) {
-            String no_discount_price = "月销" + virtual_sales + "件";
+            String no_discount_price = "已售" + virtual_sales + "件";
 
 
 //			ToastUtil.addStrikeSpan(tv_no_discount_price,no_discount_price);

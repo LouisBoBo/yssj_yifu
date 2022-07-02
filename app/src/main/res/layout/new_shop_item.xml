@@ -192,7 +192,7 @@
             android:layout_marginLeft="15dp"
             android:orientation="horizontal" >
 
-            <com.yssj.custom.view.RoundImageButton
+            <ImageView
                 android:id="@+id/img_user_header"
                 android:layout_width="40dp"
                 android:layout_height="40dp"

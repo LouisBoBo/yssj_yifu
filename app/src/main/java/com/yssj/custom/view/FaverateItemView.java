@@ -188,15 +188,16 @@ public class FaverateItemView extends LinearLayout{
 			if (listSupp != null && listSupp.size() > 0) {
 				String label_name = listSupp.get(0).get("name");
 				new_sub.setText(label_name);
-				new_sub.setVisibility(VISIBLE);
+				new_sub.setVisibility(GONE);
 			}
 
 
 
 		if(!GuideActivity.show1yuan){ //非1元购处理
 			price.setText("¥" + new java.text.DecimalFormat("#0.0").format(prices));
-			String no_discount_price = "原价¥" + new java.text.DecimalFormat("#0.0").format(shop_price);
-			tv_save.setText(no_discount_price);
+//			String no_discount_price = "原价¥" + new java.text.DecimalFormat("#0.0").format(shop_price);
+//			tv_save.setText(no_discount_price);
+			tv_save.setText("已售" + like.getVirtual_sales()+ "件");
 		}
 
 
@@ -303,7 +304,7 @@ public class FaverateItemView extends LinearLayout{
 		if (listSupp != null && listSupp.size() > 0) {
 			String label_name = listSupp.get(0).get("name");
 			new_sub.setText(label_name);
-			new_sub.setVisibility(VISIBLE);
+			new_sub.setVisibility(GONE);
 		}
 
 
@@ -394,8 +395,9 @@ public class FaverateItemView extends LinearLayout{
 		tv_save.setVisibility(INVISIBLE);
 		if (!GuideActivity.show1yuan) { //非1元购处理
 			price.setText("¥" + new java.text.DecimalFormat("#0.0").format(prices));
-			String no_discount_price = "原价¥" + new java.text.DecimalFormat("#0.0").format(shop_price);
-			tv_save.setText(no_discount_price);
+//			String no_discount_price = "原价¥" + new java.text.DecimalFormat("#0.0").format(shop_price);
+//			tv_save.setText(no_discount_price);
+			tv_save.setText("已售" + like.getVirtual_sales()+ "件");
 		}
 
 

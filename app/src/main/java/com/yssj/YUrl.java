@@ -17,7 +17,7 @@ public class YUrl {
     public static String YSS_URL_ANDROID_H5 = "http://123.58.33.33/";
 
 //    public static String imgurl = "https://www.incursion.wang/";
-    public static String imgurl = "http://img.yiline.com/";
+    public static String imgurl = "http://img.yifuapp.wang/";
     public static String TEST_API_KEY = "M3s2N+dRDbjzzRATbBP5IbYIThc=";
     public static String BUCKET = "yssj668";
     public static final String APP_SECRET = "10d080a714d768427242e9b091d33959";

@@ -21,6 +21,8 @@ import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.text.Html;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
@@ -63,6 +65,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Transformation;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.umeng.socialize.media.UMImage;
 import com.yssj.YConstance;
@@ -129,11 +133,13 @@ import com.yssj.ui.dialog.XunBaoScollDialog;
 import com.yssj.ui.fragment.circles.SignListAdapter;
 import com.yssj.ui.fragment.contributions.ContributionStatusBean;
 import com.yssj.ui.receiver.TaskReceiver;
+import com.yssj.utils.CircleTransform;
 import com.yssj.utils.CommonUtils;
 import com.yssj.utils.ComputeUtil;
 import com.yssj.utils.DP2SPUtil;
 import com.yssj.utils.DateUtil;
 import com.yssj.utils.DialogUtils;
+import com.yssj.utils.GlideCircleWithBorder;
 import com.yssj.utils.GlideUtils;
 import com.yssj.utils.LogYiFu;
 import com.yssj.utils.MD5Tools;
@@ -162,6 +168,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.Serializable;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.text.DecimalFormat;
@@ -1974,7 +1981,7 @@ public class ShopDetailsActivity extends BasicActivity
                         / 4;
                 vh.viewContainer = (LinearLayout) v.findViewById(R.id.container);
 
-                vh.img_user_header = (RoundImageButton) v.findViewById(R.id.img_user_header);
+                vh.img_user_header = (ImageView) v.findViewById(R.id.img_user_header);
                 vh.tv_user = (TextView) v.findViewById(R.id.tv_user);
                 vh.tv_evaluate = (TextView) v.findViewById(R.id.tv_evaluate);
                 vh.tv_date = (TextView) v.findViewById(R.id.tv_date);
@@ -2665,7 +2672,17 @@ public class ShopDetailsActivity extends BasicActivity
                     vh.diver.setVisibility(View.VISIBLE);
                     vh.img_user_header.setTag(shopComment.getUser_url());
 
-                    PicassoUtils.initImage(ShopDetailsActivity.this, shopComment.getUser_url(), vh.img_user_header);
+                    String img_url = shopComment.getUser_url();
+//                    PicassoUtils.initImage(context, img_url, vh.img_user_header);
+
+                    Picasso.get()
+                            .load(img_url)
+                            .placeholder(R.drawable.image_default)
+                            .error(R.drawable.image_default)
+                            .transform(new CircleTransform())//圆头像
+                            .into(vh.img_user_header);
+                    Picasso.get().setLoggingEnabled(true);
+
                     String user_name = shopComment.getUser_name();
                     if (!TextUtils.isEmpty(user_name)) {
 
@@ -3117,7 +3134,7 @@ public class ShopDetailsActivity extends BasicActivity
 
         View bai;
 
-        RoundImageButton img_user_header;
+        ImageView img_user_header;
         TextView tv_user;
         TextView tv_evaluate;
         TextView tv_date;
